@@ -1,0 +1,27 @@
+ext {
+    android = [
+            compileSdkVersion: 29,
+            buildToolsVersion: "29.0.0",
+            minSdkVersion    : 19,
+            targetSdkVersion : 29,
+            applicationId    : 'net.lishaoy.android_ctrip',
+            versionCode      : 1,
+            versionName      : '1.0',
+            multiDexEnabled  : true,
+    ]
+
+    depsVersion = [
+            appcompat       : '1.1.0',
+            constraintlayout: '1.1.3',
+            immersionbar    : '3.0.0',
+            pagerBottomTabStrip:'2.3.0X'
+
+    ]
+
+    depsLibs = [
+            appcompat       : "androidx.appcompat:appcompat:${depsVersion.appcompat}",
+            constraintlayout: "androidx.constraintlayout:constraintlayout:${depsVersion.constraintlayout}",
+            immersionbar    : "com.gyf.immersionbar:immersionbar:${depsVersion.immersionbar}",
+            pagerBottomTabStrip: "me.majiajie:pager-bottom-tab-strip:${depsVersion.pagerBottomTabStrip}"
+    ]
+}

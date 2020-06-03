@@ -1,0 +1,3 @@
+rootProject.name='android_ctrip'
+include ':ctrip'
+include ':lib_common_ui'
