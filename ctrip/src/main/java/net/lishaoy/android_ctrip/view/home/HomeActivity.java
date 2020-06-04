@@ -1,4 +1,4 @@
-package net.lishaoy.android_ctrip;
+package net.lishaoy.android_ctrip.view.home;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
@@ -9,9 +9,12 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.gyf.immersionbar.ImmersionBar;
 
-import net.lishaoy.android_ctrip.adapter.MyViewPagerAdapter;
+import net.lishaoy.android_ctrip.R;
+import net.lishaoy.android_ctrip.model.CHANNEL;
+import net.lishaoy.android_ctrip.view.adapter.NavigatorAdapter;
 
-import me.majiajie.pagerbottomtabstrip.MaterialMode;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import me.majiajie.pagerbottomtabstrip.NavigationController;
 import me.majiajie.pagerbottomtabstrip.PageNavigationView;
 import me.majiajie.pagerbottomtabstrip.item.BaseTabItem;
@@ -20,8 +23,13 @@ import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener;
 
 public class HomeActivity extends FragmentActivity {
 
-    private ViewPager viewPager;
-    private PageNavigationView pageNavigationView;
+    public final static CHANNEL[] CHANNELS = new CHANNEL[]{
+            CHANNEL.HOME, CHANNEL.DESTINATION, CHANNEL.TRAVEL, CHANNEL.MY
+    };
+    @BindView(R.id.viewPager)
+    NoTouchViewPager viewPager;
+    @BindView(R.id.tab)
+    PageNavigationView tab;
     private NavigationController navigationController;
 
     @SuppressLint("ResourceAsColor")
@@ -29,22 +37,21 @@ public class HomeActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        ButterKnife.bind(this);
         //设置状态栏颜色
         ImmersionBar.with(this)
                 .statusBarDarkFont(true)
                 .init();
 
         //初始化导航栏
-        pageNavigationView = findViewById(R.id.tab);
-        viewPager = findViewById(R.id.viewPager);
-        navigationController = pageNavigationView.custom()
-                .addItem(newItem(R.mipmap.xiecheng,R.mipmap.xiecheng_active,"首页"))
-                .addItem(newItem(R.mipmap.mude,R.mipmap.mude_active,"目的地"))
-                .addItem(newItem(R.mipmap.lvpai,R.mipmap.lvpai_active,"旅拍"))
-                .addItem(newItem(R.mipmap.wode,R.mipmap.wode_active,"我的"))
+        navigationController = tab.custom()
+                .addItem(newItem(R.mipmap.xiecheng, R.mipmap.xiecheng_active, CHANNEL.HOME.getKey()))
+                .addItem(newItem(R.mipmap.mude, R.mipmap.mude_active, CHANNEL.DESTINATION.getKey()))
+                .addItem(newItem(R.mipmap.lvpai, R.mipmap.lvpai_active, CHANNEL.TRAVEL.getKey()))
+                .addItem(newItem(R.mipmap.wode, R.mipmap.wode_active, CHANNEL.MY.getKey()))
                 .build();
 
-        viewPager.setAdapter(new MyViewPagerAdapter(getSupportFragmentManager(), navigationController.getItemCount()));
+        viewPager.setAdapter(new NavigatorAdapter(CHANNELS, getSupportFragmentManager(), navigationController.getItemCount()));
         //自动适配ViewPager页面切换
         navigationController.setupWithViewPager(viewPager);
 

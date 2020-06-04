@@ -20,6 +20,11 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 }
 
 dependencies {
@@ -32,6 +37,22 @@ dependencies {
     implementation rootProject.depsLibs.immersionbar
     //导航栏
     implementation rootProject.depsLibs.pagerBottomTabStrip
+    //rxjava
+    implementation rootProject.depsLibs.rxjava
+    //rxandroid
+    implementation rootProject.depsLibs.rxandroid
+    //view 注入
+    implementation rootProject.depsLibs.butterknife
+    //view 注入
+    annotationProcessor rootProject.depsLibs.butterknifeCompiler
+    //gson
+    implementation rootProject.depsLibs.gson
 
+    //引入ui库
     implementation project(':lib_common_ui')
+    //引入ui库
+    implementation project(':lib_image_loader')
+    //引入网络库
+    implementation project(':lib_network')
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }

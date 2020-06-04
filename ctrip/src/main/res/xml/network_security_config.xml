@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <domain-config cleartextTrafficPermitted="true">
+        <!--允许以下网址使用非安全的连接-->
+        <domain includeSubdomains="true">imooc.com</domain>
+        <domain includeSubdomains="true">39.97.122.129</domain>
+    </domain-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system"></certificates>
+            <certificates src="user"></certificates>
+        </trust-anchors>
+    </base-config>
+</network-security-config>

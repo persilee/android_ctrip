@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".view.home.HomeActivity">
 
-    <androidx.viewpager.widget.ViewPager
+    <net.lishaoy.android_ctrip.view.home.NoTouchViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:focusableInTouchMode="false"
         android:layout_above="@+id/tab"/>
 
     <me.majiajie.pagerbottomtabstrip.PageNavigationView

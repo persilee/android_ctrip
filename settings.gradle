@@ -1,3 +1,5 @@
 rootProject.name='android_ctrip'
 include ':ctrip'
 include ':lib_common_ui'
+include ':lib_image_loader'
+include ':lib_network'
