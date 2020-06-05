@@ -40,7 +40,6 @@ public class HomeActivity extends FragmentActivity {
         ButterKnife.bind(this);
         //设置状态栏颜色
         ImmersionBar.with(this)
-                .statusBarDarkFont(true)
                 .init();
 
         //初始化导航栏

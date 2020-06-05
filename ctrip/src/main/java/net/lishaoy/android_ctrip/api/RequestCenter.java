@@ -1,5 +1,6 @@
 package net.lishaoy.android_ctrip.api;
 
+import net.lishaoy.android_ctrip.model.Home;
 import net.lishaoy.lib_network.CommonOkHttpClient;
 import net.lishaoy.lib_network.listener.DisposeDataHandle;
 import net.lishaoy.lib_network.listener.DisposeDataListener;
@@ -29,7 +30,7 @@ public class RequestCenter {
                 createGetRequest(url, params), new DisposeDataHandle(listener, clazz));
     }
     public static void requestHome(DisposeDataListener listener) {
-        RequestCenter.getRequest(HttpConstants.HOME_URL,null,listener,null);
+        RequestCenter.getRequest(HttpConstants.HOME_URL,null,listener, Home.class);
     }
 
 
