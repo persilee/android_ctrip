@@ -52,8 +52,12 @@ public class LocalNavView extends LinearLayout {
     @BindView(R.id.nav_txt_day)
     TextView navTxtDay;
     private Context mContext;
-    private Home homeData;
     private List<Home.LocalNavListBean> navListBeans;
+
+    public void setNavListBeans(List<Home.LocalNavListBean> navListBeans) {
+        this.navListBeans = navListBeans;
+        initView();
+    }
 
     public LocalNavView(Context context) {
         this(context, null);
@@ -66,36 +70,21 @@ public class LocalNavView extends LinearLayout {
     public LocalNavView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mContext = context;
-        initView();
     }
+
 
     private void initView() {
         final View inflate = LayoutInflater.from(mContext).inflate(R.layout.view_local_nav, this);
         ButterKnife.bind(this, inflate);
-        requestHomeDate();
+        updateView();
     }
 
-    private void requestHomeDate() {
-        RequestCenter.requestHome(new DisposeDataListener() {
-            @Override
-            public void onSuccess(Object responseObj) {
-                homeData = (Home) responseObj;
-                updateView();
-            }
-
-            @Override
-            public void onFailure(Object reasonObj) {
-                Log.e(TAG, "onFailure: " + reasonObj);
-            }
-        });
-    }
 
     private void updateView() {
-        navListBeans = homeData.getLocalNavList();
         List<ImageView> imageViews = new ArrayList<>();
         List<TextView> textViews = new ArrayList<>();
-        Collections.addAll(imageViews,navImgAttractions,navImgTickets,navImgFood,navImgAround,navImgDay);
-        Collections.addAll(textViews,navTxtAttractions,navTxtTickets,navTxtFood,navTxtAround,navTxtDay);
+        Collections.addAll(imageViews, navImgAttractions, navImgTickets, navImgFood, navImgAround, navImgDay);
+        Collections.addAll(textViews, navTxtAttractions, navTxtTickets, navTxtFood, navTxtAround, navTxtDay);
         for (int i = 0; i < navListBeans.size(); i++) {
             ImageLoaderManager.getInstance().displayImageForView(imageViews.get(i), navListBeans.get(i).getIcon());
             textViews.get(i).setText(navListBeans.get(i).getTitle());
@@ -110,7 +99,7 @@ public class LocalNavView extends LinearLayout {
             @Override
             public void onClick(View v) {
                 int position = (int) v.getTag();
-                Toast.makeText(getContext(), navListBeans.get(position).getTitle(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), navListBeans.get(position).getTitle(), Toast.LENGTH_SHORT).show();
             }
         };
     }

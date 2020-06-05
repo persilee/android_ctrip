@@ -31,6 +31,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation rootProject.depsLibs.appcompat
+    implementation rootProject.depsLibs.recyclerview
     implementation rootProject.depsLibs.constraintlayout
 
     //沉浸式
