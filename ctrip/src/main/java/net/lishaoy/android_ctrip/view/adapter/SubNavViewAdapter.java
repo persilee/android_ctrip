@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,6 +42,12 @@ public class SubNavViewAdapter extends RecyclerView.Adapter<SubNavViewAdapter.My
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         ImageLoaderManager.getInstance().displayImageForView(holder.homeSubNavImg,subNavListBeanList.get(position).getIcon());
         holder.homeSubNavTxt.setText(subNavListBeanList.get(position).getTitle());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context,subNavListBeanList.get(position).getTitle(),Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

@@ -25,6 +25,7 @@ ext {
             okhttp             : '4.7.2',
             okhttpLogging      : '4.7.2',
             gson               : '2.8.6',
+            banner             : '2.0.10',
 
     ]
 
@@ -43,5 +44,6 @@ ext {
             okhttp             : "com.squareup.okhttp3:okhttp:${depsVersion.okhttp}",
             okhttpLogging      : "com.squareup.okhttp3:logging-interceptor:${depsVersion.okhttpLogging}",
             gson               : "com.google.code.gson:gson:${depsVersion.gson}",
+            banner             : "com.youth.banner:banner:${depsVersion.banner}",
     ]
 }

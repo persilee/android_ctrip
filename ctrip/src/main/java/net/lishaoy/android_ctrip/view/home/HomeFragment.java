@@ -12,9 +12,15 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.youth.banner.Banner;
+import com.youth.banner.indicator.CircleIndicator;
+import com.youth.banner.util.BannerUtils;
+
 import net.lishaoy.android_ctrip.R;
 import net.lishaoy.android_ctrip.api.RequestCenter;
 import net.lishaoy.android_ctrip.model.Home;
+import net.lishaoy.android_ctrip.util.EllipseIndicator;
+import net.lishaoy.android_ctrip.view.adapter.HomeBannerAdapter;
 import net.lishaoy.android_ctrip.view.adapter.SubNavViewAdapter;
 import net.lishaoy.lib_network.listener.DisposeDataListener;
 
@@ -37,6 +43,8 @@ public class HomeFragment extends Fragment {
     LocalNavView homeLocalContainer;
     @BindView(R.id.home_grid_nav_container)
     GridNavView homeGridNavContainer;
+    @BindView(R.id.home_banner)
+    Banner homeBanner;
     private Unbinder unbinder;
     private Home homeData;
 
@@ -67,6 +75,16 @@ public class HomeFragment extends Fragment {
         requestHomeDate();
     }
 
+    private void initBanner() {
+        homeBanner.addBannerLifecycleObserver(this)
+                .setAdapter(new HomeBannerAdapter(homeData.getBannerList()))
+                .setIndicator(new EllipseIndicator(getContext()))
+                .setIndicatorSelectedColorRes(R.color.white)
+                .setIndicatorSpace((int) BannerUtils.dp2px(10))
+                .setBannerRound(BannerUtils.dp2px(6))
+                .start();
+    }
+
     private void getRecyclerView() {
         List<Home.SubNavListBean> subNavList = homeData.getSubNavList();
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 5);
@@ -83,6 +101,7 @@ public class HomeFragment extends Fragment {
                 homeLocalContainer.setNavListBeans(homeData.getLocalNavList());
                 homeGridNavContainer.setGridNavBeans(homeData.getGridNav());
                 getRecyclerView();
+                initBanner();
             }
 
             @Override
