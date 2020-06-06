@@ -9,16 +9,17 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.youth.banner.Banner;
-import com.youth.banner.indicator.CircleIndicator;
 import com.youth.banner.util.BannerUtils;
 
 import net.lishaoy.android_ctrip.R;
 import net.lishaoy.android_ctrip.api.RequestCenter;
 import net.lishaoy.android_ctrip.model.Home;
+import net.lishaoy.android_ctrip.model.TabSelect;
 import net.lishaoy.android_ctrip.util.EllipseIndicator;
 import net.lishaoy.android_ctrip.view.adapter.HomeBannerAdapter;
 import net.lishaoy.android_ctrip.view.adapter.SubNavViewAdapter;
@@ -45,8 +46,11 @@ public class HomeFragment extends Fragment {
     GridNavView homeGridNavContainer;
     @BindView(R.id.home_banner)
     Banner homeBanner;
+    @BindView(R.id.home_tab_page_container)
+    TabPageView homeTabPageContainer;
     private Unbinder unbinder;
     private Home homeData;
+    private FragmentManager fragmentManager;
 
     public HomeFragment() {
     }
@@ -69,6 +73,12 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        fragmentManager = getChildFragmentManager();
     }
 
     private void initViews() {
@@ -100,6 +110,7 @@ public class HomeFragment extends Fragment {
                 homeData = (Home) responseObj;
                 homeLocalContainer.setNavListBeans(homeData.getLocalNavList());
                 homeGridNavContainer.setGridNavBeans(homeData.getGridNav());
+                homeTabPageContainer.setFragmentManager(fragmentManager);
                 getRecyclerView();
                 initBanner();
             }
@@ -107,6 +118,17 @@ public class HomeFragment extends Fragment {
             @Override
             public void onFailure(Object reasonObj) {
                 Log.e(TAG, "onFailure: " + reasonObj);
+            }
+        });
+        RequestCenter.requestHomeTabSelect(new DisposeDataListener() {
+            @Override
+            public void onSuccess(Object responseObj) {
+                TabSelect tabSelect = (TabSelect) responseObj;
+            }
+
+            @Override
+            public void onFailure(Object reasonObj) {
+
             }
         });
     }

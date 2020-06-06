@@ -22,6 +22,8 @@ import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener;
 
 public class HomeActivity extends FragmentActivity {
 
+    private static final String TAG = "HomeActivity";
+
     public final static CHANNEL[] CHANNELS = new CHANNEL[]{
             CHANNEL.HOME, CHANNEL.DESTINATION, CHANNEL.TRAVEL, CHANNEL.MY
     };

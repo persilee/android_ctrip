@@ -7,6 +7,7 @@ import okhttp3.Headers;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 
 public class CommonRequest {
 
@@ -108,8 +109,50 @@ public class CommonRequest {
         return request;
     }
 
+    /**
+     * post json 请求
+     * @param url
+     * @param jsonStr
+     * @return
+     */
+    public static Request createPostJsonRequest(String url,String jsonStr) {
+        return createPostJsonRequest(url,jsonStr,null);
+    }
+
+    /**
+     * post json 请求
+     * @param url
+     * @param jsonStr
+     * @param headers
+     * @return
+     */
+    public static Request createPostJsonRequest(String url,String jsonStr,RequestParams headers) {
+        Headers.Builder headerBuilder = new Headers.Builder();
+        if (headers != null) {
+            for (Map.Entry<String, String> entry : headers.urlParams.entrySet()) {
+                headerBuilder.add(entry.getKey(), entry.getValue());
+            }
+        }
+        RequestBody requestBody = RequestBody.create(jsonStr, MediaType.get("application/json"));
+        Request request = new Request.Builder()
+                .url(url)
+                .headers(headerBuilder.build())
+                .post(requestBody)
+                .build();
+        return request;
+    }
+
+
+
+
     public static final MediaType MEDIA_TYPE = MediaType.parse("application/octet-stream");
 
+    /**
+     * post文件上传请求
+     * @param url
+     * @param params
+     * @return
+     */
     public static Request createMultiPostRequest(String url, RequestParams params) {
         MultipartBody.Builder multipartBuilder = new MultipartBody.Builder();
         multipartBuilder.setType(MultipartBody.FORM);

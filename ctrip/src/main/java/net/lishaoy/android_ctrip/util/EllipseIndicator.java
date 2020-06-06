@@ -39,7 +39,7 @@ public class EllipseIndicator extends BaseIndicator {
         //考虑当 选中和默认 的大小不一样的情况
         maxRadius = Math.max(mSelectedRadius, mNormalRadius);
         //间距*（总数-1）+最大的半径（考虑有时候选中时会变大的情况）+默认半径*（总数-1）
-        int width = (int) (((count - 1) * config.getIndicatorSpace() + 2 * (maxRadius + mNormalRadius * (count - 1))) + mNormalRadius);
+        int width = (int) (((count - 1) * config.getIndicatorSpace() + 3 * (maxRadius + mNormalRadius * (count - 1))) + maxRadius*3);
         int height = (int) config.getNormalWidth();
         setMeasuredDimension(width, height);
     }
@@ -52,12 +52,12 @@ public class EllipseIndicator extends BaseIndicator {
         mPaint.setColor(config.getNormalColor());
         float left = 0;
         for (int i = 0; i < count; i++) {
-            float x = maxRadius + (config.getNormalWidth() + config.getIndicatorSpace()) * i;
+            float x = maxRadius*2 + (config.getNormalWidth() + config.getIndicatorSpace()) * i;
             canvas.drawCircle(x, mNormalRadius, mNormalRadius, mPaint);
         }
         mPaint.setColor(config.getSelectedColor());
-        left = config.getCurrentPosition() == 0 ? 0 : config.getCurrentPosition() * (config.getNormalWidth() + config.getIndicatorSpace()) - (config.getNormalWidth() / 2);
-        RectF rectF = new RectF(left, 0, left + config.getNormalWidth() * 2, config.getNormalWidth());
+        left = config.getCurrentPosition() == 0 ? 0 : config.getCurrentPosition() * (config.getNormalWidth() + config.getIndicatorSpace());
+        RectF rectF = new RectF(left, 0, left + config.getNormalWidth() * 3, config.getNormalWidth());
         canvas.drawRoundRect(rectF, config.getRadius(), config.getRadius(), mPaint);
 
     }

@@ -34,6 +34,8 @@ dependencies {
     implementation rootProject.depsLibs.recyclerview
     implementation rootProject.depsLibs.constraintlayout
 
+    //tab指示器
+    implementation rootProject.depsLibs.magicindicator
     //沉浸式
     implementation rootProject.depsLibs.immersionbar
     //导航栏
