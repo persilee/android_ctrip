@@ -29,11 +29,11 @@ public class TabPageAdepter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
 
         switch (titles[position].getValue()){
-            case CHANNEL.SCENIC_ID:
+            case CHANNEL.SELECT_ID:
                 return SelectFragment.newInstance();
             case CHANNEL.NEAR_ID:
                 return NearFragment.newInstance();
-            case CHANNEL.SELECT_ID:
+            case CHANNEL.SCENIC_ID:
                 return ScenicFragment.newInstance();
             case CHANNEL.FOOD_ID:
                 return FoodFragment.newInstance();

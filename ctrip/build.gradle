@@ -33,6 +33,7 @@ dependencies {
     implementation rootProject.depsLibs.appcompat
     implementation rootProject.depsLibs.recyclerview
     implementation rootProject.depsLibs.constraintlayout
+    implementation rootProject.depsLibs.cardview
 
     //tab指示器
     implementation rootProject.depsLibs.magicindicator

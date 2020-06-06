@@ -44,7 +44,7 @@ public class RequestCenter {
         RequestCenter.getRequest(HttpConstants.HOME_URL,null,listener, Home.class);
     }
     public static void requestHomeTabSelect(DisposeDataListener listener) {
-        String jsonStr = "{\"pageid\":10320662472,\"searchtype\":1,\"districtid\":26,\"needfact\":false,\"sort\":1,\"pidx\":1,\"isintion\":true,\"psize\":20,\"imagesize\":\"C_230_260\",\"reltype\":0,\"assistfilter\":{\"userChooseSite\":\"26\"},\"spara\":\"\",\"filters\":[],\"excepts\":[],\"abtests\":[],\"extendAssociation\":[{\"key\":\"srhtraceid\",\"value\":\"b6841f25-67bf-3789-4c50-159138ff5300\"}],\"contentType\":\"json\",\"head\":{\"cid\":\"09031043410934928682\",\"ctok\":\"\",\"cver\":\"1.0\",\"lang\":\"01\",\"sid\":\"8888\",\"syscode\":\"09\",\"auth\":\"\",\"extension\":[{\"name\":\"protocal\",\"value\":\"https\"}]},\"ver\":\"7.14.2\"}";
+        String jsonStr = "{\"pageid\":10320662472,\"searchtype\":1,\"districtid\":26,\"needfact\":false,\"sort\":1,\"pidx\":2,\"isintion\":true,\"psize\":20,\"imagesize\":\"C_230_260\",\"reltype\":0,\"assistfilter\":{\"userChooseSite\":\"26\"},\"spara\":\"\",\"filters\":[],\"excepts\":[],\"abtests\":[],\"extendAssociation\":[{\"key\":\"srhtraceid\",\"value\":\"b6841f25-67bf-3789-4c50-159138ff5300\"}],\"contentType\":\"json\",\"head\":{\"cid\":\"09031043410934928682\",\"ctok\":\"\",\"cver\":\"1.0\",\"lang\":\"01\",\"sid\":\"8888\",\"syscode\":\"09\",\"auth\":\"\",\"extension\":[{\"name\":\"protocal\",\"value\":\"https\"}]},\"ver\":\"7.14.2\"}";
         RequestCenter.postRequest(HttpConstants.HOME_TAB_SELECT,jsonStr,listener, TabSelect.class);
     }
 

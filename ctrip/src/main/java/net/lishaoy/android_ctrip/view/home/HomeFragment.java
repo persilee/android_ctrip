@@ -120,17 +120,7 @@ public class HomeFragment extends Fragment {
                 Log.e(TAG, "onFailure: " + reasonObj);
             }
         });
-        RequestCenter.requestHomeTabSelect(new DisposeDataListener() {
-            @Override
-            public void onSuccess(Object responseObj) {
-                TabSelect tabSelect = (TabSelect) responseObj;
-            }
 
-            @Override
-            public void onFailure(Object reasonObj) {
-
-            }
-        });
     }
 
     @Override
