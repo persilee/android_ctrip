@@ -9,22 +9,28 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import net.lishaoy.android_ctrip.R;
+import net.lishaoy.android_ctrip.util.ScrollViewPager;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class NearFragment extends Fragment {
 
-    public NearFragment() {
+    private ScrollViewPager viewPager;
+
+    public NearFragment(ScrollViewPager viewPager) {
+        this.viewPager = viewPager;
     }
 
-    public static NearFragment newInstance() {
-        return new NearFragment();
+    public static NearFragment newInstance(ScrollViewPager viewPager) {
+        return new NearFragment(viewPager);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_near, container, false);
+        View view = inflater.inflate(R.layout.fragment_near, container, false);
+        viewPager.setObjectForPosition(view,0);
+        return view;
     }
 }

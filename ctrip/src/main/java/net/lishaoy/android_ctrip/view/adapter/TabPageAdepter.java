@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import net.lishaoy.android_ctrip.model.CHANNEL;
+import net.lishaoy.android_ctrip.util.ScrollViewPager;
 import net.lishaoy.android_ctrip.view.home.tabPages.FoodFragment;
 import net.lishaoy.android_ctrip.view.home.tabPages.NearFragment;
 import net.lishaoy.android_ctrip.view.home.tabPages.ScenicFragment;
@@ -18,10 +19,12 @@ import java.util.List;
 public class TabPageAdepter extends FragmentPagerAdapter {
 
     private CHANNEL[] titles;
+    private ScrollViewPager scrollViewPager;
 
-    public TabPageAdepter(@NonNull FragmentManager fm,CHANNEL[] titles) {
+    public TabPageAdepter(@NonNull FragmentManager fm,CHANNEL[] titles,ScrollViewPager homePageView) {
         super(fm);
         this.titles = titles;
+        this.scrollViewPager = homePageView;
     }
 
     @NonNull
@@ -30,13 +33,13 @@ public class TabPageAdepter extends FragmentPagerAdapter {
 
         switch (titles[position].getValue()){
             case CHANNEL.SELECT_ID:
-                return SelectFragment.newInstance();
+                return SelectFragment.newInstance(scrollViewPager);
             case CHANNEL.NEAR_ID:
-                return NearFragment.newInstance();
+                return NearFragment.newInstance(scrollViewPager);
             case CHANNEL.SCENIC_ID:
-                return ScenicFragment.newInstance();
+                return ScenicFragment.newInstance(scrollViewPager);
             case CHANNEL.FOOD_ID:
-                return FoodFragment.newInstance();
+                return FoodFragment.newInstance(scrollViewPager);
         }
         return null;
     }

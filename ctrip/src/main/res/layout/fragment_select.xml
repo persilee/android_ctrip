@@ -11,6 +11,6 @@
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
         android:paddingHorizontal="6dp"
-        android:clipToPadding="false"/>
+        android:clipToPadding="false" />
 
 </FrameLayout>

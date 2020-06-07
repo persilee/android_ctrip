@@ -17,6 +17,7 @@ import androidx.viewpager.widget.ViewPager;
 import net.lishaoy.android_ctrip.R;
 import net.lishaoy.android_ctrip.model.CHANNEL;
 import net.lishaoy.android_ctrip.util.ScaleTransitionPagerTitleView;
+import net.lishaoy.android_ctrip.util.ScrollViewPager;
 import net.lishaoy.android_ctrip.view.adapter.TabPageAdepter;
 import net.lucode.hackware.magicindicator.MagicIndicator;
 import net.lucode.hackware.magicindicator.ViewPagerHelper;
@@ -38,7 +39,7 @@ public class TabPageView extends LinearLayout {
     @BindView(R.id.home_tab_view)
     MagicIndicator homeTabView;
     @BindView(R.id.home_page_view)
-    ViewPager homePageView;
+    ScrollViewPager homePageView;
     private Context mContext;
     private FragmentManager fragmentManager;
 
@@ -139,7 +140,7 @@ public class TabPageView extends LinearLayout {
         });
 
         homeTabView.setNavigator(commonNavigator);
-        homePageView.setAdapter(new TabPageAdepter(fragmentManager, titles));
+        homePageView.setAdapter(new TabPageAdepter(fragmentManager, titles, homePageView));
         ViewPagerHelper.bind(homeTabView, homePageView);
     }
 }
