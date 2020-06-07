@@ -1,7 +1,5 @@
 package net.lishaoy.android_ctrip.view.adapter;
 
-import android.view.View;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -13,8 +11,6 @@ import net.lishaoy.android_ctrip.view.home.tabPages.FoodFragment;
 import net.lishaoy.android_ctrip.view.home.tabPages.NearFragment;
 import net.lishaoy.android_ctrip.view.home.tabPages.ScenicFragment;
 import net.lishaoy.android_ctrip.view.home.tabPages.SelectFragment;
-
-import java.util.List;
 
 public class TabPageAdepter extends FragmentPagerAdapter {
 

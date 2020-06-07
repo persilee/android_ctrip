@@ -35,6 +35,7 @@ public class SelectFragment extends Fragment {
     private Unbinder unbinder;
     private List<TabSelect.DataBean.ViewspotsBean> viewspots;
     private ScrollViewPager viewPager;
+    private View view;
 
     public SelectFragment(ScrollViewPager scrollViewPager) {
         this.viewPager = scrollViewPager;
@@ -47,7 +48,7 @@ public class SelectFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_select, container, false);
+        view = inflater.inflate(R.layout.fragment_select, container, false);
         unbinder = ButterKnife.bind(this, view);
         viewPager.setObjectForPosition(view,0);
         initViews();
@@ -60,15 +61,12 @@ public class SelectFragment extends Fragment {
 
     private void getTabSeletItem() {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext()){
+        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL){
             @Override
             public boolean canScrollVertically() {
                 return false;
             }
         };
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        tabSelectRecyclerContainer.setLayoutManager(linearLayoutManager);
-        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
         tabSelectRecyclerContainer.setLayoutManager(staggeredGridLayoutManager);
         TabSelectAdapter tabSelectAdapter = new TabSelectAdapter(getContext(),viewspots);
         tabSelectRecyclerContainer.setAdapter(tabSelectAdapter);

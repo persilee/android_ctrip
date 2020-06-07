@@ -141,6 +141,22 @@ public class TabPageView extends LinearLayout {
 
         homeTabView.setNavigator(commonNavigator);
         homePageView.setAdapter(new TabPageAdepter(fragmentManager, titles, homePageView));
+        homePageView.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                homePageView.resetHeight(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         ViewPagerHelper.bind(homeTabView, homePageView);
     }
 }

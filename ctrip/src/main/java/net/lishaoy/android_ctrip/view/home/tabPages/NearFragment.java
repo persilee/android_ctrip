@@ -30,7 +30,7 @@ public class NearFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_near, container, false);
-        viewPager.setObjectForPosition(view,0);
+        viewPager.setObjectForPosition(view,1);
         return view;
     }
 }
