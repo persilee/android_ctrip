@@ -5,10 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".view.home.tabPages.FoodFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/tab_food_recycler_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="美食" />
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingHorizontal="6dp"
+        android:clipToPadding="false" />
 
 </FrameLayout>
