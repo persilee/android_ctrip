@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,22 +20,25 @@ import com.youth.banner.util.BannerUtils;
 import net.lishaoy.android_ctrip.R;
 import net.lishaoy.android_ctrip.api.RequestCenter;
 import net.lishaoy.android_ctrip.model.Home;
-import net.lishaoy.android_ctrip.model.TabSelect;
+import net.lishaoy.android_ctrip.util.CustomScrollView;
 import net.lishaoy.android_ctrip.util.EllipseIndicator;
+import net.lishaoy.android_ctrip.util.ScrollViewPager;
 import net.lishaoy.android_ctrip.view.adapter.HomeBannerAdapter;
 import net.lishaoy.android_ctrip.view.adapter.SubNavViewAdapter;
 import net.lishaoy.lib_network.listener.DisposeDataListener;
+import net.lucode.hackware.magicindicator.MagicIndicator;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnFocusChange;
 import butterknife.Unbinder;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTabScrollViewScrollChanged{
 
     private static final String TAG = "HomeFragment";
 
@@ -48,9 +52,15 @@ public class HomeFragment extends Fragment {
     Banner homeBanner;
     @BindView(R.id.home_tab_page_container)
     TabPageView homeTabPageContainer;
+    @BindView(R.id.home_custom_scroll_view)
+    CustomScrollView homeCustomScrollView;
+    @BindView(R.id.home_tab_top_view)
+    MagicIndicator homeTabTopView;
     private Unbinder unbinder;
     private Home homeData;
     private FragmentManager fragmentManager;
+    private int tabViewTop;
+    private View view;
 
     public HomeFragment() {
     }
@@ -64,7 +74,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        view = inflater.inflate(R.layout.fragment_home, container, false);
         unbinder = ButterKnife.bind(this, view);
         initViews();
         return view;
@@ -83,6 +93,12 @@ public class HomeFragment extends Fragment {
 
     private void initViews() {
         requestHomeDate();
+        view.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+            @Override
+            public void onScrollChanged() {
+                tabViewTop = homeTabPageContainer.getTop();
+            }
+        });
     }
 
     private void initBanner() {
@@ -110,9 +126,10 @@ public class HomeFragment extends Fragment {
                 homeData = (Home) responseObj;
                 homeLocalContainer.setNavListBeans(homeData.getLocalNavList());
                 homeGridNavContainer.setGridNavBeans(homeData.getGridNav());
-                homeTabPageContainer.setFragmentManager(fragmentManager);
                 getRecyclerView();
                 initBanner();
+                homeTabPageContainer.setFragmentManager(fragmentManager);
+                homeCustomScrollView.setOnObservableScrollViewScrollChanged(HomeFragment.this);
             }
 
             @Override
@@ -127,5 +144,14 @@ public class HomeFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
+    }
+
+    @Override
+    public void onObservableScrollViewScrollChanged(int l, int t, int oldl, int oldt) {
+        if(t >= tabViewTop){
+            homeTabTopView.setVisibility(View.VISIBLE);
+        }else{
+            homeTabTopView.setVisibility(View.INVISIBLE);
+        }
     }
 }

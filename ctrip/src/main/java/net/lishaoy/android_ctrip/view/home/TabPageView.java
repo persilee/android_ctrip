@@ -16,21 +16,19 @@ import androidx.viewpager.widget.ViewPager;
 
 import net.lishaoy.android_ctrip.R;
 import net.lishaoy.android_ctrip.model.CHANNEL;
-import net.lishaoy.android_ctrip.util.ScaleTransitionPagerTitleView;
 import net.lishaoy.android_ctrip.util.ScrollViewPager;
 import net.lishaoy.android_ctrip.view.adapter.TabPageAdepter;
 import net.lucode.hackware.magicindicator.MagicIndicator;
 import net.lucode.hackware.magicindicator.ViewPagerHelper;
+import net.lucode.hackware.magicindicator.buildins.UIUtil;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.LinePagerIndicator;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ColorTransitionPagerTitleView;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.CommonPagerTitleView;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.SimplePagerTitleView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,6 +53,7 @@ public class TabPageView extends LinearLayout {
             CHANNEL.SCENIC_SUB,
             CHANNEL.FOOD_SUB
     };
+    private MagicIndicator homeTabTopView;
 
     public void setFragmentManager(FragmentManager fragmentManager) {
         this.fragmentManager = fragmentManager;
@@ -72,18 +71,86 @@ public class TabPageView extends LinearLayout {
     public TabPageView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mContext = context;
-
     }
 
     private void initViews() {
+        homeTabTopView = getRootView().findViewById(R.id.home_tab_top_view);
         final View inflate = LayoutInflater.from(mContext).inflate(R.layout.view_tab_page, this);
         ButterKnife.bind(this, inflate);
+        initPageView();
+        initCustomPagerTitleView();
+        initTopPagerTitleView();
+    }
+
+
+    private void initTopPagerTitleView() {
+        CommonNavigator commonNavigator = new CommonNavigator(getContext());
+        commonNavigator.setAdjustMode(true);
+        commonNavigator.setScrollPivotX(0.25f);
+        commonNavigator.setAdapter(new CommonNavigatorAdapter() {
+            @Override
+            public int getCount() {
+                return titles == null ? 0 : titles.length;
+            }
+
+            @Override
+            public IPagerTitleView getTitleView(Context context, final int index) {
+                SimplePagerTitleView simplePagerTitleView = new ColorTransitionPagerTitleView(context);
+                simplePagerTitleView.setText(titles[index].getKey());
+                simplePagerTitleView.setNormalColor(Color.parseColor("#333333"));
+                simplePagerTitleView.setSelectedColor(Color.parseColor("#0196ff"));
+                simplePagerTitleView.setTextSize(14);
+                simplePagerTitleView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                simplePagerTitleView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        homePageView.setCurrentItem(index);
+                    }
+                });
+                return simplePagerTitleView;
+            }
+
+            @Override
+            public IPagerIndicator getIndicator(Context context) {
+                LinePagerIndicator indicator = new LinePagerIndicator(context);
+                indicator.setMode(LinePagerIndicator.MODE_WRAP_CONTENT);
+                indicator.setYOffset(UIUtil.dip2px(context, 6));
+                indicator.setColors(Color.parseColor("#0196ff"));
+                indicator.setRoundRadius(6);
+                return indicator;
+            }
+        });
+        homeTabTopView.setNavigator(commonNavigator);
+        ViewPagerHelper.bind(homeTabTopView, homePageView);
+    }
+
+    private void initPageView() {
+        homePageView.setAdapter(new TabPageAdepter(fragmentManager, titles, homePageView));
+        homePageView.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                homePageView.resetHeight(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
+
+    private void initCustomPagerTitleView() {
         CommonNavigator commonNavigator = new CommonNavigator(getContext());
         commonNavigator.setAdjustMode(true);
         commonNavigator.setAdapter(new CommonNavigatorAdapter() {
             @Override
             public int getCount() {
-                return 4;
+                return titles.length;
             }
 
             @Override
@@ -138,25 +205,7 @@ public class TabPageView extends LinearLayout {
                 return null;
             }
         });
-
         homeTabView.setNavigator(commonNavigator);
-        homePageView.setAdapter(new TabPageAdepter(fragmentManager, titles, homePageView));
-        homePageView.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                homePageView.resetHeight(position);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
         ViewPagerHelper.bind(homeTabView, homePageView);
     }
 }

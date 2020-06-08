@@ -17,6 +17,7 @@ import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.bumptech.glide.request.target.NotificationTarget;
@@ -27,6 +28,8 @@ import com.bumptech.glide.request.transition.Transition;
 import net.lishaoy.lib_image_loader.R;
 import net.lishaoy.lib_image_loader.image.CustomRequestListener;
 import net.lishaoy.lib_image_loader.image.Utils;
+import net.lishaoy.lib_image_loader.listener.ImageCallBack;
+import net.lishaoy.lib_image_loader.listener.ImageCallBackListener;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Observable;
@@ -51,6 +54,14 @@ public class ImageLoaderManager {
     public void displayImageForView(ImageView imageView, String url) {
         Glide.with(imageView.getContext())
                 .load(url)
+                .apply(initCommonRequestOption())
+                .into(imageView);
+    }
+
+    public void displayImageForView(ImageView imageView, String url, ImageCallBackListener listener) {
+        Glide.with(imageView.getContext())
+                .load(url)
+                .listener(new ImageCallBack(listener))
                 .apply(initCommonRequestOption())
                 .into(imageView);
     }
