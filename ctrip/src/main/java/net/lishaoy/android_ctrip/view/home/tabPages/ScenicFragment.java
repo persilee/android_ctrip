@@ -15,8 +15,13 @@ import net.lishaoy.android_ctrip.model.TabScenic;
 import net.lishaoy.android_ctrip.util.ScrollViewPager;
 import net.lishaoy.android_ctrip.view.adapter.TabScenicAdapter;
 import net.lishaoy.android_ctrip.view.adapter.TabSelectAdapter;
+import net.lishaoy.android_ctrip.view.home.Events.LoadMoreScenicEvent;
 import net.lishaoy.lib_network.listener.DisposeDataListener;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -32,7 +37,8 @@ public class ScenicFragment extends Fragment {
     RecyclerView tabScenicRecyclerContainer;
     private ScrollViewPager viewPager;
     private Unbinder unbinder;
-    private List<TabScenic.DataBean.ProductsBean> products;
+    private List<TabScenic.DataBean.ProductsBean> products = new ArrayList<>();
+    private int i = 0;
 
     public ScenicFragment(ScrollViewPager viewPager) {
         this.viewPager = viewPager;
@@ -57,11 +63,12 @@ public class ScenicFragment extends Fragment {
     }
 
     private void requestDatas() {
-        RequestCenter.requestHomeTabScenic(new DisposeDataListener() {
+        int pageId = i ++;
+        RequestCenter.requestHomeTabScenic(String.valueOf(pageId),"20", new DisposeDataListener() {
             @Override
             public void onSuccess(Object responseObj) {
                 TabScenic tabScenic = (TabScenic) responseObj;
-                products = tabScenic.getData().getProducts();
+                products.addAll(tabScenic.getData().getProducts());
                 getTabScenicItem();
             }
 
@@ -70,6 +77,11 @@ public class ScenicFragment extends Fragment {
 
             }
         });
+    }
+
+    @Subscribe
+    public void onLoadMoreScenicData(LoadMoreScenicEvent event){
+        requestDatas();
     }
 
     private void getTabScenicItem() {
@@ -82,6 +94,18 @@ public class ScenicFragment extends Fragment {
         tabScenicRecyclerContainer.setLayoutManager(staggeredGridLayoutManager);
         TabScenicAdapter tabSelectAdapter = new TabScenicAdapter(getContext(),products);
         tabScenicRecyclerContainer.setAdapter(tabSelectAdapter);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override

@@ -14,8 +14,13 @@ import net.lishaoy.android_ctrip.api.RequestCenter;
 import net.lishaoy.android_ctrip.model.TabFood;
 import net.lishaoy.android_ctrip.util.ScrollViewPager;
 import net.lishaoy.android_ctrip.view.adapter.TabFoodAdapter;
+import net.lishaoy.android_ctrip.view.home.Events.LoadMoreFoodEvent;
 import net.lishaoy.lib_network.listener.DisposeDataListener;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -31,7 +36,8 @@ public class FoodFragment extends Fragment {
     RecyclerView tabFoodRecyclerContainer;
     private ScrollViewPager viewPager;
     private Unbinder unbinder;
-    private List<TabFood.RestaurantsBean> restaurants;
+    private List<TabFood.RestaurantsBean> restaurants = new ArrayList<>();
+    private int i = 0;
 
     public FoodFragment(ScrollViewPager viewPager) {
         this.viewPager = viewPager;
@@ -57,11 +63,12 @@ public class FoodFragment extends Fragment {
     }
 
     private void requestDatas() {
-        RequestCenter.requestHomeTabFood(new DisposeDataListener() {
+        int pageId = i ++;
+        RequestCenter.requestHomeTabFood(String.valueOf(pageId), "20", new DisposeDataListener() {
             @Override
             public void onSuccess(Object responseObj) {
                 TabFood tabFood = (TabFood) responseObj;
-                restaurants = tabFood.getRestaurants();
+                restaurants.addAll(tabFood.getRestaurants());
                 getTabFoodItem();
             }
 
@@ -70,6 +77,11 @@ public class FoodFragment extends Fragment {
 
             }
         });
+    }
+
+    @Subscribe
+    public void onLoadMoreFoodData(LoadMoreFoodEvent event){
+        requestDatas();
     }
 
     private void getTabFoodItem() {
@@ -82,6 +94,18 @@ public class FoodFragment extends Fragment {
         tabFoodRecyclerContainer.setLayoutManager(staggeredGridLayoutManager);
         TabFoodAdapter tabFoodAdapter = new TabFoodAdapter(getContext(),restaurants);
         tabFoodRecyclerContainer.setAdapter(tabFoodAdapter);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override

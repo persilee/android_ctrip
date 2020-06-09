@@ -31,6 +31,9 @@ import net.lishaoy.android_ctrip.view.adapter.HomeBannerAdapter;
 import net.lishaoy.android_ctrip.view.adapter.SubNavViewAdapter;
 import net.lishaoy.android_ctrip.view.adapter.TabPageAdepter;
 import net.lishaoy.android_ctrip.view.home.Events.IsLoadMoreSelectEvent;
+import net.lishaoy.android_ctrip.view.home.Events.LoadMoreFoodEvent;
+import net.lishaoy.android_ctrip.view.home.Events.LoadMoreNearEvent;
+import net.lishaoy.android_ctrip.view.home.Events.LoadMoreScenicEvent;
 import net.lishaoy.android_ctrip.view.home.Events.LoadMoreSelectEvent;
 import net.lishaoy.lib_network.listener.DisposeDataListener;
 import net.lucode.hackware.magicindicator.MagicIndicator;
@@ -175,6 +178,16 @@ public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTab
                             refreshLayout.finishLoadMore(false);
                         };
                         break;
+                    case 1:
+                        EventBus.getDefault().post(new LoadMoreNearEvent());
+                        refreshLayout.finishLoadMore();
+                        break;
+                    case 2:
+                        EventBus.getDefault().post(new LoadMoreScenicEvent());
+                        refreshLayout.finishLoadMore();
+                    case 3:
+                        EventBus.getDefault().post(new LoadMoreFoodEvent());
+                        refreshLayout.finishLoadMore();
                     default:
                         refreshLayout.finishLoadMore(false);
                 }

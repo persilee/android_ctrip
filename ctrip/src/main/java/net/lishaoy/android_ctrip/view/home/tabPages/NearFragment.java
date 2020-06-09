@@ -15,8 +15,13 @@ import net.lishaoy.android_ctrip.api.RequestCenter;
 import net.lishaoy.android_ctrip.model.TabNear;
 import net.lishaoy.android_ctrip.util.ScrollViewPager;
 import net.lishaoy.android_ctrip.view.adapter.TabNearAdapter;
+import net.lishaoy.android_ctrip.view.home.Events.LoadMoreNearEvent;
 import net.lishaoy.lib_network.listener.DisposeDataListener;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -32,7 +37,8 @@ public class NearFragment extends Fragment {
     RecyclerView tabNearRecyclerContainer;
     private ScrollViewPager viewPager;
     private Unbinder unbinder;
-    private List<String> tabNearItems;
+    private List<String> tabNearItems = new ArrayList<>();
+    private int i = 1;
 
     public NearFragment(ScrollViewPager viewPager) {
         this.viewPager = viewPager;
@@ -71,11 +77,12 @@ public class NearFragment extends Fragment {
 
 
     private void requestDatas() {
-        RequestCenter.requestHomeTabNear(new DisposeDataListener() {
+        int pageId = i ++ ;
+        RequestCenter.requestHomeTabNear(String.valueOf(pageId),"20",new DisposeDataListener() {
             @Override
             public void onSuccess(Object responseObj) {
                 TabNear tabNear = (TabNear) responseObj;
-                tabNearItems = tabNear.getData().getItems();
+                tabNearItems.addAll(tabNear.getData().getItems());
                 getTabNearItem();
             }
 
@@ -84,6 +91,23 @@ public class NearFragment extends Fragment {
 
             }
         });
+    }
+
+    @Subscribe
+    public void onLoadMoreNearData(LoadMoreNearEvent event){
+        requestDatas();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override

@@ -16,6 +16,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import net.lishaoy.android_ctrip.R;
 import net.lishaoy.android_ctrip.model.CHANNEL;
+import net.lishaoy.android_ctrip.util.CustomScrollView;
 import net.lishaoy.android_ctrip.util.ScrollViewPager;
 import net.lishaoy.android_ctrip.view.adapter.TabPageAdepter;
 import net.lucode.hackware.magicindicator.MagicIndicator;
@@ -55,6 +56,8 @@ public class TabPageView extends LinearLayout {
             CHANNEL.FOOD_SUB
     };
     private MagicIndicator homeTabTopView;
+    private CustomScrollView homeCustomScrollView;
+    private TabPageView homeTabPageContainer;
 
     public void setFragmentManager(FragmentManager fragmentManager) {
         this.fragmentManager = fragmentManager;
@@ -76,6 +79,8 @@ public class TabPageView extends LinearLayout {
 
     private void initViews() {
         homeTabTopView = getRootView().findViewById(R.id.home_tab_top_view);
+        homeCustomScrollView = getRootView().findViewById(R.id.home_custom_scroll_view);
+        homeTabPageContainer = getRootView().findViewById(R.id.home_tab_page_container);
         final View inflate = LayoutInflater.from(mContext).inflate(R.layout.view_tab_page, this);
         ButterKnife.bind(this, inflate);
         initPageView();
@@ -135,8 +140,9 @@ public class TabPageView extends LinearLayout {
 
             @Override
             public void onPageSelected(int position) {
-                selectTabIndex = position;
                 homePageView.resetHeight(position);
+                selectTabIndex = position;
+//                homeCustomScrollView.smoothScrollToShow(0,homeTabPageContainer.getTop() + 2,100);
             }
 
             @Override
