@@ -22,9 +22,9 @@ public class TabPageAdepter extends FragmentPagerAdapter {
 
     private CHANNEL[] titles;
     private ScrollViewPager scrollViewPager;
-    private FragmentManager mFragmentManager;
+    private static FragmentManager mFragmentManager;
     //保存每个Fragment的Tag，刷新页面的依据
-    protected SparseArray<String> tags = new SparseArray<>();
+    protected static SparseArray<String> tags = new SparseArray<>();
 
     public TabPageAdepter(@NonNull FragmentManager fm,CHANNEL[] titles,ScrollViewPager homePageView) {
         super(fm);
@@ -77,7 +77,7 @@ public class TabPageAdepter extends FragmentPagerAdapter {
     }
 
     //拿到指定位置的Fragment
-    public Fragment getFragmentByPosition(int position) {
+    public static Fragment getFragmentByPosition(int position) {
         return mFragmentManager.findFragmentByTag(tags.get(position));
     }
 

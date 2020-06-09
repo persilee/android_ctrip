@@ -4,11 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
@@ -17,8 +15,15 @@ import net.lishaoy.android_ctrip.api.RequestCenter;
 import net.lishaoy.android_ctrip.model.TabSelect;
 import net.lishaoy.android_ctrip.util.ScrollViewPager;
 import net.lishaoy.android_ctrip.view.adapter.TabSelectAdapter;
+import net.lishaoy.android_ctrip.view.home.Events.IsLoadMoreSelectEvent;
+import net.lishaoy.android_ctrip.view.home.Events.LoadMoreSelectEvent;
 import net.lishaoy.lib_network.listener.DisposeDataListener;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -33,9 +38,10 @@ public class SelectFragment extends Fragment {
     @BindView(R.id.tab_select_recycler_container)
     RecyclerView tabSelectRecyclerContainer;
     private Unbinder unbinder;
-    private List<TabSelect.DataBean.ViewspotsBean> viewspots;
+    private List<TabSelect.DataBean.ViewspotsBean> viewspots = new ArrayList<>();
     private ScrollViewPager viewPager;
     private View view;
+    private int i = 0;
 
     public SelectFragment(ScrollViewPager scrollViewPager) {
         this.viewPager = scrollViewPager;
@@ -50,7 +56,7 @@ public class SelectFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_select, container, false);
         unbinder = ButterKnife.bind(this, view);
-        viewPager.setObjectForPosition(view,0);
+        viewPager.setObjectForPosition(view, 0);
         initViews();
         return view;
     }
@@ -60,32 +66,51 @@ public class SelectFragment extends Fragment {
     }
 
     private void getTabSeletItem() {
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
-        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL){
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
+        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL) {
             @Override
             public boolean canScrollVertically() {
                 return false;
             }
         };
         tabSelectRecyclerContainer.setLayoutManager(staggeredGridLayoutManager);
-        TabSelectAdapter tabSelectAdapter = new TabSelectAdapter(getContext(),viewspots);
+        TabSelectAdapter tabSelectAdapter = new TabSelectAdapter(getContext(), viewspots);
         tabSelectRecyclerContainer.setAdapter(tabSelectAdapter);
     }
 
     private void requestDatas() {
-        RequestCenter.requestHomeTabSelect(new DisposeDataListener() {
+        int pageId = i ++;
+        RequestCenter.requestHomeTabSelect(String.valueOf(pageId), "20", new DisposeDataListener() {
             @Override
             public void onSuccess(Object responseObj) {
                 TabSelect tabSelect = (TabSelect) responseObj;
-                viewspots = tabSelect.getData().getViewspots();
+                viewspots.addAll(tabSelect.getData().getViewspots());
                 getTabSeletItem();
+                EventBus.getDefault().post(new IsLoadMoreSelectEvent(true));
             }
 
             @Override
             public void onFailure(Object reasonObj) {
-
+                EventBus.getDefault().post(new IsLoadMoreSelectEvent(false));
             }
         });
+    }
+
+    @Subscribe
+    public void onLoadMoreSelectData(LoadMoreSelectEvent event) {
+        requestDatas();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 
 

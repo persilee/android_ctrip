@@ -40,6 +40,7 @@ public class TabPageView extends LinearLayout {
     ScrollViewPager homePageView;
     private Context mContext;
     private FragmentManager fragmentManager;
+    public static int selectTabIndex;
 
     public final static CHANNEL[] titles = new CHANNEL[]{
             CHANNEL.SELECT,
@@ -134,6 +135,7 @@ public class TabPageView extends LinearLayout {
 
             @Override
             public void onPageSelected(int position) {
+                selectTabIndex = position;
                 homePageView.resetHeight(position);
             }
 

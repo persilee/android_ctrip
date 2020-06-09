@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".view.home.HomeFragment">
 
@@ -42,49 +43,59 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <net.lishaoy.android_ctrip.util.CustomScrollView
-            android:id="@+id/home_custom_scroll_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:descendantFocusability="blocksDescendants"
-            android:scrollbars="none">
 
-            <LinearLayout
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/home_refresh_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <net.lishaoy.android_ctrip.util.CustomScrollView
+                android:id="@+id/home_custom_scroll_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:descendantFocusability="blocksDescendants"
+                android:scrollbars="none">
 
-                <net.lishaoy.android_ctrip.view.home.LocalNavView
-                    android:id="@+id/home_local_container"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                <net.lishaoy.android_ctrip.view.home.GridNavView
-                    android:id="@+id/home_grid_nav_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    <net.lishaoy.android_ctrip.view.home.LocalNavView
+                        android:id="@+id/home_local_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/home_sub_nav_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginTop="10dp" />
+                    <net.lishaoy.android_ctrip.view.home.GridNavView
+                        android:id="@+id/home_grid_nav_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-                <com.youth.banner.Banner
-                    android:id="@+id/home_banner"
-                    android:layout_width="match_parent"
-                    android:layout_height="136dp"
-                    android:layout_marginHorizontal="10dp" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/home_sub_nav_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginTop="10dp" />
 
-                <net.lishaoy.android_ctrip.view.home.TabPageView
-                    android:id="@+id/home_tab_page_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    <com.youth.banner.Banner
+                        android:id="@+id/home_banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="136dp"
+                        android:layout_marginHorizontal="10dp" />
 
-            </LinearLayout>
+                    <net.lishaoy.android_ctrip.view.home.TabPageView
+                        android:id="@+id/home_tab_page_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
 
-        </net.lishaoy.android_ctrip.util.CustomScrollView>
+                </LinearLayout>
+
+            </net.lishaoy.android_ctrip.util.CustomScrollView>
+            <com.scwang.smart.refresh.footer.ClassicsFooter
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
         <net.lucode.hackware.magicindicator.MagicIndicator
             android:id="@+id/home_tab_top_view"
@@ -92,7 +103,7 @@
             android:layout_height="46dp"
             android:background="@color/white"
             android:paddingHorizontal="10dp"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
     </RelativeLayout>
 
