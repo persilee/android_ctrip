@@ -12,6 +12,7 @@ ext {
 
     depsVersion = [
             appcompat          : '1.1.0',
+            legacy             : '1.0.0',
             recyclerview       : '1.0.0',
             constraintlayout   : '1.1.3',
             cardview           : '1.0.0',
@@ -29,12 +30,16 @@ ext {
             gson               : '2.8.6',
             banner             : '2.0.10',
             smartRefreshLayout : '2.0.1',
+            refreshHeader      : '2.0.1',
+            refreshFooter      : '2.0.1',
             eventbus           : '3.2.0',
+            agentweb           : '4.1.3',
 
     ]
 
     depsLibs = [
             appcompat          : "androidx.appcompat:appcompat:${depsVersion.appcompat}",
+            legacy             : "androidx.legacy:legacy-support-v4:${depsVersion.legacy}",
             recyclerview       : "androidx.recyclerview:recyclerview:${depsVersion.recyclerview}",
             constraintlayout   : "androidx.constraintlayout:constraintlayout:${depsVersion.constraintlayout}",
             cardview           : "androidx.cardview:cardview:${depsVersion.cardview}",
@@ -52,6 +57,9 @@ ext {
             gson               : "com.google.code.gson:gson:${depsVersion.gson}",
             banner             : "com.youth.banner:banner:${depsVersion.banner}",
             smartRefreshLayout : "com.scwang.smart:refresh-layout-kernel:${depsVersion.smartRefreshLayout}",
+            refreshHeader      : "com.scwang.smart:refresh-header-classics:${depsVersion.refreshHeader}",
+            refreshFooter      : "com.scwang.smart:refresh-footer-classics:${depsVersion.refreshFooter}",
             eventbus           : "org.greenrobot:eventbus:${depsVersion.eventbus}",
+            agentweb           : "com.just.agentweb:agentweb:${depsVersion.agentweb}"
     ]
 }

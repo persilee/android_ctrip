@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/lib_common_ui" />
             <option value="$PROJECT_DIR$/lib_image_loader" />
             <option value="$PROJECT_DIR$/lib_network" />
+            <option value="$PROJECT_DIR$/lib_webview" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

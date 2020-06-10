@@ -1,6 +1,7 @@
 package net.lishaoy.android_ctrip.view.home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import net.lishaoy.android_ctrip.api.RequestCenter;
 import net.lishaoy.android_ctrip.model.Home;
 import net.lishaoy.lib_image_loader.app.ImageLoaderManager;
 import net.lishaoy.lib_network.listener.DisposeDataListener;
+import net.lishaoy.lib_webview.WebActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -99,7 +101,10 @@ public class LocalNavView extends LinearLayout {
             @Override
             public void onClick(View v) {
                 int position = (int) v.getTag();
-                Toast.makeText(getContext(), navListBeans.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(v.getContext(), WebActivity.class);
+                intent.putExtra("url",navListBeans.get(position).getUrl());
+                v.getContext().startActivity(intent);
             }
         };
     }
