@@ -1,13 +1,10 @@
 package net.lishaoy.lib_webview;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,7 +26,6 @@ import com.just.agentweb.DefaultWebClient;
 import com.just.agentweb.WebChromeClient;
 import com.just.agentweb.WebViewClient;
 
-import net.lishaoy.lib_common_ui.utils.Utils;
 import net.lishaoy.lib_webview.widget.WebLayout;
 
 public class WebActivity extends AppCompatActivity {
@@ -46,14 +42,25 @@ public class WebActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
         setTitle("");
-        ImmersionBar.with(this)
-                .statusBarColor("#4CB7F9")
-                .init();
         initViews();
     }
 
     private void initViews() {
         linearLayout = findViewById(R.id.web_container);
+        if(this.getIntent().getStringExtra("actionBar") != null){
+            initActionBar();
+        }else{
+            ImmersionBar.with(this)
+                    .hideBar(BarHide.FLAG_HIDE_STATUS_BAR)
+                    .init();
+        }
+        initWeb();
+    }
+
+    private void initActionBar() {
+        ImmersionBar.with(this)
+                .statusBarColor("#4CB7F9")
+                .init();
         actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -61,7 +68,6 @@ public class WebActivity extends AppCompatActivity {
         FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) linearLayout.getLayoutParams();
         layoutParams.setMargins(0, ImmersionBar.getActionBarHeight(this) + ImmersionBar.getStatusBarHeight(this),0,0);
         linearLayout.setLayoutParams(layoutParams);
-        initWeb();
     }
 
     private void initWeb() {
@@ -95,6 +101,10 @@ public class WebActivity extends AppCompatActivity {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
             Log.i("shouldOver", "@@@ "+request.getUrl().toString());
+            if (request.getUrl().toString().contains("m.ctrip.com/html5")) {
+                WebActivity.this.finish();
+                return false;
+            }
             return super.shouldOverrideUrlLoading(view, request);
         }
 

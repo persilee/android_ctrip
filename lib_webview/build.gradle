@@ -28,5 +28,4 @@ dependencies {
     compileOnly rootProject.depsLibs.smartRefreshLayout
     compileOnly rootProject.depsLibs.refreshHeader
     compileOnly rootProject.depsLibs.immersionbar
-    compileOnly project(':lib_common_ui')
 }
