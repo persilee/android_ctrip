@@ -101,7 +101,6 @@ public class LocalNavView extends LinearLayout {
             @Override
             public void onClick(View v) {
                 int position = (int) v.getTag();
-
                 Intent intent = new Intent(v.getContext(), WebActivity.class);
                 intent.putExtra("url",navListBeans.get(position).getUrl());
                 v.getContext().startActivity(intent);

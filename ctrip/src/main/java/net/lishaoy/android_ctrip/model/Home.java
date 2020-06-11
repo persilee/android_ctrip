@@ -6,13 +6,12 @@ import java.util.List;
 
 public class Home {
 
-
     /**
      * config : {"searchUrl":"https://m.ctrip.com/restapi/h5api/globalsearch/search?source=mobileweb&action=mobileweb&keyword="}
-     * bannerList : [{"icon":"https://dimg04.c-ctrip.com/images/zg0q1g000001h4ss5A538.jpg","url":"https://contents.ctrip.com/activitysetupapp/mkt/index/disneyreopen?ctm_ref=vdc_ctm_5204"},{"icon":"https://dimg04.c-ctrip.com/images/zg041g000001gye9jD255.jpg","url":"https://contents.ctrip.com/activitysetupapp/mkt/index/kaiyuanjingqu"},{"icon":"https://dimg04.c-ctrip.com/images/zg0r1f000001ghzreF2EA.jpg","url":"https://m.ctrip.com/webapp/ccmarket/zhoubianyou?bid=28&cid=2&pid=61"},{"icon":"https://dimg04.c-ctrip.com/images/zg061e000001fhjax0F93.jpg","url":"https://contents.ctrip.com/huodong/prtemplate/index/PrTemplatePb3opG?popup=close"},{"icon":"https://dimg04.c-ctrip.com/images/zg0r1d000001e7f6mB662.jpg","url":"https://contents.ctrip.com/huodong/prtemplate/index/PrTemplateTGHOOD?popup=close&from_native_page=1&s_guid=A182B7CD-8C95-490A-BBD2-DEA0B2D4345F&from=groupmessage&isappinstalled=0"},{"icon":"https://dimg04.c-ctrip.com/images/zg0w1g000001h9clf6E07.jpg","url":"https://contents.ctrip.com/activitysetupapp/mkt/index/changzhoumenp?ctm_ref=vdc_ctm_2678"}]
+     * bannerList : [{"icon":"https://dimg04.c-ctrip.com/images/zg041h000001hoqla603F.jpg","sIcon":"https://cdn.lishaoy.net/ctrip/banner1.jpg","url":"https://m.ctrip.com/webapp/you/gspoi/sight/0/5356386.html?seo=0"},{"icon":"https://dimg04.c-ctrip.com/images/zg0l1g000001hg8q2E0D1.jpg","sIcon":"https://cdn.lishaoy.net/ctrip/banner2.jpg","url":"https://m.ctrip.com/tangram/NjQ2MQ==?ctm_ref=vactang_page_6461&isHideNavBar=YES"},{"icon":"https://dimg04.c-ctrip.com/images/zg0i1g000001h9oh9009F.jpg","sIcon":"https://cdn.lishaoy.net/ctrip/banner3.jpg","url":"https://contents.ctrip.com/activitysetupapp/mkt/index/clwyky?ctm_ref=vdc_ctm_3642"},{"icon":"https://dimg04.c-ctrip.com/images/zg0a1h000001hr5gy3D2D.jpg","sIcon":"https://cdn.lishaoy.net/ctrip/banner4.jpg","url":"https://m.ctrip.com/tangram/NjM0Ng==?ctm_ref=vactang_page_6346&isHideNavBar=YES"},{"icon":"https://dimg04.c-ctrip.com/images/zg0p1h000001hlzdt606F.jpg","sIcon":"https://cdn.lishaoy.net/ctrip/banner5.jpg","url":"https://m.ctrip.com/webapp/you/gspoi/sight/0/50102.html?seo=0"},{"icon":"https://dimg04.c-ctrip.com/images/zg0c1h000001hrqn4997E.jpg","sIcon":"https://cdn.lishaoy.net/ctrip/banner6.jpg","url":"https://m.ctrip.com/tangram/NjU3Ng==?ctm_ref=vactang_page_6576&isHideNavBar=YES"}]
      * localNavList : [{"icon":"https://cdn.lishaoy.net/ctrip/lbsguide.png","title":"攻略·景点","url":"https://m.ctrip.com/webapp/you/place/2.html?ishideheader=true&secondwakeup=true&dpclickjump=true&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","statusBarColor":"ffffff","hideAppBar":true},{"icon":"https://cdn.lishaoy.net/ctrip/piao.png","title":"门票·玩乐","url":"https://dp.ctrip.com/webapp/ticket/tickethttps://m.ctrip.com/webapp/ticket/ticket?secondwakeup=true&dpclickjump=true&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","statusBarColor":"ffffff","hideAppBar":true},{"icon":"https://cdn.lishaoy.net/ctrip/food.png","title":"美食林","url":"https://m.ctrip.com/webapp/you/foods/address.html?new=1&ishideheader=true&secondwakeup=true&dpclickjump=true&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","statusBarColor":"ffffff","hideAppBar":true},{"icon":"https://cdn.lishaoy.net/ctrip/around.png","title":"周边游","url":"https://m.ctrip.com/webapp/vacations/tour/around?secondwakeup=true&dpclickjump=true&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","statusBarColor":"ffffff","hideAppBar":true},{"icon":"https://cdn.lishaoy.net/ctrip/onedaytravel.png","title":"一日游","url":"https://m.ctrip.com/webapp/activity/daytour?secondwakeup=true&dpclickjump=true&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","statusBarColor":"ffffff","hideAppBar":true}]
-     * gridNav : {"hotel":{"startColor":"fa5956","endColor":"fa9b4d","mainItem":{"title":"酒店","icon":"https://pic.c-ctrip.com/platform/h5/home/grid-nav-items-hotel.png","url":"https://m.ctrip.com/webapp/hotel/","statusBarColor":"4289ff"},"item1":{"title":"海外酒店","url":"https://m.ctrip.com/webapp/hotel/oversea/?otype=1","statusBarColor":"4289ff"},"item2":{"title":"特价酒店","url":"https://m.ctrip.com/webapp/hotel/hotsale"},"item3":{"title":"团购","url":"https://m.ctrip.com/webapp/tuan/?secondwakeup=true&dpclickjump=true","hideAppBar":true},"item4":{"title":"民宿 客栈","url":"https://m.ctrip.com/webapp/inn/index","hideAppBar":true}},"flight":{"startColor":"4b8fed","endColor":"53bced","mainItem":{"title":"机票","icon":"https://pic.c-ctrip.com/platform/h5/home/grid-nav-items-flight.png","url":"https://m.ctrip.com/html5/flight/swift/index"},"item1":{"title":"火车票","url":"https://m.ctrip.com/webapp/train/?secondwakeup=true&dpclickjump=true&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F#/index?VNK=4e431539","hideAppBar":true},"item2":{"title":"特价机票","url":"https://m.ctrip.com/html5/flight/swift/index"},"item3":{"title":"汽车票·船票","url":"https://m.ctrip.com/html5/Trains/bus/","hideAppBar":true},"item4":{"title":"专车·租车","url":"https://m.ctrip.com/webapp/car/index?s=ctrip&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true}},"travel":{"startColor":"34c2aa","endColor":"6cd557","mainItem":{"title":"旅游","icon":"https://pic.c-ctrip.com/platform/h5/home/grid-nav-items-travel.png","url":"https://m.ctrip.com/webapp/vacations/tour/vacations","hideAppBar":true,"statusBarColor":"19A0F0"},"item1":{"title":"门票","url":"https://m.ctrip.com/webapp/ticket/ticket","statusBarColor":"19A0F0","hideAppBar":true},"item2":{"title":"目的地攻略","url":"https://m.ctrip.com/html5/you/","statusBarColor":"19A0F0","hideAppBar":true},"item3":{"title":"邮轮旅行","url":"https://m.ctrip.com/webapp/cruise/index","hideAppBar":true},"item4":{"title":"定制旅行","url":"https://m.ctrip.com/webapp/dingzhi","hideAppBar":true}}}
-     * subNavList : [{"icon":"https://cdn.lishaoy.net/ctrip/freetravel.png","title":"自由行","url":"https://m.ctrip.com/webapp/vacations/idiytour/diyindex?navBarStyle=white&secondwakeup=true&dpclickjump=true&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true},{"icon":"https://cdn.lishaoy.net/ctrip/wifi.png","title":"WiFi电话卡","url":"https://m.ctrip.com/webapp/activity/wifi?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true},{"icon":"https://cdn.lishaoy.net/ctrip/visa.png","title":"保险·签证","url":"https://m.ctrip.com/visa/extend/entry?secondwakeup=true&dpclickjump=true&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true},{"icon":"https://cdn.lishaoy.net/ctrip/globalshop.png","title":"换钞·购物","url":"https://m.ctrip.com/webapp/fshome/crnweb/home.html?bid=2&cid=3&pid=3&ctm_ref=M_ps_1home_gg_mh&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true},{"icon":"https://cdn.lishaoy.net/ctrip/hpgsguild.png","title":"当地向导","url":"https://m.ctrip.com/webapp/vacations/pguider/homepage?secondwakeup=true&dpclickjump=true&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true},{"icon":"https://cdn.lishaoy.net/ctrip/flight.png","title":"特价机票","url":"https://m.ctrip.com/webapp/flightactivity/muse/index.html?secondwakeup=true&dpclickjump=true&from=https://m.ctrip.com/html5/&dCityCode=SHA&dCityName=%E4%B8%8A%E6%B5%B7&dCityType=1","hideAppBar":true},{"icon":"https://cdn.lishaoy.net/ctrip/card.png","title":"礼品卡","url":"https://m.ctrip.com/webapp/lipin/money?secondwakeup=true&dpclickjump=true&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true},{"icon":"https://cdn.lishaoy.net/ctrip/creditCard.png","title":"申卡·借钱","url":"https://jr.ctrip.com/m/finweb/page/financeCenter?lbtoken=_bav3D9S76biJnHr9UWccJmWTMJ6hmj18h83PeskjFXM34GK8j9k8T7nbFZyvtJZGgxWUmGLA8zYEPihDAj3wQtPFJFrgZL7kiY6HpnV8Z7XqQx25m4rAbLiEp&from=financeCenter&clientSource=CTRIP","hideAppBar":true},{"icon":"https://cdn.lishaoy.net/ctrip/yiriyou1.png","title":"境外玩乐","url":"https://dp.ctrip.com/webapp/activity/overseasindex","hideAppBar":true},{"icon":"https://cdn.lishaoy.net/ctrip/more.png","title":"更多","url":"https://m.ctrip.com/webapp/more/?secondwakeup=true&dpclickjump=true&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true}]
+     * gridNav : {"hotel":{"startColor":"fa5956","endColor":"fa9b4d","mainItem":{"title":"酒店","icon":"https://pic.c-ctrip.com/platform/h5/home/grid-nav-items-hotel.png","url":"https://m.ctrip.com/webapp/hotel/","statusBarColor":"4289ff"},"item1":{"title":"酒店","url":"https://m.ctrip.com/webapp/hotel/?secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","statusBarColor":"4289ff"},"item2":{"title":"民宿·客栈","url":"https://m.ctrip.com/webapp/inn-v2/home?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F"},"item3":{"title":"特价·爆款","url":"https://m.ctrip.com/webapp/cw/hotel/instoreflagship/productHome.html?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true},"item4":{"title":"民宿 客栈","url":"https://m.ctrip.com/webapp/inn/index","hideAppBar":true}},"flight":{"startColor":"4b8fed","endColor":"53bced","mainItem":{"title":"机票","icon":"https://pic.c-ctrip.com/platform/h5/home/grid-nav-items-flight.png","url":"https://m.ctrip.com/html5/flight/swift/index"},"item1":{"title":"机票","url":"https://m.ctrip.com/html5/flight/swift/index?secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true},"item2":{"title":"火车票","url":"https://m.ctrip.com/webapp/train/?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F#/index?VNK=35f3baea"},"item3":{"title":"汽车·船票","url":"https://m.ctrip.com/webapp/bus/?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true},"item4":{"title":"专车·租车","url":"https://m.ctrip.com/webapp/car/index?s=ctrip&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true}},"travel":{"startColor":"34c2aa","endColor":"6cd557","mainItem":{"title":"旅游","icon":"https://pic.c-ctrip.com/platform/h5/home/grid-nav-items-travel.png","url":"https://m.ctrip.com/webapp/vacations/tour/vacations","hideAppBar":true,"statusBarColor":"19A0F0"},"item1":{"title":"旅游","url":"https://m.ctrip.com/webapp/vacations/tour/vacations?secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","statusBarColor":"19A0F0","hideAppBar":true},"item2":{"title":"高铁游","url":"https://m.ctrip.com/webapp/train/crh/plan/crhList.html?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","statusBarColor":"19A0F0","hideAppBar":true},"item3":{"title":"邮轮游","url":"https://m.ctrip.com/webapp/cruise/index?ctm_ref=C_vac_cruise&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true},"item4":{"title":"定制游","url":"https://m.ctrip.com/webapp/dingzhi/index?ctm_ref=C_vac_custom&secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true}}}
+     * subNavList : [{"icon":"https://cdn.lishaoy.net/ctrip/freetravel.png","title":"自由行","url":"https://m.ctrip.com/tangram/MjczNQ==?ctm_ref=vactang_page_2735&navBarStyle=white&secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true},{"icon":"https://cdn.lishaoy.net/ctrip/wifi.png","title":"WiFi电话卡","url":"https://m.ctrip.com/webapp/activity/wifi?secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true},{"icon":"https://cdn.lishaoy.net/ctrip/visa.png","title":"保险·签证","url":"https://m.ctrip.com/visa/extend/entry?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true},{"icon":"https://cdn.lishaoy.net/ctrip/globalshop.png","title":"换钞·购物","url":"https://m.ctrip.com/webapp/fshome/crnweb/home.html?bid=2&cid=3&pid=3&ctm_ref=M_ps_1home_gg_mh&secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true},{"icon":"https://cdn.lishaoy.net/ctrip/hpgsguild.png","title":"当地向导","url":"https://m.ctrip.com/webapp/vacations/pguider/homepage?secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true},{"icon":"https://cdn.lishaoy.net/ctrip/flight.png","title":"特价机票","url":"https://m.ctrip.com/webapp/flightactivity/muse/index.html?secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https://m.ctrip.com/html5/&dCityCode=SHA&dCityName=%E4%B8%8A%E6%B5%B7&dCityType=1","hideAppBar":true},{"icon":"https://cdn.lishaoy.net/ctrip/card.png","title":"礼品卡","url":"https://m.ctrip.com/webapp/lipin/money?secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true},{"icon":"https://cdn.lishaoy.net/ctrip/creditCard.png","title":"申卡·借钱","url":"https://jr.ctrip.com/m/finweb/page/financeCenter?from=financeCenter&clientSource=CTRIP","hideAppBar":true},{"icon":"https://cdn.lishaoy.net/ctrip/yiriyou1.png","title":"境外玩乐","url":"https://dp.ctrip.com/webapp/activity/overseasindex","hideAppBar":true},{"icon":"https://cdn.lishaoy.net/ctrip/more.png","title":"更多","url":"https://m.ctrip.com/webapp/more/?secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true}]
      * salesBox : {"icon":"https://www.devio.org/io/flutter_app/img/sales_box_huodong.png","moreUrl":"https://contents.ctrip.com/activitysetupapp/mkt/index/moreact?popup=close&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F&secondwakeup=true&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","bigCard1":{"icon":"https://cdn.lishaoy.net/ctrip/yyfl.jpg","url":"https://m.ctrip.com/webapp/membercenter/medical?pushcode=sy_rm1020","hideAppBar":true},"bigCard2":{"icon":"https://cdn.lishaoy.net/ctrip/bydlb.jpg","url":"https://contents.ctrip.com/activitysetupapp/mkt/index/2020qyhbmfl?popup=close&pushcode=nn2025","title":"活动"},"smallCard1":{"icon":"https://cdn.lishaoy.net/ctrip/lxypth.png","url":"https://m.ctrip.com/webapp/mall/index","hideAppBar":true},"smallCard2":{"icon":"https://cdn.lishaoy.net/ctrip/yqzx.jpg","url":"https://smarket.ctrip.com/webapp/promocode/add?source=5","hideAppBar":true},"smallCard3":{"icon":"https://cdn.lishaoy.net/ctrip/yqbzzc.jpg","url":"https://contents.ctrip.com/activitysetupapp/mkt/index/end","title":"活动"},"smallCard4":{"icon":"https://cdn.lishaoy.net/ctrip/jxtjmp.jpg","url":"https://m.ctrip.com/webapp/ticket/index","hideAppBar":true}}
      */
 
@@ -99,9 +98,9 @@ public class Home {
 
     public static class GridNavBean {
         /**
-         * hotel : {"startColor":"fa5956","endColor":"fa9b4d","mainItem":{"title":"酒店","icon":"https://pic.c-ctrip.com/platform/h5/home/grid-nav-items-hotel.png","url":"https://m.ctrip.com/webapp/hotel/","statusBarColor":"4289ff"},"item1":{"title":"海外酒店","url":"https://m.ctrip.com/webapp/hotel/oversea/?otype=1","statusBarColor":"4289ff"},"item2":{"title":"特价酒店","url":"https://m.ctrip.com/webapp/hotel/hotsale"},"item3":{"title":"团购","url":"https://m.ctrip.com/webapp/tuan/?secondwakeup=true&dpclickjump=true","hideAppBar":true},"item4":{"title":"民宿 客栈","url":"https://m.ctrip.com/webapp/inn/index","hideAppBar":true}}
-         * flight : {"startColor":"4b8fed","endColor":"53bced","mainItem":{"title":"机票","icon":"https://pic.c-ctrip.com/platform/h5/home/grid-nav-items-flight.png","url":"https://m.ctrip.com/html5/flight/swift/index"},"item1":{"title":"火车票","url":"https://m.ctrip.com/webapp/train/?secondwakeup=true&dpclickjump=true&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F#/index?VNK=4e431539","hideAppBar":true},"item2":{"title":"特价机票","url":"https://m.ctrip.com/html5/flight/swift/index"},"item3":{"title":"汽车票·船票","url":"https://m.ctrip.com/html5/Trains/bus/","hideAppBar":true},"item4":{"title":"专车·租车","url":"https://m.ctrip.com/webapp/car/index?s=ctrip&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true}}
-         * travel : {"startColor":"34c2aa","endColor":"6cd557","mainItem":{"title":"旅游","icon":"https://pic.c-ctrip.com/platform/h5/home/grid-nav-items-travel.png","url":"https://m.ctrip.com/webapp/vacations/tour/vacations","hideAppBar":true,"statusBarColor":"19A0F0"},"item1":{"title":"门票","url":"https://m.ctrip.com/webapp/ticket/ticket","statusBarColor":"19A0F0","hideAppBar":true},"item2":{"title":"目的地攻略","url":"https://m.ctrip.com/html5/you/","statusBarColor":"19A0F0","hideAppBar":true},"item3":{"title":"邮轮旅行","url":"https://m.ctrip.com/webapp/cruise/index","hideAppBar":true},"item4":{"title":"定制旅行","url":"https://m.ctrip.com/webapp/dingzhi","hideAppBar":true}}
+         * hotel : {"startColor":"fa5956","endColor":"fa9b4d","mainItem":{"title":"酒店","icon":"https://pic.c-ctrip.com/platform/h5/home/grid-nav-items-hotel.png","url":"https://m.ctrip.com/webapp/hotel/","statusBarColor":"4289ff"},"item1":{"title":"酒店","url":"https://m.ctrip.com/webapp/hotel/?secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","statusBarColor":"4289ff"},"item2":{"title":"民宿·客栈","url":"https://m.ctrip.com/webapp/inn-v2/home?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F"},"item3":{"title":"特价·爆款","url":"https://m.ctrip.com/webapp/cw/hotel/instoreflagship/productHome.html?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true},"item4":{"title":"民宿 客栈","url":"https://m.ctrip.com/webapp/inn/index","hideAppBar":true}}
+         * flight : {"startColor":"4b8fed","endColor":"53bced","mainItem":{"title":"机票","icon":"https://pic.c-ctrip.com/platform/h5/home/grid-nav-items-flight.png","url":"https://m.ctrip.com/html5/flight/swift/index"},"item1":{"title":"机票","url":"https://m.ctrip.com/html5/flight/swift/index?secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true},"item2":{"title":"火车票","url":"https://m.ctrip.com/webapp/train/?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F#/index?VNK=35f3baea"},"item3":{"title":"汽车·船票","url":"https://m.ctrip.com/webapp/bus/?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true},"item4":{"title":"专车·租车","url":"https://m.ctrip.com/webapp/car/index?s=ctrip&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true}}
+         * travel : {"startColor":"34c2aa","endColor":"6cd557","mainItem":{"title":"旅游","icon":"https://pic.c-ctrip.com/platform/h5/home/grid-nav-items-travel.png","url":"https://m.ctrip.com/webapp/vacations/tour/vacations","hideAppBar":true,"statusBarColor":"19A0F0"},"item1":{"title":"旅游","url":"https://m.ctrip.com/webapp/vacations/tour/vacations?secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","statusBarColor":"19A0F0","hideAppBar":true},"item2":{"title":"高铁游","url":"https://m.ctrip.com/webapp/train/crh/plan/crhList.html?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","statusBarColor":"19A0F0","hideAppBar":true},"item3":{"title":"邮轮游","url":"https://m.ctrip.com/webapp/cruise/index?ctm_ref=C_vac_cruise&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true},"item4":{"title":"定制游","url":"https://m.ctrip.com/webapp/dingzhi/index?ctm_ref=C_vac_custom&secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true}}
          */
 
         private HotelBean hotel;
@@ -142,9 +141,9 @@ public class Home {
              * startColor : fa5956
              * endColor : fa9b4d
              * mainItem : {"title":"酒店","icon":"https://pic.c-ctrip.com/platform/h5/home/grid-nav-items-hotel.png","url":"https://m.ctrip.com/webapp/hotel/","statusBarColor":"4289ff"}
-             * item1 : {"title":"海外酒店","url":"https://m.ctrip.com/webapp/hotel/oversea/?otype=1","statusBarColor":"4289ff"}
-             * item2 : {"title":"特价酒店","url":"https://m.ctrip.com/webapp/hotel/hotsale"}
-             * item3 : {"title":"团购","url":"https://m.ctrip.com/webapp/tuan/?secondwakeup=true&dpclickjump=true","hideAppBar":true}
+             * item1 : {"title":"酒店","url":"https://m.ctrip.com/webapp/hotel/?secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","statusBarColor":"4289ff"}
+             * item2 : {"title":"民宿·客栈","url":"https://m.ctrip.com/webapp/inn-v2/home?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F"}
+             * item3 : {"title":"特价·爆款","url":"https://m.ctrip.com/webapp/cw/hotel/instoreflagship/productHome.html?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true}
              * item4 : {"title":"民宿 客栈","url":"https://m.ctrip.com/webapp/inn/index","hideAppBar":true}
              */
 
@@ -270,8 +269,8 @@ public class Home {
 
             public static class Item1Bean {
                 /**
-                 * title : 海外酒店
-                 * url : https://m.ctrip.com/webapp/hotel/oversea/?otype=1
+                 * title : 酒店
+                 * url : https://m.ctrip.com/webapp/hotel/?secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F
                  * statusBarColor : 4289ff
                  */
 
@@ -311,8 +310,8 @@ public class Home {
 
             public static class Item2Bean {
                 /**
-                 * title : 特价酒店
-                 * url : https://m.ctrip.com/webapp/hotel/hotsale
+                 * title : 民宿·客栈
+                 * url : https://m.ctrip.com/webapp/inn-v2/home?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F
                  */
 
                 private String title;
@@ -342,8 +341,8 @@ public class Home {
 
             public static class Item3Bean {
                 /**
-                 * title : 团购
-                 * url : https://m.ctrip.com/webapp/tuan/?secondwakeup=true&dpclickjump=true
+                 * title : 特价·爆款
+                 * url : https://m.ctrip.com/webapp/cw/hotel/instoreflagship/productHome.html?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F
                  * hideAppBar : true
                  */
 
@@ -428,9 +427,9 @@ public class Home {
              * startColor : 4b8fed
              * endColor : 53bced
              * mainItem : {"title":"机票","icon":"https://pic.c-ctrip.com/platform/h5/home/grid-nav-items-flight.png","url":"https://m.ctrip.com/html5/flight/swift/index"}
-             * item1 : {"title":"火车票","url":"https://m.ctrip.com/webapp/train/?secondwakeup=true&dpclickjump=true&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F#/index?VNK=4e431539","hideAppBar":true}
-             * item2 : {"title":"特价机票","url":"https://m.ctrip.com/html5/flight/swift/index"}
-             * item3 : {"title":"汽车票·船票","url":"https://m.ctrip.com/html5/Trains/bus/","hideAppBar":true}
+             * item1 : {"title":"机票","url":"https://m.ctrip.com/html5/flight/swift/index?secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true}
+             * item2 : {"title":"火车票","url":"https://m.ctrip.com/webapp/train/?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F#/index?VNK=35f3baea"}
+             * item3 : {"title":"汽车·船票","url":"https://m.ctrip.com/webapp/bus/?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true}
              * item4 : {"title":"专车·租车","url":"https://m.ctrip.com/webapp/car/index?s=ctrip&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true}
              */
 
@@ -546,8 +545,8 @@ public class Home {
 
             public static class Item1BeanX {
                 /**
-                 * title : 火车票
-                 * url : https://m.ctrip.com/webapp/train/?secondwakeup=true&dpclickjump=true&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F#/index?VNK=4e431539
+                 * title : 机票
+                 * url : https://m.ctrip.com/html5/flight/swift/index?secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F
                  * hideAppBar : true
                  */
 
@@ -587,8 +586,8 @@ public class Home {
 
             public static class Item2BeanX {
                 /**
-                 * title : 特价机票
-                 * url : https://m.ctrip.com/html5/flight/swift/index
+                 * title : 火车票
+                 * url : https://m.ctrip.com/webapp/train/?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F#/index?VNK=35f3baea
                  */
 
                 private String title;
@@ -618,8 +617,8 @@ public class Home {
 
             public static class Item3BeanX {
                 /**
-                 * title : 汽车票·船票
-                 * url : https://m.ctrip.com/html5/Trains/bus/
+                 * title : 汽车·船票
+                 * url : https://m.ctrip.com/webapp/bus/?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F
                  * hideAppBar : true
                  */
 
@@ -704,10 +703,10 @@ public class Home {
              * startColor : 34c2aa
              * endColor : 6cd557
              * mainItem : {"title":"旅游","icon":"https://pic.c-ctrip.com/platform/h5/home/grid-nav-items-travel.png","url":"https://m.ctrip.com/webapp/vacations/tour/vacations","hideAppBar":true,"statusBarColor":"19A0F0"}
-             * item1 : {"title":"门票","url":"https://m.ctrip.com/webapp/ticket/ticket","statusBarColor":"19A0F0","hideAppBar":true}
-             * item2 : {"title":"目的地攻略","url":"https://m.ctrip.com/html5/you/","statusBarColor":"19A0F0","hideAppBar":true}
-             * item3 : {"title":"邮轮旅行","url":"https://m.ctrip.com/webapp/cruise/index","hideAppBar":true}
-             * item4 : {"title":"定制旅行","url":"https://m.ctrip.com/webapp/dingzhi","hideAppBar":true}
+             * item1 : {"title":"旅游","url":"https://m.ctrip.com/webapp/vacations/tour/vacations?secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","statusBarColor":"19A0F0","hideAppBar":true}
+             * item2 : {"title":"高铁游","url":"https://m.ctrip.com/webapp/train/crh/plan/crhList.html?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","statusBarColor":"19A0F0","hideAppBar":true}
+             * item3 : {"title":"邮轮游","url":"https://m.ctrip.com/webapp/cruise/index?ctm_ref=C_vac_cruise&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true}
+             * item4 : {"title":"定制游","url":"https://m.ctrip.com/webapp/dingzhi/index?ctm_ref=C_vac_custom&secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true}
              */
 
             private String startColor;
@@ -842,8 +841,8 @@ public class Home {
 
             public static class Item1BeanXX {
                 /**
-                 * title : 门票
-                 * url : https://m.ctrip.com/webapp/ticket/ticket
+                 * title : 旅游
+                 * url : https://m.ctrip.com/webapp/vacations/tour/vacations?secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F
                  * statusBarColor : 19A0F0
                  * hideAppBar : true
                  */
@@ -893,8 +892,8 @@ public class Home {
 
             public static class Item2BeanXX {
                 /**
-                 * title : 目的地攻略
-                 * url : https://m.ctrip.com/html5/you/
+                 * title : 高铁游
+                 * url : https://m.ctrip.com/webapp/train/crh/plan/crhList.html?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F
                  * statusBarColor : 19A0F0
                  * hideAppBar : true
                  */
@@ -944,8 +943,8 @@ public class Home {
 
             public static class Item3BeanXX {
                 /**
-                 * title : 邮轮旅行
-                 * url : https://m.ctrip.com/webapp/cruise/index
+                 * title : 邮轮游
+                 * url : https://m.ctrip.com/webapp/cruise/index?ctm_ref=C_vac_cruise&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F
                  * hideAppBar : true
                  */
 
@@ -985,8 +984,8 @@ public class Home {
 
             public static class Item4BeanXX {
                 /**
-                 * title : 定制旅行
-                 * url : https://m.ctrip.com/webapp/dingzhi
+                 * title : 定制游
+                 * url : https://m.ctrip.com/webapp/dingzhi/index?ctm_ref=C_vac_custom&secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F
                  * hideAppBar : true
                  */
 
@@ -1365,11 +1364,13 @@ public class Home {
 
     public static class BannerListBean {
         /**
-         * icon : https://dimg04.c-ctrip.com/images/zg0q1g000001h4ss5A538.jpg
-         * url : https://contents.ctrip.com/activitysetupapp/mkt/index/disneyreopen?ctm_ref=vdc_ctm_5204
+         * icon : https://dimg04.c-ctrip.com/images/zg041h000001hoqla603F.jpg
+         * sIcon : https://cdn.lishaoy.net/ctrip/banner1.jpg
+         * url : https://m.ctrip.com/webapp/you/gspoi/sight/0/5356386.html?seo=0
          */
 
         private String icon;
+        private String sIcon;
         private String url;
 
         public static BannerListBean objectFromData(String str) {
@@ -1383,6 +1384,14 @@ public class Home {
 
         public void setIcon(String icon) {
             this.icon = icon;
+        }
+
+        public String getSIcon() {
+            return sIcon;
+        }
+
+        public void setSIcon(String sIcon) {
+            this.sIcon = sIcon;
         }
 
         public String getUrl() {
@@ -1459,7 +1468,7 @@ public class Home {
         /**
          * icon : https://cdn.lishaoy.net/ctrip/freetravel.png
          * title : 自由行
-         * url : https://m.ctrip.com/webapp/vacations/idiytour/diyindex?navBarStyle=white&secondwakeup=true&dpclickjump=true&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F
+         * url : https://m.ctrip.com/tangram/MjczNQ==?ctm_ref=vactang_page_2735&navBarStyle=white&secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F
          * hideAppBar : true
          */
 

@@ -1,6 +1,7 @@
 package net.lishaoy.android_ctrip.view.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import net.lishaoy.android_ctrip.R;
 import net.lishaoy.android_ctrip.model.Home;
 import net.lishaoy.lib_image_loader.app.ImageLoaderManager;
+import net.lishaoy.lib_webview.WebActivity;
 
 import java.util.List;
 
@@ -45,7 +47,9 @@ public class SubNavViewAdapter extends RecyclerView.Adapter<SubNavViewAdapter.My
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context,subNavListBeanList.get(position).getTitle(),Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(v.getContext(), WebActivity.class);
+                intent.putExtra("url",subNavListBeanList.get(position).getUrl());
+                v.getContext().startActivity(intent);
             }
         });
     }

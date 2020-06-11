@@ -1,5 +1,7 @@
 package net.lishaoy.android_ctrip.view.adapter;
 
+import android.content.Intent;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -10,6 +12,7 @@ import com.youth.banner.adapter.BannerAdapter;
 
 import net.lishaoy.android_ctrip.model.Home;
 import net.lishaoy.lib_image_loader.app.ImageLoaderManager;
+import net.lishaoy.lib_webview.WebActivity;
 
 import java.util.List;
 
@@ -31,7 +34,15 @@ public class HomeBannerAdapter extends BannerAdapter<Home.BannerListBean, HomeBa
 
     @Override
     public void onBindView(BannerViewHolder holder, Home.BannerListBean data, int position, int size) {
-        ImageLoaderManager.getInstance().displayImageForView(holder.imageView,data.getIcon());
+        ImageLoaderManager.getInstance().displayImageForView(holder.imageView,data.getSIcon());
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), WebActivity.class);
+                intent.putExtra("url",data.getUrl());
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     class BannerViewHolder extends RecyclerView.ViewHolder {

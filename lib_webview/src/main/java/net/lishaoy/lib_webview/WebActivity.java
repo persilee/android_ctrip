@@ -50,11 +50,20 @@ public class WebActivity extends AppCompatActivity {
         if(this.getIntent().getStringExtra("actionBar") != null){
             initActionBar();
         }else{
-            ImmersionBar.with(this)
-                    .hideBar(BarHide.FLAG_HIDE_STATUS_BAR)
-                    .init();
+            initHideBar();
         }
         initWeb();
+    }
+
+    private void initHideBar() {
+        getSupportActionBar().hide();
+        ImmersionBar.with(this)
+                .statusBarColor("#ffffff")
+                .statusBarDarkFont(true)
+                .init();
+        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) linearLayout.getLayoutParams();
+        layoutParams.setMargins(0, ImmersionBar.getStatusBarHeight(this),0,0);
+        linearLayout.setLayoutParams(layoutParams);
     }
 
     private void initActionBar() {
