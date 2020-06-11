@@ -1,6 +1,7 @@
 package net.lishaoy.android_ctrip.view.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
@@ -20,6 +22,7 @@ import net.lishaoy.lib_common_ui.utils.Utils;
 import net.lishaoy.lib_image_loader.app.ImageLoaderManager;
 import net.lishaoy.lib_image_loader.listener.ImageCallBack;
 import net.lishaoy.lib_image_loader.listener.ImageCallBackListener;
+import net.lishaoy.lib_webview.WebActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,6 +81,14 @@ public class TabNearAdapter extends RecyclerView.Adapter<TabNearAdapter.MyViewHo
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) Utils.dp2px(targetHeight));
             holder.tabSelectImg.setLayoutParams(layoutParams);
         }
+        holder.tabSelectContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), WebActivity.class);
+                intent.putExtra("url",tabNearItem.getJumpurl());
+                v.getContext().startActivity(intent);
+            }
+        });
 
     }
 
@@ -87,6 +98,8 @@ public class TabNearAdapter extends RecyclerView.Adapter<TabNearAdapter.MyViewHo
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.tab_select_container)
+        CardView tabSelectContainer;
         @BindView(R.id.tab_select_img)
         ImageView tabSelectImg;
         @BindView(R.id.tab_select_title)
