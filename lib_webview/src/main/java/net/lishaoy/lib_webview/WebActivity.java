@@ -19,6 +19,9 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.gyf.immersionbar.BarHide;
 import com.gyf.immersionbar.ImmersionBar;
 import com.just.agentweb.AgentWeb;
@@ -28,12 +31,15 @@ import com.just.agentweb.WebViewClient;
 
 import net.lishaoy.lib_webview.widget.WebLayout;
 
+@Route(path = "/webview/web_activity")
 public class WebActivity extends AppCompatActivity {
 
     private AgentWeb agentWeb;
     private LinearLayout linearLayout;
     private ActionBar actionBar;
-    private String url;
+    public static final String KEY_URL = "url";
+    @Autowired(name = KEY_URL)
+    protected String mUrl;
 
     public WebActivity(){}
 
@@ -41,6 +47,7 @@ public class WebActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
+        ARouter.getInstance().inject(this);
         setTitle("");
         initViews();
     }
@@ -92,7 +99,7 @@ public class WebActivity extends AppCompatActivity {
                 .interceptUnkownUrl()
                 .createAgentWeb()
                 .ready()
-                .go(this.getIntent().getStringExtra("url"));
+                .go(mUrl);
     }
 
     private WebChromeClient webChromeClient = new WebChromeClient() {

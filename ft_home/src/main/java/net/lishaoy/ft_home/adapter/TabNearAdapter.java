@@ -17,6 +17,7 @@ import com.google.gson.Gson;
 import net.lishaoy.ft_home.R;
 import net.lishaoy.ft_home.R2;
 import net.lishaoy.ft_home.model.TabNearItem;
+import net.lishaoy.lib_base.lib_home.service.wrapper.WebViewImpl;
 import net.lishaoy.lib_common_ui.utils.Utils;
 import net.lishaoy.lib_image_loader.app.ImageLoaderManager;
 import net.lishaoy.lib_webview.WebActivity;
@@ -81,9 +82,7 @@ public class TabNearAdapter extends RecyclerView.Adapter<TabNearAdapter.MyViewHo
         holder.tabSelectContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), WebActivity.class);
-                intent.putExtra("url",tabNearItem.getJumpurl());
-                v.getContext().startActivity(intent);
+                WebViewImpl.getInstance().gotoWebView(tabNearItem.getJumpurl());
             }
         });
 

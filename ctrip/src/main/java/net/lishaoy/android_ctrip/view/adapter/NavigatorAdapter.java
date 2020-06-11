@@ -13,6 +13,7 @@ import net.lishaoy.android_ctrip.view.destination.DestinationFragment;
 import net.lishaoy.android_ctrip.view.my.MyFragment;
 import net.lishaoy.android_ctrip.view.travel.TravelFragment;
 import net.lishaoy.ft_home.HomeFragment;
+import net.lishaoy.lib_base.ft_home.service.wrapper.HomeImpl;
 
 public class NavigatorAdapter extends FragmentPagerAdapter {
 
@@ -35,7 +36,7 @@ public class NavigatorAdapter extends FragmentPagerAdapter {
         int type = channels[position].getValue();
         switch (type) {
             case CHANNEL.HOME_ID:
-                return HomeFragment.newInstance(context);
+                return HomeImpl.getInstance().toHome(context);
             case CHANNEL.DESTINATION_ID:
                 return DestinationFragment.newInstance();
             case CHANNEL.TRAVEL_ID:

@@ -29,6 +29,6 @@ public class HomeImpl {
     }
 
     public Fragment toHome(Context context) {
-        return mHomeImpl.toHome(context);
+        return homeService.toHome(context);
     }
 }

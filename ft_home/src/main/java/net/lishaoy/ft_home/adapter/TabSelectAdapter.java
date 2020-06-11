@@ -13,9 +13,12 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+
 import net.lishaoy.ft_home.R;
 import net.lishaoy.ft_home.R2;
 import net.lishaoy.ft_home.model.TabSelect;
+import net.lishaoy.lib_base.lib_home.service.wrapper.WebViewImpl;
 import net.lishaoy.lib_image_loader.app.ImageLoaderManager;
 import net.lishaoy.lib_webview.WebActivity;
 
@@ -70,9 +73,7 @@ public class TabSelectAdapter extends RecyclerView.Adapter<TabSelectAdapter.MyVi
             @Override
             public void onClick(View v) {
                 String url = "https://m.ctrip.com/webapp/you/gspoi/sight/0/"+ mViewspots.get(position).getId() +".html?seo=0";
-                Intent intent = new Intent(v.getContext(), WebActivity.class);
-                intent.putExtra("url",url);
-                v.getContext().startActivity(intent);
+                WebViewImpl.getInstance().gotoWebView(url);
             }
         });
 

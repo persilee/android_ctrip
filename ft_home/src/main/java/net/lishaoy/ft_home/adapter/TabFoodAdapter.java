@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import net.lishaoy.ft_home.R;
 import net.lishaoy.ft_home.R2;
 import net.lishaoy.ft_home.model.TabFood;
+import net.lishaoy.lib_base.lib_home.service.wrapper.WebViewImpl;
 import net.lishaoy.lib_image_loader.app.ImageLoaderManager;
 import net.lishaoy.lib_webview.WebActivity;
 
@@ -80,9 +81,7 @@ public class TabFoodAdapter extends RecyclerView.Adapter<TabFoodAdapter.MyViewHo
             @Override
             public void onClick(View v) {
                 String url = "https://m.ctrip.com/webapp/you/foods/26/"+ restaurants.get(position).getRestaurantId() +".html?ishideheader=true&navBarStyle=white&from=https%3A%2F%2Fm.ctrip.com%2Fwebapp%2Fgourmet%2Ffood%2FhomeList%2Faddress.html%3Fnew%3D1%26isHideNavBar%3DYES%26ishideheader%3Dtrue%26seo%3D0%26secondwakeup%3Dtrue%26dpclickjump%3Dtrue%26allianceid%3D66672%26sid%3D508670%26from%3Dhttp%253A%252F%252Fm.ctrip.com%252Fhtml5%252F";
-                Intent intent = new Intent(v.getContext(), WebActivity.class);
-                intent.putExtra("url",url);
-                v.getContext().startActivity(intent);
+                WebViewImpl.getInstance().gotoWebView(url);
             }
         });
 

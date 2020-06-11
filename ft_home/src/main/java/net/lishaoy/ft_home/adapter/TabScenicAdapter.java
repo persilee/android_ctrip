@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import net.lishaoy.ft_home.R;
 import net.lishaoy.ft_home.R2;
 import net.lishaoy.ft_home.model.TabScenic;
+import net.lishaoy.lib_base.lib_home.service.wrapper.WebViewImpl;
 import net.lishaoy.lib_image_loader.app.ImageLoaderManager;
 import net.lishaoy.lib_webview.WebActivity;
 
@@ -73,9 +74,7 @@ public class TabScenicAdapter extends RecyclerView.Adapter<TabScenicAdapter.MyVi
             @Override
             public void onClick(View v) {
                 String url = "https://m.ctrip.com/webapp/you/gspoi/sight/0/"+ products.get(position).getProductId() +".html?seo=0";
-                Intent intent = new Intent(v.getContext(), WebActivity.class);
-                intent.putExtra("url",url);
-                v.getContext().startActivity(intent);
+                WebViewImpl.getInstance().gotoWebView(url);
             }
         });
 
