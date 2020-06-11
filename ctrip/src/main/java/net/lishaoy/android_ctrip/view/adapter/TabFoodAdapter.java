@@ -1,6 +1,7 @@
 package net.lishaoy.android_ctrip.view.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +10,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import net.lishaoy.android_ctrip.R;
 import net.lishaoy.android_ctrip.model.TabFood;
 import net.lishaoy.lib_image_loader.app.ImageLoaderManager;
+import net.lishaoy.lib_webview.WebActivity;
 
 import java.util.List;
 
@@ -73,6 +76,15 @@ public class TabFoodAdapter extends RecyclerView.Adapter<TabFoodAdapter.MyViewHo
         }else{
             holder.tabDistance.setText(restaurants.get(position).getDistrictCentreDistance());
         }
+        holder.tabFoodContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = "https://m.ctrip.com/webapp/you/foods/26/"+ restaurants.get(position).getRestaurantId() +".html?ishideheader=true&navBarStyle=white&from=https%3A%2F%2Fm.ctrip.com%2Fwebapp%2Fgourmet%2Ffood%2FhomeList%2Faddress.html%3Fnew%3D1%26isHideNavBar%3DYES%26ishideheader%3Dtrue%26seo%3D0%26secondwakeup%3Dtrue%26dpclickjump%3Dtrue%26allianceid%3D66672%26sid%3D508670%26from%3Dhttp%253A%252F%252Fm.ctrip.com%252Fhtml5%252F";
+                Intent intent = new Intent(v.getContext(), WebActivity.class);
+                intent.putExtra("url",url);
+                v.getContext().startActivity(intent);
+            }
+        });
 
     }
 
@@ -83,6 +95,8 @@ public class TabFoodAdapter extends RecyclerView.Adapter<TabFoodAdapter.MyViewHo
 
 
     class MyViewHolder extends RecyclerView.ViewHolder{
+        @BindView(R.id.tab_food_container)
+        CardView tabFoodContainer;
         @BindView(R.id.tab_food_img)
         ImageView tabFoodImg;
         @BindView(R.id.tab_food_title)
