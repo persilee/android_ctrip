@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_home_nav_red_bg"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <FrameLayout
+                    android:id="@+id/home_grid_nav_hotel"
+                    android:layout_width="106dp"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="26dp"
+                        android:src="@mipmap/grid_nav_items_hotel"
+                        android:layout_gravity="bottom|end"
+                        android:scaleType="fitEnd"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="酒店"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="20dp"/>
+                </FrameLayout>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"/>
+                <FrameLayout
+                    android:id="@+id/home_grid_nav_minsu"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:src="@mipmap/grid_nav_items_minsu"
+                        android:layout_gravity="bottom|start"
+                        android:scaleType="fitStart"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="民宿·客栈"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:layout_gravity="center" />
+
+                </FrameLayout>
+            </LinearLayout>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"/>
+            <FrameLayout
+                android:id="@+id/home_grid_nav_hot"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:background="@drawable/shape_home_nav_yellow_bg">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/grid_nav_items_hot"
+                    android:scaleType="fitEnd"
+                    android:layout_gravity="bottom|end" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="特价·爆款"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                    android:textColor="#a05416"
+                    android:layout_gravity="center" />
+
+            </FrameLayout>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ffffff" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:background="@drawable/shape_home_nav_blue_bg"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <FrameLayout
+                    android:id="@+id/home_grid_nav_flight"
+                    android:layout_width="106dp"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:src="@mipmap/grid_nav_items_flight"
+                        android:layout_gravity="bottom|end"
+                        android:scaleType="fitEnd"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="机票"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="20dp"/>
+                </FrameLayout>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"/>
+                <FrameLayout
+                    android:id="@+id/home_grid_nav_train"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:src="@mipmap/grid_nav_items_train"
+                        android:scaleType="fitStart"
+                        android:layout_gravity="bottom|start"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="火车票"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:layout_gravity="center" />
+                </FrameLayout>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <FrameLayout
+                    android:id="@+id/home_grid_nav_bus"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="汽车·船票"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:layout_gravity="center" />
+                </FrameLayout>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"/>
+                <FrameLayout
+                    android:id="@+id/home_grid_nav_car"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="专车·租车"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:layout_gravity="center" />
+                </FrameLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ffffff" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:background="@drawable/shape_home_nav_green_bg"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <FrameLayout
+                    android:id="@+id/home_grid_nav_travel"
+                    android:layout_width="106dp"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:src="@mipmap/grid_nav_items_travel"
+                        android:layout_gravity="bottom|end"
+                        android:scaleType="fitEnd"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="旅游"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="20dp"/>
+                </FrameLayout>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"/>
+                <FrameLayout
+                    android:id="@+id/home_grid_nav_gaotie"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="22dp"
+                        android:src="@mipmap/grid_nav_items_dingzhi"
+                        android:scaleType="fitStart"
+                        android:layout_gravity="bottom|start"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="高铁游"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:layout_gravity="center" />
+                </FrameLayout>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <FrameLayout
+                    android:id="@+id/home_grid_nav_ship"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="邮轮游"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:layout_gravity="center" />
+                </FrameLayout>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"/>
+                <FrameLayout
+                    android:id="@+id/home_grid_nav_custom"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="定制游"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:layout_gravity="center" />
+                </FrameLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
