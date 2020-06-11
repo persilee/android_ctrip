@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.home.HomeActivity">
+    tools:context=".view.MainActivity">
 
     <net.lishaoy.android_ctrip.util.NoTouchViewPager
         android:id="@+id/viewPager"

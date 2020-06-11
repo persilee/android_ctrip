@@ -10,7 +10,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import net.lishaoy.ft_home.Events.LoadMoreNearEvent;
+import net.lishaoy.ft_home.R;
+import net.lishaoy.ft_home.events.LoadMoreNearEvent;
 import net.lishaoy.ft_home.R2;
 import net.lishaoy.ft_home.adapter.TabNearAdapter;
 import net.lishaoy.ft_home.api.RequestCenter;
@@ -51,7 +52,7 @@ public class NearFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R2.layout.fragment_near, container, false);
+        View view = inflater.inflate(R.layout.fragment_near, container, false);
         unbinder = ButterKnife.bind(this, view);
         viewPager.setObjectForPosition(view, 1);
         initViews();

@@ -11,6 +11,13 @@ android {
         versionCode rootProject.android.versionCode
         versionName rootProject.android.versionName
         multiDexEnabled rootProject.android.multiDexEnabled
+
+        //ARouter配置
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName(), AROUTER_GENERATE_DOC: "enable"]
+            }
+        }
     }
 
     buildTypes {
@@ -60,7 +67,11 @@ dependencies {
     implementation rootProject.depsLibs.refreshFooter
     //eventbus
     implementation rootProject.depsLibs.eventbus
-
+    //arouter库
+    implementation(rootProject.depsLibs.arouterapi) {
+        exclude group: 'com.android.support'
+    }
+    annotationProcessor rootProject.depsLibs.aroutercompiler
 
     //引入home模块
     implementation project(':ft_home')
@@ -72,5 +83,7 @@ dependencies {
     implementation project(':lib_webview')
     //引入基础ui库
     implementation project(':lib_common_ui')
+    //base库
+    implementation project(':lib_base')
 
 }

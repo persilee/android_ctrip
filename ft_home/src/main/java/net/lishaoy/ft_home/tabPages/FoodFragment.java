@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import net.lishaoy.ft_home.Events.LoadMoreFoodEvent;
+import net.lishaoy.ft_home.events.LoadMoreFoodEvent;
 import net.lishaoy.ft_home.R;
 import net.lishaoy.ft_home.R2;
 import net.lishaoy.ft_home.adapter.TabFoodAdapter;

@@ -1,5 +1,6 @@
 package net.lishaoy.ft_home;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,11 +22,11 @@ import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.youth.banner.Banner;
 import com.youth.banner.util.BannerUtils;
 
-import net.lishaoy.ft_home.Events.IsLoadMoreSelectEvent;
-import net.lishaoy.ft_home.Events.LoadMoreFoodEvent;
-import net.lishaoy.ft_home.Events.LoadMoreNearEvent;
-import net.lishaoy.ft_home.Events.LoadMoreScenicEvent;
-import net.lishaoy.ft_home.Events.LoadMoreSelectEvent;
+import net.lishaoy.ft_home.events.IsLoadMoreSelectEvent;
+import net.lishaoy.ft_home.events.LoadMoreFoodEvent;
+import net.lishaoy.ft_home.events.LoadMoreNearEvent;
+import net.lishaoy.ft_home.events.LoadMoreScenicEvent;
+import net.lishaoy.ft_home.events.LoadMoreSelectEvent;
 import net.lishaoy.ft_home.adapter.HomeBannerAdapter;
 import net.lishaoy.ft_home.adapter.SubNavViewAdapter;
 import net.lishaoy.ft_home.api.RequestCenter;
@@ -70,12 +71,15 @@ public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTab
     private int tabViewTop;
     private View view;
     private boolean iSLoadSelect;
+    Context context;
+    private ViewTreeObserver.OnScrollChangedListener mScrollChangedListener;
 
-    public HomeFragment() {
+    public HomeFragment(Context context) {
+        this.context = context;
     }
 
-    public static Fragment newInstance() {
-        HomeFragment fragment = new HomeFragment();
+    public static Fragment newInstance(Context context) {
+        HomeFragment fragment = new HomeFragment(context);
         return fragment;
     }
 
@@ -85,13 +89,13 @@ public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTab
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
         unbinder = ButterKnife.bind(this, view);
-        initViews();
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        initViews();
     }
 
     @Override
@@ -110,12 +114,14 @@ public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTab
 
     private void initViews() {
         requestHomeDate();
-        view.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
+        mScrollChangedListener = new ViewTreeObserver.OnScrollChangedListener() {
+
             @Override
             public void onScrollChanged() {
                 tabViewTop = homeTabPageContainer.getTop();
             }
-        });
+        };
+        view.getViewTreeObserver().addOnScrollChangedListener(mScrollChangedListener);
     }
 
     private void initBanner() {
@@ -174,7 +180,6 @@ public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTab
                         } else {
                             refreshLayout.finishLoadMore(false);
                         }
-                        ;
                         break;
                     case 1:
                         EventBus.getDefault().post(new LoadMoreNearEvent());
@@ -203,6 +208,7 @@ public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTab
     public void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
+        view.getViewTreeObserver().removeOnScrollChangedListener(mScrollChangedListener);
     }
 
     @Override

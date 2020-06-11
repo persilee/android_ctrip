@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'com.alibaba.arouter'
 
 android {
     compileSdkVersion rootProject.android.compileSdkVersion
@@ -10,6 +11,13 @@ android {
         targetSdkVersion rootProject.android.targetSdkVersion
         versionCode 1
         versionName "1.0"
+
+        //ARouter配置
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName(), AROUTER_GENERATE_DOC: "enable"]
+            }
+        }
     }
 
     buildTypes {
@@ -31,34 +39,41 @@ dependencies {
     compileOnly rootProject.depsLibs.cardview
 
     //tab指示器
-    implementation rootProject.depsLibs.magicindicator
+    compileOnly rootProject.depsLibs.magicindicator
     //沉浸式
-    implementation rootProject.depsLibs.immersionbar
+    compileOnly rootProject.depsLibs.immersionbar
     //rxjava
-    implementation rootProject.depsLibs.rxjava
+    compileOnly rootProject.depsLibs.rxjava
     //rxandroid
-    implementation rootProject.depsLibs.rxandroid
+    compileOnly rootProject.depsLibs.rxandroid
     //view 注入
-    implementation rootProject.depsLibs.butterknife
+    compileOnly rootProject.depsLibs.butterknife
     //view 注入
     annotationProcessor rootProject.depsLibs.butterknifeCompiler
     //gson
-    implementation rootProject.depsLibs.gson
+    compileOnly rootProject.depsLibs.gson
     //banner
-    implementation rootProject.depsLibs.banner
+    compileOnly rootProject.depsLibs.banner
     //smartRefreshLayout 上下拉刷新
-    implementation rootProject.depsLibs.smartRefreshLayout
-    implementation rootProject.depsLibs.refreshHeader
-    implementation rootProject.depsLibs.refreshFooter
+    compileOnly rootProject.depsLibs.smartRefreshLayout
+    compileOnly rootProject.depsLibs.refreshHeader
+    compileOnly rootProject.depsLibs.refreshFooter
     //eventbus
-    implementation rootProject.depsLibs.eventbus
+    compileOnly rootProject.depsLibs.eventbus
+    //arouter库
+    compileOnly(rootProject.depsLibs.arouterapi) {
+        exclude group: 'com.android.support'
+    }
+    annotationProcessor rootProject.depsLibs.aroutercompiler
 
     //引入图片加载库
-    implementation project(':lib_image_loader')
+    compileOnly project(':lib_image_loader')
     //引入网络库
-    implementation project(':lib_network')
+    compileOnly project(':lib_network')
     //webview
-    implementation project(':lib_webview')
+    compileOnly project(':lib_webview')
     //引入基础ui库
-    implementation project(':lib_common_ui')
+    compileOnly project(':lib_common_ui')
+    //base库
+    compileOnly project(':lib_base')
 }

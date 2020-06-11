@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import net.lishaoy.ft_home.Events.IsLoadMoreSelectEvent;
-import net.lishaoy.ft_home.Events.LoadMoreSelectEvent;
+import net.lishaoy.ft_home.events.IsLoadMoreSelectEvent;
+import net.lishaoy.ft_home.events.LoadMoreSelectEvent;
 import net.lishaoy.ft_home.R;
 import net.lishaoy.ft_home.R2;
 import net.lishaoy.ft_home.adapter.TabSelectAdapter;
