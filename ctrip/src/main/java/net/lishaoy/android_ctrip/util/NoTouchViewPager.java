@@ -1,4 +1,4 @@
-package net.lishaoy.android_ctrip.view.home;
+package net.lishaoy.android_ctrip.util;
 
 import android.content.Context;
 import android.util.AttributeSet;

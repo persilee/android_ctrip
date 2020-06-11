@@ -10,6 +10,7 @@ import com.gyf.immersionbar.ImmersionBar;
 
 import net.lishaoy.android_ctrip.R;
 import net.lishaoy.android_ctrip.model.CHANNEL;
+import net.lishaoy.android_ctrip.util.NoTouchViewPager;
 import net.lishaoy.android_ctrip.view.adapter.NavigatorAdapter;
 
 import butterknife.BindView;

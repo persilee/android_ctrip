@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".view.home.HomeActivity">
 
-    <net.lishaoy.android_ctrip.view.home.NoTouchViewPager
+    <net.lishaoy.android_ctrip.util.NoTouchViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

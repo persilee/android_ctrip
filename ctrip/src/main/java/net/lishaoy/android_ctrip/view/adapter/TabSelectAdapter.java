@@ -1,19 +1,23 @@
 package net.lishaoy.android_ctrip.view.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import net.lishaoy.android_ctrip.R;
 import net.lishaoy.android_ctrip.model.TabSelect;
 import net.lishaoy.lib_image_loader.app.ImageLoaderManager;
+import net.lishaoy.lib_webview.WebActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,12 +47,12 @@ public class TabSelectAdapter extends RecyclerView.Adapter<TabSelectAdapter.MyVi
             }
         }
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_tab_select, parent, false);
+
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
         ImageLoaderManager.getInstance().displayImageForView(holder.tabSelectImg, mViewspots.get(position).getCimgurl());
         holder.tabSelectTitle.setText(mViewspots.get(position).getName());
         if (mViewspots.get(position).getFeature().isEmpty()) {
@@ -62,6 +66,15 @@ public class TabSelectAdapter extends RecyclerView.Adapter<TabSelectAdapter.MyVi
             holder.tabSelectPrice.setText(String.valueOf(mViewspots.get(position).getPrice()));
         }
         holder.tabSelectRank.setText(ranks.get(position));
+        holder.tabSelectContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = "https://m.ctrip.com/webapp/you/gspoi/sight/0/"+ mViewspots.get(position).getId() +".html?seo=0";
+                Intent intent = new Intent(v.getContext(), WebActivity.class);
+                intent.putExtra("url",url);
+                v.getContext().startActivity(intent);
+            }
+        });
 
     }
 
@@ -71,6 +84,8 @@ public class TabSelectAdapter extends RecyclerView.Adapter<TabSelectAdapter.MyVi
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.tab_select_container)
+        CardView tabSelectContainer;
         @BindView(R.id.tab_select_img)
         ImageView tabSelectImg;
         @BindView(R.id.tab_select_title)
