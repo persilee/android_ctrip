@@ -8,12 +8,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+
 import net.lishaoy.android_ctrip.model.CHANNEL;
-import net.lishaoy.android_ctrip.view.destination.DestinationFragment;
 import net.lishaoy.android_ctrip.view.my.MyFragment;
-import net.lishaoy.android_ctrip.view.travel.TravelFragment;
-import net.lishaoy.ft_home.HomeFragment;
 import net.lishaoy.lib_base.ft_home.service.wrapper.HomeImpl;
+
+import io.flutter.embedding.android.FlutterFragment;
 
 public class NavigatorAdapter extends FragmentPagerAdapter {
 
@@ -38,9 +38,9 @@ public class NavigatorAdapter extends FragmentPagerAdapter {
             case CHANNEL.HOME_ID:
                 return HomeImpl.getInstance().toHome(context);
             case CHANNEL.DESTINATION_ID:
-                return DestinationFragment.newInstance();
+                return FlutterFragment.withNewEngine().initialRoute("destination").build();
             case CHANNEL.TRAVEL_ID:
-                return TravelFragment.newInstance();
+                return FlutterFragment.withNewEngine().initialRoute("travel").build();
             case CHANNEL.MY_ID:
                 return MyFragment.newInstance();
         }

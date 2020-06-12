@@ -1,8 +1,14 @@
 rootProject.name='android_ctrip'
 include ':app'
+setBinding(new Binding([gradle: this]))
+evaluate(new File(
+  settingsDir,
+  'flutter_module/.android/include_flutter.groovy'
+))
 include ':lib_common_ui'
 include ':lib_image_loader'
 include ':lib_network'
 include ':lib_webview'
 include ':ft_home'
 include ':lib_base'
+include ':flutter_module'

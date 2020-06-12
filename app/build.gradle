@@ -85,5 +85,7 @@ dependencies {
     implementation project(':lib_common_ui')
     //base库
     implementation project(':lib_base')
+    //引入flutter模块
+    implementation project(path: ':flutter')
 
 }
