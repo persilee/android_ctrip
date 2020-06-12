@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import net.lishaoy.ft_home.model.Home;
+import net.lishaoy.lib_base.lib_home.service.wrapper.WebViewImpl;
 import net.lishaoy.lib_image_loader.app.ImageLoaderManager;
 import net.lishaoy.lib_webview.WebActivity;
 
@@ -96,9 +97,7 @@ public class LocalNavView extends LinearLayout {
             @Override
             public void onClick(View v) {
                 int position = (int) v.getTag();
-                Intent intent = new Intent(v.getContext(), WebActivity.class);
-                intent.putExtra("url", navListBeans.get(position).getUrl());
-                v.getContext().startActivity(intent);
+                WebViewImpl.getInstance().gotoWebView(navListBeans.get(position).getUrl());
             }
         };
     }

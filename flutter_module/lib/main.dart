@@ -1,33 +1,33 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:module/pages/destination_page.dart';
+import 'package:module/pages/travel_page.dart';
 
-void main() => runApp(_widgetRoute(window.defaultRouteName));
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter model',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        fontFamily: 'PingFang',
+      ),
+      home: _widgetRoute(window.defaultRouteName),
+    );
+  }
+
+}
 
 Widget _widgetRoute(String defaultRouteName) {
   switch (defaultRouteName) {
     case 'destination':
-      return Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text('destination',
-                style: TextStyle(color: Colors.black),
-                textDirection: TextDirection.ltr),
-          ],
-        ),
-      );
+      return DestinationPage();
     case 'travel':
-      return Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text('travel',
-                style: TextStyle(color: Colors.black),
-                textDirection: TextDirection.ltr),
-          ],
-        ),
-      );
+      return TravelPage();
     default:
       return Center(
         child: Column(

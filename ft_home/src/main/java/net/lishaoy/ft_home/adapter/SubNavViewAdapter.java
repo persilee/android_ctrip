@@ -10,9 +10,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import net.lishaoy.ft_home.R;
 import net.lishaoy.ft_home.R2;
 import net.lishaoy.ft_home.model.Home;
+import net.lishaoy.lib_base.lib_home.service.wrapper.WebViewImpl;
 import net.lishaoy.lib_image_loader.app.ImageLoaderManager;
 import net.lishaoy.lib_webview.WebActivity;
 
@@ -41,14 +43,12 @@ public class SubNavViewAdapter extends RecyclerView.Adapter<SubNavViewAdapter.My
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-        ImageLoaderManager.getInstance().displayImageForView(holder.homeSubNavImg,subNavListBeanList.get(position).getIcon());
+        ImageLoaderManager.getInstance().displayImageForView(holder.homeSubNavImg, subNavListBeanList.get(position).getIcon());
         holder.homeSubNavTxt.setText(subNavListBeanList.get(position).getTitle());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), WebActivity.class);
-                intent.putExtra("url",subNavListBeanList.get(position).getUrl());
-                v.getContext().startActivity(intent);
+                WebViewImpl.getInstance().gotoWebView(subNavListBeanList.get(position).getUrl());
             }
         });
     }

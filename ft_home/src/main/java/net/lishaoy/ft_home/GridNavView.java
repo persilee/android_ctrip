@@ -1,17 +1,17 @@
 package net.lishaoy.ft_home;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+
 import net.lishaoy.ft_home.model.Home;
-import net.lishaoy.lib_webview.WebActivity;
+import net.lishaoy.lib_base.lib_home.service.wrapper.WebViewImpl;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,6 +41,7 @@ public class GridNavView extends LinearLayout {
     FrameLayout homeGridNavShip;
     @BindView(R2.id.home_grid_nav_custom)
     FrameLayout homeGridNavCustom;
+
     private Context mContext;
     private Home.GridNavBean gridNavBean;
     private View inflate;
@@ -68,65 +69,59 @@ public class GridNavView extends LinearLayout {
         ButterKnife.bind(this, inflate);
     }
 
-    @SuppressLint("InvalidR2Usage")
-    @OnClick({R2.id.home_grid_nav_hotel, R2.id.home_grid_nav_minsu, R2.id.home_grid_nav_hot, R2.id.home_grid_nav_flight, R2.id.home_grid_nav_train, R2.id.home_grid_nav_bus, R2.id.home_grid_nav_car, R2.id.home_grid_nav_travel, R2.id.home_grid_nav_gaotie, R2.id.home_grid_nav_ship, R2.id.home_grid_nav_custom})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R2.id.home_grid_nav_hotel:
-                Intent intent1 = new Intent(getContext(), WebActivity.class);
-                intent1.putExtra("url",gridNavBean.getHotel().getItem1().getUrl());
-                getContext().startActivity(intent1);
-                break;
-            case R2.id.home_grid_nav_minsu:
-                Intent intent2 = new Intent(getContext(), WebActivity.class);
-                intent2.putExtra("url",gridNavBean.getHotel().getItem2().getUrl());
-                getContext().startActivity(intent2);
-                break;
-            case R2.id.home_grid_nav_hot:
-                Intent intent3 = new Intent(getContext(), WebActivity.class);
-                intent3.putExtra("url",gridNavBean.getHotel().getItem3().getUrl());
-                getContext().startActivity(intent3);
-                break;
-            case R2.id.home_grid_nav_flight:
-                Intent intent4 = new Intent(getContext(), WebActivity.class);
-                intent4.putExtra("url",gridNavBean.getFlight().getItem1().getUrl());
-                getContext().startActivity(intent4);
-                break;
-            case R2.id.home_grid_nav_train:
-                Intent intent5 = new Intent(getContext(), WebActivity.class);
-                intent5.putExtra("url",gridNavBean.getFlight().getItem2().getUrl());
-                getContext().startActivity(intent5);
-                break;
-            case R2.id.home_grid_nav_bus:
-                Intent intent6 = new Intent(getContext(), WebActivity.class);
-                intent6.putExtra("url",gridNavBean.getFlight().getItem3().getUrl());
-                getContext().startActivity(intent6);
-                break;
-            case R2.id.home_grid_nav_car:
-                Intent intent7 = new Intent(getContext(), WebActivity.class);
-                intent7.putExtra("url",gridNavBean.getFlight().getItem4().getUrl());
-                getContext().startActivity(intent7);
-                break;
-            case R2.id.home_grid_nav_travel:
-                Intent intent8 = new Intent(getContext(), WebActivity.class);
-                intent8.putExtra("url",gridNavBean.getTravel().getItem1().getUrl());
-                getContext().startActivity(intent8);
-                break;
-            case R2.id.home_grid_nav_gaotie:
-                Intent intent9 = new Intent(getContext(), WebActivity.class);
-                intent9.putExtra("url",gridNavBean.getTravel().getItem2().getUrl());
-                getContext().startActivity(intent9);
-                break;
-            case R2.id.home_grid_nav_ship:
-                Intent intent10 = new Intent(getContext(), WebActivity.class);
-                intent10.putExtra("url",gridNavBean.getTravel().getItem3().getUrl());
-                getContext().startActivity(intent10);
-                break;
-            case R2.id.home_grid_nav_custom:
-                Intent intent11 = new Intent(getContext(), WebActivity.class);
-                intent11.putExtra("url",gridNavBean.getTravel().getItem4().getUrl());
-                getContext().startActivity(intent11);
-                break;
-        }
+
+    @OnClick(R2.id.home_grid_nav_hotel)
+    public void onHomeGridNavHotelClicked() {
+        WebViewImpl.getInstance().gotoWebView(gridNavBean.getHotel().getItem1().getUrl());
+    }
+
+    @OnClick(R2.id.home_grid_nav_minsu)
+    public void onHomeGridNavMinsuClicked() {
+        WebViewImpl.getInstance().gotoWebView(gridNavBean.getHotel().getItem2().getUrl());
+    }
+
+    @OnClick(R2.id.home_grid_nav_hot)
+    public void onHomeGridNavHotClicked() {
+        WebViewImpl.getInstance().gotoWebView(gridNavBean.getHotel().getItem3().getUrl());
+    }
+
+    @OnClick(R2.id.home_grid_nav_flight)
+    public void onHomeGridNavFlightClicked() {
+        WebViewImpl.getInstance().gotoWebView(gridNavBean.getFlight().getItem1().getUrl());
+    }
+
+    @OnClick(R2.id.home_grid_nav_train)
+    public void onHomeGridNavTrainClicked() {
+        WebViewImpl.getInstance().gotoWebView(gridNavBean.getFlight().getItem2().getUrl());
+    }
+
+    @OnClick(R2.id.home_grid_nav_bus)
+    public void onHomeGridNavBusClicked() {
+        WebViewImpl.getInstance().gotoWebView(gridNavBean.getFlight().getItem3().getUrl());
+    }
+
+    @OnClick(R2.id.home_grid_nav_car)
+    public void onHomeGridNavCarClicked() {
+        WebViewImpl.getInstance().gotoWebView(gridNavBean.getFlight().getItem4().getUrl());
+    }
+
+    @OnClick(R2.id.home_grid_nav_travel)
+    public void onHomeGridNavTravelClicked() {
+        WebViewImpl.getInstance().gotoWebView(gridNavBean.getTravel().getItem1().getUrl());
+    }
+
+    @OnClick(R2.id.home_grid_nav_gaotie)
+    public void onHomeGridNavGaotieClicked() {
+        WebViewImpl.getInstance().gotoWebView(gridNavBean.getTravel().getItem2().getUrl());
+    }
+
+    @OnClick(R2.id.home_grid_nav_ship)
+    public void onHomeGridNavShipClicked() {
+        WebViewImpl.getInstance().gotoWebView(gridNavBean.getTravel().getItem3().getUrl());
+    }
+
+    @OnClick(R2.id.home_grid_nav_custom)
+    public void onHomeGridNavCustomClicked() {
+        WebViewImpl.getInstance().gotoWebView(gridNavBean.getTravel().getItem4().getUrl());
     }
 }

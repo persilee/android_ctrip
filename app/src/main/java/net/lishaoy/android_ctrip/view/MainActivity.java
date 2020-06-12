@@ -16,6 +16,7 @@ import net.lishaoy.android_ctrip.view.adapter.NavigatorAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import me.majiajie.pagerbottomtabstrip.NavigationController;
 import me.majiajie.pagerbottomtabstrip.PageNavigationView;
 import me.majiajie.pagerbottomtabstrip.item.BaseTabItem;
@@ -34,6 +35,7 @@ public class MainActivity extends FragmentActivity {
     @BindView(R.id.tab)
     PageNavigationView tab;
     private NavigationController navigationController;
+    private Unbinder unbinder;
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -41,7 +43,7 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ARouter.init(getApplication());
-        ButterKnife.bind(this);
+        unbinder = ButterKnife.bind(this);
         //设置状态栏颜色
         ImmersionBar.with(this)
                 .init();
@@ -61,7 +63,7 @@ public class MainActivity extends FragmentActivity {
         navigationController.addTabItemSelectedListener(new OnTabItemSelectedListener() {
             @Override
             public void onSelected(int index, int old) {
-
+                if(index == 0) changeStatusBar(false); else changeStatusBar(true);
             }
 
             @Override
@@ -79,5 +81,17 @@ public class MainActivity extends FragmentActivity {
         normalItemView.setTextDefaultColor(Color.GRAY);
         normalItemView.setTextCheckedColor(0xff4CB7F9);
         return normalItemView;
+    }
+
+    private void changeStatusBar(boolean b) {
+        ImmersionBar.with(this)
+                .statusBarDarkFont(b)
+                .init();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbinder.unbind();
     }
 }

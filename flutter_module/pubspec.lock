@@ -36,6 +36,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.1.2"
+  clone_flutter_webview_plugin:
+    dependency: "direct main"
+    description:
+      name: clone_flutter_webview_plugin
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.2.1"
   collection:
     dependency: transitive
     description:
@@ -69,11 +76,53 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_color_plugin:
+    dependency: "direct main"
+    description:
+      name: flutter_color_plugin
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.0.2"
+  flutter_page_indicator:
+    dependency: transitive
+    description:
+      name: flutter_page_indicator
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.0.3"
+  flutter_staggered_grid_view:
+    dependency: "direct main"
+    description:
+      name: flutter_staggered_grid_view
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.3.0"
+  flutter_swiper:
+    dependency: "direct main"
+    description:
+      name: flutter_swiper
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.1.6"
   flutter_test:
     dependency: "direct dev"
     description: flutter
     source: sdk
     version: "0.0.0"
+  http:
+    dependency: "direct main"
+    description:
+      name: http
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.12.1"
+  http_parser:
+    dependency: transitive
+    description:
+      name: http_parser
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.1.4"
   image:
     dependency: transitive
     description:
@@ -170,6 +219,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.2.11"
+  transformer_page_view:
+    dependency: transitive
+    description:
+      name: transformer_page_view
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.1.6"
   typed_data:
     dependency: transitive
     description:
@@ -193,3 +249,4 @@ packages:
     version: "3.5.0"
 sdks:
   dart: ">=2.4.0 <3.0.0"
+  flutter: ">=1.6.0 <3.0.0"

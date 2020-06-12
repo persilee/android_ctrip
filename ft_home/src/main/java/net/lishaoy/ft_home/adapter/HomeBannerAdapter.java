@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.youth.banner.adapter.BannerAdapter;
 import net.lishaoy.ft_home.model.Home;
+import net.lishaoy.lib_base.lib_home.service.wrapper.WebViewImpl;
 import net.lishaoy.lib_image_loader.app.ImageLoaderManager;
 import net.lishaoy.lib_webview.WebActivity;
 
@@ -37,9 +38,7 @@ public class HomeBannerAdapter extends BannerAdapter<Home.BannerListBean, HomeBa
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), WebActivity.class);
-                intent.putExtra("url",data.getUrl());
-                v.getContext().startActivity(intent);
+                WebViewImpl.getInstance().gotoWebView(data.getUrl());
             }
         });
     }
