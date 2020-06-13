@@ -47,7 +47,6 @@ public class MainActivity extends FragmentActivity {
         //设置状态栏颜色
         ImmersionBar.with(this)
                 .init();
-
         //初始化导航栏
         navigationController = tab.custom()
                 .addItem(newItem(R.mipmap.xiecheng, R.mipmap.xiecheng_active, CHANNEL.HOME.getKey()))
@@ -71,6 +70,7 @@ public class MainActivity extends FragmentActivity {
 
             }
         });
+
     }
 
     //创建一个Item
@@ -94,4 +94,5 @@ public class MainActivity extends FragmentActivity {
         super.onDestroy();
         unbinder.unbind();
     }
+
 }
