@@ -309,19 +309,20 @@ class _DestinationPageState extends State<DestinationPage>
     }
   }
 
+  Future<void> _gotoWebView(String url) async {
+    try {
+      await methodChannel.invokeMethod('gotoWebView',{'url': url});
+    } on PlatformException {
+      print('Failed go to gotoWebView');
+    }
+  }
+
   void _jumpToSpeak() {
     _gotoSpeakPage();
   }
 
   void _jumpToService() {
-    NavigatorUtil.push(
-        context,
-        WebView(
-          url:
-              'https://m.ctrip.com/webapp/servicechatv2/?bizType=1105&channel=VAC&orderInfo=&isPreSale=1&pageCode=220008&thirdPartytoken=F2BCB02915C58496DD7DEA00278B68AF&sceneCode=0&isFreeLogin=',
-          hideAppBar: false,
-          title: '客服',
-        ));
+    _gotoWebView('https://m.ctrip.com/webapp/servicechatv2/?bizType=1105&channel=VAC&orderInfo=&isPreSale=1&pageCode=220008&thirdPartytoken=F2BCB02915C58496DD7DEA00278B68AF&sceneCode=0&isFreeLogin=');
   }
 
   void _loadData() {
@@ -482,12 +483,6 @@ class _DestinationPageState extends State<DestinationPage>
   bool get wantKeepAlive => true;
 
   void _openWebView(String kwd, int id) {
-    NavigatorUtil.push(
-        context,
-        WebView(
-          url:
-              'https://m.ctrip.com/webapp/vacations/tour/list?identifier=choice&kwd=${kwd}&poid=${id.toString()}&poitype=D&salecity=2&scity=2&searchtype=all&tab=126',
-          hideAppBar: true,
-        ));
+    _gotoWebView('https://m.ctrip.com/webapp/vacations/tour/list?identifier=choice&kwd=${kwd}&poid=${id.toString()}&poitype=D&salecity=2&scity=2&searchtype=all&tab=126');
   }
 }
