@@ -9,6 +9,7 @@ import 'package:module/model/travel_hot_keyword_model.dart';
 import 'package:module/model/travel_params_model.dart';
 import 'package:module/model/travel_tab_model.dart';
 import 'package:module/pages/speak_page.dart';
+import 'package:module/plugin/method_channel_plugin.dart';
 import 'package:module/utils/navigator_util.dart';
 import 'package:module/widget/search_bar.dart';
 import 'package:module/widget/webview.dart';
@@ -103,41 +104,16 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
     super.dispose();
   }
 
-  static const MethodChannel methodChannel = MethodChannel('MethodChannelPlugin');
-  Future<void> _gotoTravelSearchPage() async {
-    try {
-      await methodChannel.invokeMethod('gotoTravelSearchPage');
-    } on PlatformException {
-      print('Failed go to gotoTravelSearchPage');
-    }
-  }
-
-  Future<void> _gotoSpeakPage() async {
-    try {
-      await methodChannel.invokeMethod('gotoSpeakPage',{'pageType':'travel'});
-    } on PlatformException {
-      print('Failed go to gotoSpeakPage');
-    }
-  }
-
   _jumpToSpeak() {
-    _gotoSpeakPage();
+    MethodChannelPlugin.gotoSpeakPage('travel');
   }
 
   void _jumpToSearch() {
-    _gotoTravelSearchPage();
+    MethodChannelPlugin.gotoTravelSearchPage();
   }
 
   void _jumpToUser() {
-    NavigatorUtil.push(
-      context,
-      WebView(
-        url: 'https://m.ctrip.com/webapp/you/tripshoot/user/home?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white',
-        hideHead: false,
-        hideAppBar: false,
-        title: '我的旅拍',
-      ),
-    );
+    MethodChannelPlugin.gotoWebView('https://m.ctrip.com/webapp/you/tripshoot/user/home?seo=0&isHideHeader=true&isHideNavBar=YES&navBarStyle=white');
   }
 
   void _loadParams() {

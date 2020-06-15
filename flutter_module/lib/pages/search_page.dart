@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:module/dao/search_dao.dart';
 import 'package:module/model/seach_model.dart';
 import 'package:module/pages/speak_page.dart';
+import 'package:module/plugin/method_channel_plugin.dart';
 import 'package:module/utils/navigator_util.dart';
 import 'package:module/widget/search_bar.dart';
 import 'package:module/widget/webview.dart';
@@ -77,15 +78,7 @@ class _SearchPageState extends State<SearchPage> {
     SearchItem item = searchModel.data[position];
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => WebView(
-              url: item.url,
-              title: '详情',
-            ),
-          ),
-        );
+        MethodChannelPlugin.gotoWebView(item.url);
       },
       child: Container(
         padding: EdgeInsets.all(10),

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:module/dao/destination_dao.dart';
 import 'package:module/model/destination_model.dart';
 import 'package:module/pages/speak_page.dart';
+import 'package:module/plugin/method_channel_plugin.dart';
 import 'package:module/plugin/vertical_tab_view.dart';
 import 'package:module/utils/navigator_util.dart';
 import 'package:module/widget/loading_container.dart';
@@ -289,40 +290,15 @@ class _DestinationPageState extends State<DestinationPage>
   }
 
   void _jumpToSearch() {
-    _gotoDestinationSearchPage();
-  }
-
-  static const MethodChannel methodChannel = MethodChannel('MethodChannelPlugin');
-  Future<void> _gotoDestinationSearchPage() async {
-    try {
-      await methodChannel.invokeMethod('gotoDestinationSearchPage');
-    } on PlatformException {
-      print('Failed go to gotoDestinationSearchPage');
-    }
-  }
-
-  Future<void> _gotoSpeakPage() async {
-    try {
-      await methodChannel.invokeMethod('gotoSpeakPage',{'pageType':'destination'});
-    } on PlatformException {
-      print('Failed go to gotoSpeakPage');
-    }
-  }
-
-  Future<void> _gotoWebView(String url) async {
-    try {
-      await methodChannel.invokeMethod('gotoWebView',{'url': url});
-    } on PlatformException {
-      print('Failed go to gotoWebView');
-    }
+    MethodChannelPlugin.gotoDestinationSearchPage();
   }
 
   void _jumpToSpeak() {
-    _gotoSpeakPage();
+    MethodChannelPlugin.gotoSpeakPage('destination');
   }
 
   void _jumpToService() {
-    _gotoWebView('https://m.ctrip.com/webapp/servicechatv2/?bizType=1105&channel=VAC&orderInfo=&isPreSale=1&pageCode=220008&thirdPartytoken=F2BCB02915C58496DD7DEA00278B68AF&sceneCode=0&isFreeLogin=');
+    MethodChannelPlugin.gotoWebView('https://m.ctrip.com/webapp/servicechatv2/?bizType=1105&channel=VAC&orderInfo=&isPreSale=1&pageCode=220008&thirdPartytoken=F2BCB02915C58496DD7DEA00278B68AF&sceneCode=0&isFreeLogin=');
   }
 
   void _loadData() {
@@ -483,6 +459,6 @@ class _DestinationPageState extends State<DestinationPage>
   bool get wantKeepAlive => true;
 
   void _openWebView(String kwd, int id) {
-    _gotoWebView('https://m.ctrip.com/webapp/vacations/tour/list?identifier=choice&kwd=${kwd}&poid=${id.toString()}&poitype=D&salecity=2&scity=2&searchtype=all&tab=126');
+    MethodChannelPlugin.gotoWebView('https://m.ctrip.com/webapp/vacations/tour/list?identifier=choice&kwd=${kwd}&poid=${id.toString()}&poitype=D&salecity=2&scity=2&searchtype=all&tab=126');
   }
 }

@@ -5,6 +5,7 @@ import 'package:module/dao/trave_search_hot_dao.dart';
 import 'package:module/model/travel_search_hot_model.dart';
 import 'package:module/model/travel_search_model.dart';
 import 'package:module/pages/speak_page.dart';
+import 'package:module/plugin/method_channel_plugin.dart';
 import 'package:module/utils/navigator_util.dart';
 import 'package:module/widget/search_bar.dart';
 import 'package:module/widget/webview.dart';
@@ -154,12 +155,7 @@ class _TravelSearchPageState extends State<TravelSearchPage> {
     if (items[position].resourceType == 'topic') {
       return GestureDetector(
         onTap: () {
-          NavigatorUtil.push(
-              context,
-              WebView(
-                title: items[position].name,
-                url: items[position].h5Url,
-              ));
+          MethodChannelPlugin.gotoWebView(items[position].h5Url);
         },
         child: Container(
           padding: EdgeInsets.all(10),
@@ -202,12 +198,7 @@ class _TravelSearchPageState extends State<TravelSearchPage> {
     } else if (items[position].resourceType == 'sight') {
       return GestureDetector(
         onTap: () {
-          NavigatorUtil.push(
-              context,
-              WebView(
-                title: items[position].name,
-                url: items[position].h5Url,
-              ));
+          MethodChannelPlugin.gotoWebView(items[position].h5Url);
         },
         child: Container(
           padding: EdgeInsets.all(10),
@@ -246,14 +237,10 @@ class _TravelSearchPageState extends State<TravelSearchPage> {
     } else if (items[position].resourceType == 'user') {
       return GestureDetector(
         onTap: () {
-          NavigatorUtil.push(
-              context,
-              WebView(
-                title: items[position].title,
-                url: 'https://m.ctrip.com/webapp/you/tripshoot/user/home?seo=0&clientAuth=' +
-                    items[position].clientAuth +
-                    '&autoawaken=close&popup=close&isHideHeader=true&isHideNavBar=YES&navBarStyle=white',
-              ));
+          String url = 'https://m.ctrip.com/webapp/you/tripshoot/user/home?seo=0&clientAuth=' +
+              items[position].clientAuth +
+              '&autoawaken=close&popup=close&isHideHeader=true&isHideNavBar=YES&navBarStyle=white';
+          MethodChannelPlugin.gotoWebView(url);
         },
         child: Container(
           padding: EdgeInsets.all(10),
@@ -307,14 +294,10 @@ class _TravelSearchPageState extends State<TravelSearchPage> {
     } else if (items[position].resourceType == 'hotword') {
       return GestureDetector(
         onTap: () {
-          NavigatorUtil.push(
-              context,
-              WebView(
-                title: items[position].name,
-                url: 'https://m.ctrip.com/webapp/you/livestream/paipai/searchResult?districtId=0&userLat=-180&userLng=-180&keyword=' +
-                    items[position].name +
-                    '&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&from=https%3A%2F%2Fm.ctrip.com%2Fwebapp%2Fyou%2Flivestream%2Fpaipai%2FsearchPage.html%3FdistrictId%3D-1%26locatedDistrictId%3D0%26userLat%3D-180%26userLng%3D-180%26isHideHeader%3Dtrue%26isHideNavBar%3DYES%26autoawaken%3Dclose%26popup%3Dclose%26navBarStyle%3Dwhite&navBarStyle=white',
-              ));
+          String url = 'https://m.ctrip.com/webapp/you/livestream/paipai/searchResult?districtId=0&userLat=-180&userLng=-180&keyword=' +
+              items[position].name +
+              '&isHideHeader=true&isHideNavBar=YES&navBarStyle=white&from=https%3A%2F%2Fm.ctrip.com%2Fwebapp%2Fyou%2Flivestream%2Fpaipai%2FsearchPage.html%3FdistrictId%3D-1%26locatedDistrictId%3D0%26userLat%3D-180%26userLng%3D-180%26isHideHeader%3Dtrue%26isHideNavBar%3DYES%26autoawaken%3Dclose%26popup%3Dclose%26navBarStyle%3Dwhite&navBarStyle=white';
+          MethodChannelPlugin.gotoWebView(url);
         },
         child: Container(
           padding: EdgeInsets.all(10),
@@ -347,12 +330,7 @@ class _TravelSearchPageState extends State<TravelSearchPage> {
     } else if (items[position].resourceType == 'district') {
       return GestureDetector(
         onTap: () {
-          NavigatorUtil.push(
-              context,
-              WebView(
-                title: items[position].name,
-                url: items[position].h5Url,
-              ));
+          MethodChannelPlugin.gotoWebView(items[position].h5Url);
         },
         child: Container(
           padding: EdgeInsets.all(10),
@@ -398,12 +376,7 @@ class _TravelSearchPageState extends State<TravelSearchPage> {
     if (resourceItem.iconUrl != '') {
       return GestureDetector(
         onTap: () {
-          NavigatorUtil.push(
-              context,
-              WebView(
-                url: resourceItem.h5Url,
-                title: '携程旅拍',
-              ));
+          MethodChannelPlugin.gotoWebView(resourceItem.h5Url);
         },
         child: Chip(
           backgroundColor: Color(0xffF4F4F4),
@@ -421,12 +394,7 @@ class _TravelSearchPageState extends State<TravelSearchPage> {
     } else {
       return GestureDetector(
         onTap: () {
-          NavigatorUtil.push(
-              context,
-              WebView(
-                url: resourceItem.h5Url,
-                title: '携程旅拍',
-              ));
+          MethodChannelPlugin.gotoWebView(resourceItem.h5Url);
         },
         child: Chip(
           backgroundColor: Color(0xffF4F4F4),

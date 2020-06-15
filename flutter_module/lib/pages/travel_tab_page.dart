@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:module/dao/travel_dao.dart';
 import 'package:module/model/travel_model.dart';
+import 'package:module/plugin/method_channel_plugin.dart';
 import 'package:module/utils/navigator_util.dart';
 import 'package:module/widget/loading_container.dart';
 import 'package:module/widget/webview.dart';
@@ -137,12 +138,7 @@ class _TravelItem extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         if (item.article.urls != null && item.article.urls.length > 0) {
-          NavigatorUtil.push(
-              context,
-              WebView(
-            url: item.article.urls[0].h5Url,
-            title: '携程旅拍',
-          ));
+          MethodChannelPlugin.gotoWebView(item.article.urls[0].h5Url);
         }
       },
       child: Card(
