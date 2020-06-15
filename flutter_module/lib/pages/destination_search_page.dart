@@ -53,6 +53,13 @@ class _DestinationSearchPageState extends State<DestinationSearchPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+//      appBar: PreferredSize(
+//          child: AppBar(
+//            backgroundColor: Colors.transparent,
+//            elevation: 0,
+//            brightness: Brightness.light,
+//          ),
+//          preferredSize: Size.fromHeight(0)),
       body: Column(
         children: <Widget>[
           _appBar(context),
@@ -83,8 +90,8 @@ class _DestinationSearchPageState extends State<DestinationSearchPage> {
             ),
           ),
           child: Container(
-              padding: EdgeInsets.only(top: 16),
-              height: 76,
+              padding: EdgeInsets.only(top: 22),
+              height: 88,
               decoration: BoxDecoration(
                 color: Colors.white,
                 boxShadow: [
@@ -123,7 +130,8 @@ class _DestinationSearchPageState extends State<DestinationSearchPage> {
     List<Widget> _contents = [];
     if (destinationSearchModel.inputInfoType != null) {
       PoiInfoType item = destinationSearchModel.inputInfoType.poiInfoType;
-      _contents.add(_createPoiInfo(item.searchName, item.poid, item.upperName, item.dataType));
+      _contents.add(_createPoiInfo(
+          item.searchName, item.poid, item.upperName, item.dataType));
     }
     if (destinationSearchModel.suggestTabType != null) {
       suggestTabType = destinationSearchModel.suggestTabType;
@@ -144,14 +152,15 @@ class _DestinationSearchPageState extends State<DestinationSearchPage> {
       suggestPoiType = destinationSearchModel.suggestPoiType;
       List<PoiInfoTypes> sugItems = suggestPoiType.poiInfoTypes;
       List<Widget> widgets = _createSugItem(sugItems);
-      widgets.forEach((i){
+      widgets.forEach((i) {
         _contents.add(i);
       });
     }
     if (destinationSearchModel.suggestRecommendType != null) {
       suggestRecommendType = destinationSearchModel.suggestRecommendType;
       List<HotPoiTypes> poiItems = suggestRecommendType.hotPoiTypes;
-      _contents.add(_createTabs(suggestRecommendType.title, poiItems, poi:'poi'));
+      _contents
+          .add(_createTabs(suggestRecommendType.title, poiItems, poi: 'poi'));
     }
     return _contents;
   }
@@ -242,25 +251,39 @@ class _DestinationSearchPageState extends State<DestinationSearchPage> {
     String sName = '';
     String url = '';
     String filter = '';
-    return tabItems.map((tabItem){
-      if(tabItem is TabInfoTypes) sName = tabItem.tabName;
-      if(tabItem is HotPoiTypes) sName = tabItem.searchName;
-      if(tabItem is PreferInfoTypes) sName = tabItem.name;
-      Widget titleW = Text(sName,overflow: TextOverflow.ellipsis,maxLines: 2,style: TextStyle(fontSize: 13),textAlign: TextAlign.center,);
+    return tabItems.map((tabItem) {
+      if (tabItem is TabInfoTypes) sName = tabItem.tabName;
+      if (tabItem is HotPoiTypes) sName = tabItem.searchName;
+      if (tabItem is PreferInfoTypes) sName = tabItem.name;
+      Widget titleW = Text(
+        sName,
+        overflow: TextOverflow.ellipsis,
+        maxLines: 2,
+        style: TextStyle(fontSize: 13),
+        textAlign: TextAlign.center,
+      );
       return GestureDetector(
         onTap: () {
-          if(tabItem is TabInfoTypes){
-            if(tabItem.type == 'ProductPattern') url = 'https://m.ctrip.com/webapp/vacations/tour/list?filter=n${tabItem.tabId}&kwd=${keyword}&kwdfrom=assword&salecity=2&scity=2&searchtype=all&tab=126';
-            if(tabItem.tabId == '131072') url = 'https://m.ctrip.com/webapp/dingzhi/index?startDistrictId=2&startName=${tabItem.tabName}&destLandingPoid=&destLandingName=${tabItem.tabName}&productOrigin=13&from=https%3A%2F%2Fm.ctrip.com%2Fwebapp%2Fvacations%2Ftour%2Fdestination%3Ffrompage%3Dlist%26tab%3D126%26searchtype%3Dall%26initkwd%3D%25E4%25B8%2589%25E4%25BA%259A%26query%3Dkwdfrom%253Dassword%2526salecity%253D2%2526scity%253D2';
-            else url = 'https://m.ctrip.com/webapp/vacations/tour/list?kwd=${keyword}&kwdfrom=assword&salecity=2&scity=2&searchtype=all&tab=${tabItem.tabId}';
+          if (tabItem is TabInfoTypes) {
+            if (tabItem.type == 'ProductPattern')
+              url =
+                  'https://m.ctrip.com/webapp/vacations/tour/list?filter=n${tabItem.tabId}&kwd=${keyword}&kwdfrom=assword&salecity=2&scity=2&searchtype=all&tab=126';
+            if (tabItem.tabId == '131072')
+              url =
+                  'https://m.ctrip.com/webapp/dingzhi/index?startDistrictId=2&startName=${tabItem.tabName}&destLandingPoid=&destLandingName=${tabItem.tabName}&productOrigin=13&from=https%3A%2F%2Fm.ctrip.com%2Fwebapp%2Fvacations%2Ftour%2Fdestination%3Ffrompage%3Dlist%26tab%3D126%26searchtype%3Dall%26initkwd%3D%25E4%25B8%2589%25E4%25BA%259A%26query%3Dkwdfrom%253Dassword%2526salecity%253D2%2526scity%253D2';
+            else
+              url =
+                  'https://m.ctrip.com/webapp/vacations/tour/list?kwd=${keyword}&kwdfrom=assword&salecity=2&scity=2&searchtype=all&tab=${tabItem.tabId}';
           }
-          if(tabItem is HotPoiTypes) {
-            url = 'https://m.ctrip.com/webapp/vacations/tour/list?kwd=${tabItem.searchName}&kwdfrom=assword&poid=${tabItem.poid}&salecity=2&scity=2&searchtype=all&tab=126';
+          if (tabItem is HotPoiTypes) {
+            url =
+                'https://m.ctrip.com/webapp/vacations/tour/list?kwd=${tabItem.searchName}&kwdfrom=assword&poid=${tabItem.poid}&salecity=2&scity=2&searchtype=all&tab=126';
           }
-          if(tabItem is PreferInfoTypes){
+          if (tabItem is PreferInfoTypes) {
             if (tabItem.name == '5日') filter = 'u5';
             if (tabItem.name == '5钻') filter = 'g5';
-            url = 'https://m.ctrip.com/webapp/vacations/tour/list?filter=${filter!=''?filter:tabItem.id}&kwd=${keyword}&kwdfrom=assword&poid=61&poitype=D&salecity=2&scity=2&searchtype=all&tab=126';
+            url =
+                'https://m.ctrip.com/webapp/vacations/tour/list?filter=${filter != '' ? filter : tabItem.id}&kwd=${keyword}&kwdfrom=assword&poid=61&poitype=D&salecity=2&scity=2&searchtype=all&tab=126';
           }
           _jumpToSearch(url);
         },
@@ -274,13 +297,20 @@ class _DestinationSearchPageState extends State<DestinationSearchPage> {
             color: Color(0xfff7f7f7),
             borderRadius: BorderRadius.circular(6),
           ),
-          child: tabItem is PreferInfoTypes ? Column(
-            children: <Widget>[
-              titleW,
-              Text(tabItem.preferName,overflow: TextOverflow.ellipsis,maxLines: 1,style: TextStyle(fontSize: 12,fontFamily: ''),textAlign: TextAlign.center,)
-            ],
-          )
-          : titleW,
+          child: tabItem is PreferInfoTypes
+              ? Column(
+                  children: <Widget>[
+                    titleW,
+                    Text(
+                      tabItem.preferName,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style: TextStyle(fontSize: 12, fontFamily: ''),
+                      textAlign: TextAlign.center,
+                    )
+                  ],
+                )
+              : titleW,
         ),
       );
     }).toList();
@@ -288,13 +318,12 @@ class _DestinationSearchPageState extends State<DestinationSearchPage> {
 
   Widget _createTabs(String title, List<dynamic> tabList, {String poi = ''}) {
     String icon = 'images/lvxiang.png';
-    if(tabList is List<TabInfoTypes>) icon = 'images/lvxiang.png';
-    if(tabList is List<HotPoiTypes>) icon = 'images/lvpai_issue_position.png';
-    if(poi == 'poi') icon = 'images/lvpai_search_list.png';
+    if (tabList is List<TabInfoTypes>) icon = 'images/lvxiang.png';
+    if (tabList is List<HotPoiTypes>) icon = 'images/lvpai_issue_position.png';
+    if (poi == 'poi') icon = 'images/lvpai_search_list.png';
     return Container(
       decoration: BoxDecoration(
-          border: Border(
-              bottom: BorderSide(width: 0.3, color: Colors.grey))),
+          border: Border(bottom: BorderSide(width: 0.3, color: Colors.grey))),
       child: Column(
         children: <Widget>[
           Container(
@@ -324,20 +353,21 @@ class _DestinationSearchPageState extends State<DestinationSearchPage> {
     );
   }
 
-  Widget _createPoiInfo(String searchName,int poid, String upperName, String dataType) {
+  Widget _createPoiInfo(
+      String searchName, int poid, String upperName, String dataType) {
     String icon = 'images/lvpai_search_list.png';
-    if(dataType == 'D') icon = 'images/lvpai_issue_position.png';
-    if(dataType == '') icon = 'images/lvpai_search_list.png';
-    if(dataType == 'SS') icon = 'images/lvpai_issue_sight.png';
+    if (dataType == 'D') icon = 'images/lvpai_issue_position.png';
+    if (dataType == '') icon = 'images/lvpai_search_list.png';
+    if (dataType == 'SS') icon = 'images/lvpai_issue_sight.png';
     return GestureDetector(
       onTap: () {
-        _jumpToSearch('https://m.ctrip.com/webapp/vacations/tour/list?kwd=${searchName}&kwdfrom=assword&poid=${poid.toString()}&poitype=D&salecity=2&scity=2&searchtype=all&tab=126');
+        _jumpToSearch(
+            'https://m.ctrip.com/webapp/vacations/tour/list?kwd=${searchName}&kwdfrom=assword&poid=${poid.toString()}&poitype=D&salecity=2&scity=2&searchtype=all&tab=126');
       },
       child: Container(
         padding: EdgeInsets.all(12),
         decoration: BoxDecoration(
-            border:
-            Border(bottom: BorderSide(width: 0.3, color: Colors.grey))),
+            border: Border(bottom: BorderSide(width: 0.3, color: Colors.grey))),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -374,8 +404,9 @@ class _DestinationSearchPageState extends State<DestinationSearchPage> {
   }
 
   List<Widget> _createSugItem(List<PoiInfoTypes> sugItems) {
-   return sugItems.map((sugItem){
-      return _createPoiInfo(sugItem.searchName, sugItem.poid, sugItem?.upperName ?? '', sugItem?.dataType ?? '');
+    return sugItems.map((sugItem) {
+      return _createPoiInfo(sugItem.searchName, sugItem.poid,
+          sugItem?.upperName ?? '', sugItem?.dataType ?? '');
     }).toList();
   }
 

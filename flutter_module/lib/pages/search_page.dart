@@ -128,8 +128,8 @@ class _SearchPageState extends State<SearchPage> {
             ),
           ),
           child: Container(
-              padding: EdgeInsets.only(top: 16),
-              height: 76,
+              padding: EdgeInsets.only(top: 22),
+              height: 88,
               decoration: BoxDecoration(
                 color: Colors.white,
                 boxShadow: [

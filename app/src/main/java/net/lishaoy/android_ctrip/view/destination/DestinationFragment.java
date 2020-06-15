@@ -1,5 +1,6 @@
 package net.lishaoy.android_ctrip.view.destination;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+
+import com.gyf.immersionbar.ImmersionBar;
 
 import net.lishaoy.android_ctrip.R;
 import net.lishaoy.android_ctrip.channel.MethodChannelPlugin;
@@ -57,11 +60,7 @@ public class DestinationFragment extends Fragment {
 
     @Subscribe
     public void gotoDestinationSearchPage(GotoDestinationSearchPageEvent event){
-        startActivity(
-                FlutterActivity
-                        .withNewEngine()
-                        .initialRoute("destination/search")
-                        .build(getContext())
-        );
+        Intent intent = new Intent(getContext(), DestinationSearchActivity.class);
+        startActivity(intent);
     }
 }

@@ -78,8 +78,8 @@ class _TravelSearchPageState extends State<TravelSearchPage> {
             ),
           ),
           child: Container(
-              padding: EdgeInsets.only(top: 16),
-              height: 76,
+              padding: EdgeInsets.only(top: 22),
+              height: 88,
               decoration: BoxDecoration(
                 color: Colors.white,
               ),
