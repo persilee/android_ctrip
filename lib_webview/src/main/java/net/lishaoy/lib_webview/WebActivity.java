@@ -29,7 +29,11 @@ import com.just.agentweb.DefaultWebClient;
 import com.just.agentweb.WebChromeClient;
 import com.just.agentweb.WebViewClient;
 
+import net.lishaoy.lib_webview.events.RefreshEvent;
 import net.lishaoy.lib_webview.widget.WebLayout;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 @Route(path = "/webview/web_activity")
 public class WebActivity extends AppCompatActivity {
@@ -170,5 +174,22 @@ public class WebActivity extends AppCompatActivity {
                 }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Subscribe
+    public void refreshWebView (RefreshEvent event){
+        agentWeb.getUrlLoader().reload();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 }

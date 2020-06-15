@@ -62,8 +62,6 @@ dependencies {
     //view 注入
     implementation rootProject.depsLibs.butterknife
     //view 注入
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     annotationProcessor rootProject.depsLibs.butterknifeCompiler
     //gson
     implementation rootProject.depsLibs.gson

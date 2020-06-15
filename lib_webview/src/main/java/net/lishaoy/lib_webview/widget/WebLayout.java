@@ -15,6 +15,9 @@ import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 
 import net.lishaoy.lib_webview.R;
+import net.lishaoy.lib_webview.events.RefreshEvent;
+
+import org.greenrobot.eventbus.EventBus;
 
 public class WebLayout implements IWebLayout {
 
@@ -27,10 +30,12 @@ public class WebLayout implements IWebLayout {
         smartRefreshLayout = (SmartRefreshLayout) LayoutInflater.from(activity).inflate(R.layout.fragment_twk_web, null);
         smartRefreshLayout.setRefreshHeader(new ClassicsHeader(activity));
         smartRefreshLayout.setEnableLoadMore(false);
+        smartRefreshLayout.setEnableNestedScroll(true);
         smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                refreshLayout.finishRefresh();
+                EventBus.getDefault().post(new RefreshEvent());
+                refreshLayout.finishRefresh(1600);
             }
         });
         webView = smartRefreshLayout.findViewById(R.id.web_view);
