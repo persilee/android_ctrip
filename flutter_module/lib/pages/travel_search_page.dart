@@ -8,7 +8,6 @@ import 'package:module/pages/speak_page.dart';
 import 'package:module/plugin/method_channel_plugin.dart';
 import 'package:module/utils/navigator_util.dart';
 import 'package:module/widget/search_bar.dart';
-import 'package:module/widget/webview.dart';
 
 
 const TYPES = ['topic', 'place', 'user', 'hotword', 'district'];

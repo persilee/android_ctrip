@@ -57,6 +57,7 @@ dependencies {
     //smartRefreshLayout 上下拉刷新
     compileOnly rootProject.depsLibs.smartRefreshLayout
     compileOnly rootProject.depsLibs.refreshHeader
+    compileOnly rootProject.depsLibs.refreshHeaderTwoLevel
     compileOnly rootProject.depsLibs.refreshFooter
     //eventbus
     compileOnly rootProject.depsLibs.eventbus

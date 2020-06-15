@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:module/dao/destination_dao.dart';
 import 'package:module/model/destination_model.dart';
-import 'package:module/pages/speak_page.dart';
 import 'package:module/plugin/method_channel_plugin.dart';
 import 'package:module/plugin/vertical_tab_view.dart';
-import 'package:module/utils/navigator_util.dart';
 import 'package:module/widget/loading_container.dart';
 import 'package:module/widget/scalable_box.dart';
 import 'package:module/widget/search_bar.dart';
-import 'package:module/widget/webview.dart';
-
-import 'destination_search_page.dart';
 
 const DEFAULT_TEXT = '目的地 | 主题 | 关键字';
 

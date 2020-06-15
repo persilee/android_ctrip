@@ -3,9 +3,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:module/dao/travel_dao.dart';
 import 'package:module/model/travel_model.dart';
 import 'package:module/plugin/method_channel_plugin.dart';
-import 'package:module/utils/navigator_util.dart';
 import 'package:module/widget/loading_container.dart';
-import 'package:module/widget/webview.dart';
 
 
 const _TRAVEL_URL =

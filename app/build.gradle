@@ -70,6 +70,7 @@ dependencies {
     //smartRefreshLayout 上下拉刷新
     implementation rootProject.depsLibs.smartRefreshLayout
     implementation rootProject.depsLibs.refreshHeader
+    implementation rootProject.depsLibs.refreshHeaderTwoLevel
     implementation rootProject.depsLibs.refreshFooter
     //eventbus
     implementation rootProject.depsLibs.eventbus
