@@ -76,4 +76,8 @@ dependencies {
     compileOnly project(':lib_common_ui')
     //base库
     compileOnly project(':lib_base')
+    //引入flutter模块
+    compileOnly project(path: ':flutter')
+    //引入flutter模块
+    compileOnly project(':lib_asr')
 }

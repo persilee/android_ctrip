@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:module/dao/search_dao.dart';
 import 'package:module/model/seach_model.dart';
 import 'package:module/pages/speak_page.dart';
@@ -139,7 +140,7 @@ class _SearchPageState extends State<SearchPage> {
                 defaultText: widget.keyword,
                 hint: widget.hint,
                 leftButtonClick: () {
-                  Navigator.pop(context);
+                  SystemNavigator.pop();
                 },
                 onChanged: _onTextChange,
                 speakClick: _jumpToSpeak,

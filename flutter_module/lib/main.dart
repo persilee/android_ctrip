@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:module/pages/destination_page.dart';
 import 'package:module/pages/destination_search_page.dart';
+import 'package:module/pages/search_page.dart';
 import 'package:module/pages/speak_page.dart';
 import 'package:module/pages/travel_page.dart';
 import 'package:module/pages/travel_search_page.dart';
@@ -46,9 +47,17 @@ Widget _widgetRoute(String defaultRouteName) {
       return SpeakPage(
         pageType: 'travel',
       );
+    case 'speak/home':
+      return SpeakPage(
+        pageType: 'home',
+      );
     case 'travel/search':
       return TravelSearchPage(
         hint: '',
+        hideLeft: false,
+      );
+    case 'search':
+      return SearchPage(
         hideLeft: false,
       );
     default:

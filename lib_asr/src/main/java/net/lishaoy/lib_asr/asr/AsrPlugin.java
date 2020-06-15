@@ -85,6 +85,7 @@ public class AsrPlugin implements MethodChannel.MethodCallHandler {
     private void release(MethodCall call, MethodChannel.Result result){
         if (asrManager != null) {
             asrManager.release();
+            asrManager = null;
         }
     }
 

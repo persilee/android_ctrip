@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +19,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
@@ -23,14 +27,14 @@ import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.youth.banner.Banner;
 import com.youth.banner.util.BannerUtils;
 
+import net.lishaoy.ft_home.adapter.HomeBannerAdapter;
+import net.lishaoy.ft_home.adapter.SubNavViewAdapter;
+import net.lishaoy.ft_home.api.RequestCenter;
 import net.lishaoy.ft_home.events.IsLoadMoreSelectEvent;
 import net.lishaoy.ft_home.events.LoadMoreFoodEvent;
 import net.lishaoy.ft_home.events.LoadMoreNearEvent;
 import net.lishaoy.ft_home.events.LoadMoreScenicEvent;
 import net.lishaoy.ft_home.events.LoadMoreSelectEvent;
-import net.lishaoy.ft_home.adapter.HomeBannerAdapter;
-import net.lishaoy.ft_home.adapter.SubNavViewAdapter;
-import net.lishaoy.ft_home.api.RequestCenter;
 import net.lishaoy.ft_home.model.Home;
 import net.lishaoy.ft_home.util.CustomScrollView;
 import net.lishaoy.ft_home.util.EllipseIndicator;
@@ -44,6 +48,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 
@@ -67,6 +72,10 @@ public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTab
     SmartRefreshLayout homeRefreshContainer;
     @BindView(R2.id.home_tab_top_view)
     MagicIndicator homeTabTopView;
+    @BindView(R2.id.home_search_bar_content)
+    EditText homeSearchBarContent;
+    @BindView(R2.id.home_search_bar_speak_img)
+    ImageView homeSearchBarSpeakImg;
 
     private Unbinder unbinder;
     private Home homeData;
@@ -92,6 +101,7 @@ public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTab
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
         unbinder = ButterKnife.bind(this, view);
+        ARouter.getInstance().inject(this);
         return view;
     }
 
@@ -221,5 +231,21 @@ public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTab
         } else {
             homeTabTopView.setVisibility(View.INVISIBLE);
         }
+    }
+
+
+    @OnClick(R2.id.home_search_bar_content)
+    public void onHomeSearchBarContentClicked() {
+        ARouter.getInstance()
+                .build("/home/search")
+                .navigation();
+    }
+
+    @OnClick(R2.id.home_search_bar_speak_img)
+    public void onHomeSearchBarSpeakImgClicked() {
+        ARouter.getInstance()
+                .build("/home/speak")
+                .withString("pageType","home")
+                .navigation();
     }
 }

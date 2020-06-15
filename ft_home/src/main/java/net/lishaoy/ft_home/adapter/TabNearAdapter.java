@@ -49,7 +49,8 @@ public class TabNearAdapter extends RecyclerView.Adapter<TabNearAdapter.MyViewHo
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         final TabNearItem tabNearItem = new Gson().fromJson(tabNearItems.get(position), TabNearItem.class);
-        ImageLoaderManager.getInstance().displayImageForView(holder.tabSelectImg, tabNearItem.getImg().getImg1().getUrl() + "_D_500_500_R5_Q80.jpg");
+        String url = tabNearItem.getImg().getImg1().getUrl().substring(0,tabNearItem.getImg().getImg1().getUrl().lastIndexOf("."));
+        ImageLoaderManager.getInstance().displayImageForView(holder.tabSelectImg, url + "_D_500_500_R5_Q80.jpg");
         holder.tabSelectTitle.setText(tabNearItem.getTitle());
         if (tabNearItem.getItag() != null) {
             holder.tabSelectDescribe.setText(tabNearItem.getItag());

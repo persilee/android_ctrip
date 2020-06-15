@@ -92,6 +92,15 @@ class _SpeakPageState extends State<SpeakPage>
         });
         Navigator.pop(context);
         switch (widget.pageType) {
+          case 'home':
+            AsrManager.release();
+            NavigatorUtil.push(
+                context,
+                SearchPage(
+                  keyword: speakResult,
+                  hideLeft: false,
+                ));
+            break;
           case 'travel':
             AsrManager.release();
             NavigatorUtil.push(

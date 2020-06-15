@@ -13,6 +13,7 @@
         android:background="@drawable/shape_home_bar_bg">
 
         <EditText
+            android:id="@+id/home_search_bar_content"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_gravity="bottom"
@@ -32,6 +33,7 @@
             android:src="@mipmap/search" />
 
         <ImageView
+            android:id="@+id/home_search_bar_speak_img"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_gravity="end|bottom"
