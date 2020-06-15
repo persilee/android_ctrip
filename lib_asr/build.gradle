@@ -23,6 +23,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    compileOnly rootProject.depsLibs.appcompat
     //引入flutter模块
     compileOnly project(path: ':flutter')
 }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:module/dao/destination_search_dao.dart';
 import 'package:module/model/destination_search_model.dart';
 import 'package:module/model/seach_model.dart';
+import 'package:module/pages/destination_page.dart';
 import 'package:module/pages/speak_page.dart';
 import 'package:module/utils/navigator_util.dart';
 import 'package:module/widget/search_bar.dart';
@@ -53,7 +55,7 @@ class _DestinationSearchPageState extends State<DestinationSearchPage> {
       backgroundColor: Colors.white,
       body: Column(
         children: <Widget>[
-          _appBar(),
+          _appBar(context),
           MediaQuery.removePadding(
             removeTop: true,
             context: context,
@@ -69,7 +71,7 @@ class _DestinationSearchPageState extends State<DestinationSearchPage> {
     );
   }
 
-  _appBar() {
+  _appBar(BuildContext context) {
     return Column(
       children: <Widget>[
         Container(
@@ -99,7 +101,7 @@ class _DestinationSearchPageState extends State<DestinationSearchPage> {
                 defaultText: widget.keyword,
                 hint: widget.hint,
                 leftButtonClick: () {
-                  Navigator.pop(context);
+                  SystemNavigator.pop();
                 },
                 onChanged: _onTextChange,
                 speakClick: _jumpToSpeak,

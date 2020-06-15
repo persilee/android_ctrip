@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 
 import net.lishaoy.android_ctrip.R;
 
+import io.flutter.facade.Flutter;
+
 public class TravelFragment extends Fragment {
 
     public TravelFragment() {
@@ -25,6 +27,6 @@ public class TravelFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_travel, container, false);
+        return Flutter.createView(getActivity(),getLifecycle(),"travel");
     }
 }

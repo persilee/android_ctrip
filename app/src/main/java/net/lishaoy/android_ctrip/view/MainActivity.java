@@ -17,13 +17,14 @@ import net.lishaoy.android_ctrip.view.adapter.NavigatorAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.flutter.view.FlutterMain;
 import me.majiajie.pagerbottomtabstrip.NavigationController;
 import me.majiajie.pagerbottomtabstrip.PageNavigationView;
 import me.majiajie.pagerbottomtabstrip.item.BaseTabItem;
 import me.majiajie.pagerbottomtabstrip.item.NormalItemView;
 import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity{
 
     private static final String TAG = "HomeActivity";
 
@@ -40,6 +41,7 @@ public class MainActivity extends FragmentActivity {
     @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        FlutterMain.startInitialization(getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ARouter.init(getApplication());
