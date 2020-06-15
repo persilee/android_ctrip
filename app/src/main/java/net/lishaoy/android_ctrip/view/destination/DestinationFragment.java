@@ -15,6 +15,8 @@ import com.gyf.immersionbar.ImmersionBar;
 import net.lishaoy.android_ctrip.R;
 import net.lishaoy.android_ctrip.channel.MethodChannelPlugin;
 import net.lishaoy.android_ctrip.events.GotoDestinationSearchPageEvent;
+import net.lishaoy.android_ctrip.events.GotoSpeakPageEvent;
+import net.lishaoy.android_ctrip.view.speak.SpeakActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -60,7 +62,11 @@ public class DestinationFragment extends Fragment {
 
     @Subscribe
     public void gotoDestinationSearchPage(GotoDestinationSearchPageEvent event){
-        Intent intent = new Intent(getContext(), DestinationSearchActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(getContext(), DestinationSearchActivity.class));
+    }
+
+    @Subscribe
+    public void gotoSpeakPage (GotoSpeakPageEvent event){
+        startActivity(new Intent(getContext(), SpeakActivity.class));
     }
 }

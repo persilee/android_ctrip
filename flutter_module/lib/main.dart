@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:module/pages/destination_page.dart';
 import 'package:module/pages/destination_search_page.dart';
+import 'package:module/pages/speak_page.dart';
 import 'package:module/pages/travel_page.dart';
 
 void main() => runApp(MyApp());
@@ -35,6 +36,10 @@ Widget _widgetRoute(String defaultRouteName) {
     case 'destination/search':
       return DestinationSearchPage(
         hideLeft: false,
+      );
+    case 'speak':
+      return SpeakPage(
+        pageType: 'destination',
       );
     default:
       return Center(

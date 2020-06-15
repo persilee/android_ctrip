@@ -15,6 +15,7 @@ import java.util.Map;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.PluginRegistry;
+import io.flutter.view.FlutterView;
 
 
 public class AsrPlugin implements MethodChannel.MethodCallHandler {
@@ -23,14 +24,14 @@ public class AsrPlugin implements MethodChannel.MethodCallHandler {
     private ResultStateful resultStateful;
     private AsrManager asrManager;
 
-    public static void registerWith(PluginRegistry.Registrar registrar) {
-        MethodChannel channel = new MethodChannel(registrar.messenger(), "lib_asr");
-        AsrPlugin instance = new AsrPlugin(registrar);
+    public static void registerWith(FlutterView flutterView) {
+        MethodChannel channel = new MethodChannel(flutterView, "lib_asr");
+        AsrPlugin instance = new AsrPlugin((Activity) flutterView.getContext());
         channel.setMethodCallHandler(instance);
     }
 
-    public AsrPlugin(PluginRegistry.Registrar registrar) {
-        this.activity = registrar.activity();
+    public AsrPlugin(Activity activity) {
+        this.activity = activity;
     }
 
     @Override

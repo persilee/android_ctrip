@@ -24,7 +24,7 @@ import me.majiajie.pagerbottomtabstrip.item.BaseTabItem;
 import me.majiajie.pagerbottomtabstrip.item.NormalItemView;
 import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener;
 
-public class MainActivity extends FragmentActivity{
+public class MainActivity extends FragmentActivity {
 
     private static final String TAG = "HomeActivity";
 

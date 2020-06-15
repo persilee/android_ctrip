@@ -292,21 +292,25 @@ class _DestinationPageState extends State<DestinationPage>
     _gotoDestinationSearchPage();
   }
 
-  static const MethodChannel methodChannel = MethodChannel('destination/search');
+  static const MethodChannel methodChannel = MethodChannel('MethodChannelPlugin');
   Future<void> _gotoDestinationSearchPage() async {
     try {
       await methodChannel.invokeMethod('gotoDestinationSearchPage');
     } on PlatformException {
-      print('Failed go to destination/search');
+      print('Failed go to gotoDestinationSearchPage');
+    }
+  }
+
+  Future<void> _gotoSpeakPage() async {
+    try {
+      await methodChannel.invokeMethod('gotoSpeakPage');
+    } on PlatformException {
+      print('Failed go to gotoSpeakPage');
     }
   }
 
   void _jumpToSpeak() {
-    NavigatorUtil.push(
-        context,
-        SpeakPage(
-          pageType: 'destination',
-        ));
+    _gotoSpeakPage();
   }
 
   void _jumpToService() {

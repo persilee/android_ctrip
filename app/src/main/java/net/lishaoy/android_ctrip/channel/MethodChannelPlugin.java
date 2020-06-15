@@ -3,6 +3,7 @@ package net.lishaoy.android_ctrip.channel;
 import android.app.Activity;
 
 import net.lishaoy.android_ctrip.events.GotoDestinationSearchPageEvent;
+import net.lishaoy.android_ctrip.events.GotoSpeakPageEvent;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -20,7 +21,7 @@ public class MethodChannelPlugin implements MethodChannel.MethodCallHandler {
     }
 
     public static void registerWith(FlutterView flutterView){
-        methodChannel = new MethodChannel(flutterView, "destination/search");
+        methodChannel = new MethodChannel(flutterView, "MethodChannelPlugin");
         MethodChannelPlugin instance = new MethodChannelPlugin((Activity) flutterView.getContext());
         methodChannel.setMethodCallHandler(instance);
     }
@@ -30,7 +31,11 @@ public class MethodChannelPlugin implements MethodChannel.MethodCallHandler {
         if(methodCall.method.equals("gotoDestinationSearchPage")) {
             EventBus.getDefault().post(new GotoDestinationSearchPageEvent());
             result.success(200);
-        }else{
+        } else if(methodCall.method.equals("gotoSpeakPage")){
+            EventBus.getDefault().post(new GotoSpeakPageEvent());
+            result.success(200);
+        }
+        else{
             result.notImplemented();
         }
     }

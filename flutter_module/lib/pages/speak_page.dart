@@ -8,6 +8,7 @@
  * http://coding.imooc.com/learn/qa/321.html
  */
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:module/pages/search_page.dart';
 import 'package:module/pages/travel_search_page.dart';
 import 'package:module/plugin/asr_manager.dart';
@@ -20,7 +21,7 @@ import 'destination_search_page.dart';
 class SpeakPage extends StatefulWidget {
   final String pageType;
 
-  SpeakPage({this.pageType = 'home'});
+  SpeakPage({this.pageType = 'destination'});
 
   @override
   _SpeakPageState createState() => _SpeakPageState();
@@ -91,14 +92,6 @@ class _SpeakPageState extends State<SpeakPage>
         });
         Navigator.pop(context);
         switch (widget.pageType) {
-          case 'home':
-            NavigatorUtil.push(
-                context,
-                SearchPage(
-                  keyword: speakResult,
-                  hideLeft: false,
-                ));
-            break;
           case 'travel':
             NavigatorUtil.push(
                 context,
@@ -270,7 +263,7 @@ class _SpeakPageState extends State<SpeakPage>
           bottom: 26,
           child: GestureDetector(
             onTap: () {
-              Navigator.pop(context);
+              SystemNavigator.pop();
             },
             child: Icon(
               Icons.close,

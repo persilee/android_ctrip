@@ -1,4 +1,4 @@
-package net.lishaoy.android_ctrip.view.destination;
+package net.lishaoy.android_ctrip.view.speak;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,17 +13,17 @@ import net.lishaoy.lib_asr.asr.AsrPlugin;
 import io.flutter.facade.Flutter;
 import io.flutter.view.FlutterView;
 
-public class DestinationSearchActivity extends AppCompatActivity {
+public class SpeakActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_destination_search);
+        setContentView(R.layout.activity_speak);
         getSupportActionBar().hide();
         ImmersionBar.with(this)
                 .statusBarDarkFont(true)
                 .init();
-        FlutterView flutterView = Flutter.createView(this,getLifecycle(),"destination/search");
+        FlutterView flutterView = Flutter.createView(this,getLifecycle(),"speak");
         LinearLayout.LayoutParams layoutParams =
                 new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
