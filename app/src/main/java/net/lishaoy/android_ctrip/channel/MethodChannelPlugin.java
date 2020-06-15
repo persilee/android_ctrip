@@ -1,10 +1,11 @@
 package net.lishaoy.android_ctrip.channel;
 
 import android.app.Activity;
-import android.widget.Toast;
 
 import net.lishaoy.android_ctrip.events.GotoDestinationSearchPageEvent;
-import net.lishaoy.android_ctrip.events.GotoSpeakPageEvent;
+import net.lishaoy.android_ctrip.events.GotoSpeakDestinationPageEvent;
+import net.lishaoy.android_ctrip.events.GotoSpeakTravelPageEvent;
+import net.lishaoy.android_ctrip.events.GotoTravelSearchPageEvent;
 import net.lishaoy.lib_base.lib_home.service.wrapper.WebViewImpl;
 
 import org.greenrobot.eventbus.EventBus;
@@ -34,11 +35,20 @@ public class MethodChannelPlugin implements MethodChannel.MethodCallHandler {
             EventBus.getDefault().post(new GotoDestinationSearchPageEvent());
             result.success(200);
         } else if (methodCall.method.equals("gotoSpeakPage")) {
-            EventBus.getDefault().post(new GotoSpeakPageEvent());
+            if(methodCall.argument("pageType").equals("destination")){
+                EventBus.getDefault().post(new GotoSpeakDestinationPageEvent(methodCall.argument("pageType")));
+            }if(methodCall.argument("pageType").equals("travel")){
+                EventBus.getDefault().post(new GotoSpeakTravelPageEvent(methodCall.argument("pageType")));
+            }
             result.success(200);
         } else if (methodCall.method.equals("gotoWebView")) {
             WebViewImpl.getInstance().gotoWebView(methodCall.argument("url"));
-        } else {
+            result.success(200);
+        }else if (methodCall.method.equals("gotoTravelSearchPage")){
+            EventBus.getDefault().post(new GotoTravelSearchPageEvent());
+            result.success(200);
+        }
+        else {
             result.notImplemented();
         }
     }

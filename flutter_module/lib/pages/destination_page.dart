@@ -303,7 +303,7 @@ class _DestinationPageState extends State<DestinationPage>
 
   Future<void> _gotoSpeakPage() async {
     try {
-      await methodChannel.invokeMethod('gotoSpeakPage');
+      await methodChannel.invokeMethod('gotoSpeakPage',{'pageType':'destination'});
     } on PlatformException {
       print('Failed go to gotoSpeakPage');
     }

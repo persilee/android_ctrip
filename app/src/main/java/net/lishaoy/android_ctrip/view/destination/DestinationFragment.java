@@ -8,20 +8,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 
-import com.gyf.immersionbar.ImmersionBar;
-
-import net.lishaoy.android_ctrip.R;
 import net.lishaoy.android_ctrip.channel.MethodChannelPlugin;
 import net.lishaoy.android_ctrip.events.GotoDestinationSearchPageEvent;
-import net.lishaoy.android_ctrip.events.GotoSpeakPageEvent;
+import net.lishaoy.android_ctrip.events.GotoSpeakDestinationPageEvent;
 import net.lishaoy.android_ctrip.view.speak.SpeakActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-import io.flutter.embedding.android.FlutterActivity;
 import io.flutter.facade.Flutter;
 import io.flutter.view.FlutterView;
 
@@ -66,7 +61,9 @@ public class DestinationFragment extends Fragment {
     }
 
     @Subscribe
-    public void gotoSpeakPage (GotoSpeakPageEvent event){
-        startActivity(new Intent(getContext(), SpeakActivity.class));
+    public void gotoSpeakPage (GotoSpeakDestinationPageEvent event){
+        Intent intent = new Intent(getContext(), SpeakActivity.class);
+        intent.putExtra("pageType",event.getPageType());
+        startActivity(intent);
     }
 }

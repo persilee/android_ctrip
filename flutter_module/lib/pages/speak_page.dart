@@ -93,6 +93,7 @@ class _SpeakPageState extends State<SpeakPage>
         Navigator.pop(context);
         switch (widget.pageType) {
           case 'travel':
+            AsrManager.release();
             NavigatorUtil.push(
                 context,
                 TravelSearchPage(
@@ -101,6 +102,7 @@ class _SpeakPageState extends State<SpeakPage>
                 ));
             break;
           case 'destination':
+            AsrManager.release();
             NavigatorUtil.push(
                 context,
                 DestinationSearchPage(
@@ -263,6 +265,7 @@ class _SpeakPageState extends State<SpeakPage>
           bottom: 26,
           child: GestureDetector(
             onTap: () {
+              AsrManager.release();
               SystemNavigator.pop();
             },
             child: Icon(

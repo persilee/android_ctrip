@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:module/dao/trave_search_dao.dart';
 import 'package:module/dao/trave_search_hot_dao.dart';
 import 'package:module/model/travel_search_hot_model.dart';
@@ -88,7 +89,7 @@ class _TravelSearchPageState extends State<TravelSearchPage> {
                 hint: widget.hint,
                 defaultText: widget.keyword,
                 leftButtonClick: () {
-                  Navigator.pop(context);
+                  SystemNavigator.pop();
                 },
                 onChanged: _onTextChange,
                 speakClick: _jumpToSpeak,

@@ -17,4 +17,9 @@ class AsrManager {
   static Future<String> cancel() async {
     return await _channel.invokeMethod('cancel');
   }
+
+  //销毁
+  static Future<String> release() async {
+    return await _channel.invokeMethod('release');
+  }
 }

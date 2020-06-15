@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:module/dao/trave_hot_keyword_dao.dart';
 import 'package:module/dao/travel_params_dao.dart';
 import 'package:module/dao/travel_tab_dao.dart';
@@ -102,18 +103,29 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
     super.dispose();
   }
 
+  static const MethodChannel methodChannel = MethodChannel('MethodChannelPlugin');
+  Future<void> _gotoTravelSearchPage() async {
+    try {
+      await methodChannel.invokeMethod('gotoTravelSearchPage');
+    } on PlatformException {
+      print('Failed go to gotoTravelSearchPage');
+    }
+  }
+
+  Future<void> _gotoSpeakPage() async {
+    try {
+      await methodChannel.invokeMethod('gotoSpeakPage',{'pageType':'travel'});
+    } on PlatformException {
+      print('Failed go to gotoSpeakPage');
+    }
+  }
+
   _jumpToSpeak() {
-    NavigatorUtil.push(context, SpeakPage(pageType: 'travel',));
+    _gotoSpeakPage();
   }
 
   void _jumpToSearch() {
-    NavigatorUtil.push(
-      context,
-      TravelSearchPage(
-        hint: defaultText,
-        hideLeft: false,
-      ),
-    );
+    _gotoTravelSearchPage();
   }
 
   void _jumpToUser() {

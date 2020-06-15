@@ -48,6 +48,9 @@ public class AsrPlugin implements MethodChannel.MethodCallHandler {
             case "cancel":
                 cancel(methodCall,result);
                 break;
+            case "release":
+                release(methodCall,result);
+                break;
             default:
                 result.notImplemented();
         }
@@ -76,6 +79,12 @@ public class AsrPlugin implements MethodChannel.MethodCallHandler {
     private void cancel(MethodCall call, MethodChannel.Result result) {
         if (asrManager != null) {
             asrManager.cancel();
+        }
+    }
+
+    private void release(MethodCall call, MethodChannel.Result result){
+        if (asrManager != null) {
+            asrManager.release();
         }
     }
 

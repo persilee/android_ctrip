@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.speak.SpeakActivity"></activity>
+        <activity android:name=".view.travel.TravelSearchActivity"></activity>
+        <activity android:name=".view.speak.SpeakActivity" />
         <activity android:name=".view.destination.DestinationSearchActivity" />
         <activity android:name=".view.MainActivity">
             <intent-filter>

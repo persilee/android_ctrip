@@ -1,9 +1,9 @@
-package net.lishaoy.android_ctrip.view.speak;
+package net.lishaoy.android_ctrip.view.travel;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.LinearLayout;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.gyf.immersionbar.ImmersionBar;
 
@@ -13,30 +13,22 @@ import net.lishaoy.lib_asr.asr.AsrPlugin;
 import io.flutter.facade.Flutter;
 import io.flutter.view.FlutterView;
 
-public class SpeakActivity extends AppCompatActivity {
-
-    private String sRoute;
+public class TravelSearchActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_speak);
+        setContentView(R.layout.activity_travel_search);
         getSupportActionBar().hide();
         ImmersionBar.with(this)
                 .statusBarDarkFont(true)
                 .init();
-        sRoute = "speak/" + getIntent().getStringExtra("pageType");
-        FlutterView flutterView = Flutter.createView(this,getLifecycle(), sRoute);
+        FlutterView flutterView = Flutter.createView(this,getLifecycle(),"travel/search");
         LinearLayout.LayoutParams layoutParams =
                 new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.MATCH_PARENT);
         setContentView(flutterView,layoutParams);
         AsrPlugin.registerWith(flutterView);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
     }
 }

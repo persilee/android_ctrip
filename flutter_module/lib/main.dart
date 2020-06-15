@@ -5,6 +5,7 @@ import 'package:module/pages/destination_page.dart';
 import 'package:module/pages/destination_search_page.dart';
 import 'package:module/pages/speak_page.dart';
 import 'package:module/pages/travel_page.dart';
+import 'package:module/pages/travel_search_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -37,9 +38,18 @@ Widget _widgetRoute(String defaultRouteName) {
       return DestinationSearchPage(
         hideLeft: false,
       );
-    case 'speak':
+    case 'speak/destination':
       return SpeakPage(
         pageType: 'destination',
+      );
+    case 'speak/travel':
+      return SpeakPage(
+        pageType: 'travel',
+      );
+    case 'travel/search':
+      return TravelSearchPage(
+        hint: '',
+        hideLeft: false,
       );
     default:
       return Center(
