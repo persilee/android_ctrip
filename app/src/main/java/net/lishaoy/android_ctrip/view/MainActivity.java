@@ -64,9 +64,9 @@ public class MainActivity extends FragmentActivity {
         navigationController.addTabItemSelectedListener(new OnTabItemSelectedListener() {
             @Override
             public void onSelected(int index, int old) {
-                if(index == 0) changeStatusBar(false); else changeStatusBar(true);
-            }
+                if(index == 0 || index == 3) changeStatusBar(false); else changeStatusBar(true);
 
+            }
             @Override
             public void onRepeat(int index) {
 
