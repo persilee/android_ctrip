@@ -48,6 +48,7 @@ dependencies {
     implementation rootProject.depsLibs.recyclerview
     implementation rootProject.depsLibs.constraintlayout
     implementation rootProject.depsLibs.cardview
+    implementation rootProject.depsLibs.viewpager2
 
     //tab指示器
     implementation rootProject.depsLibs.magicindicator

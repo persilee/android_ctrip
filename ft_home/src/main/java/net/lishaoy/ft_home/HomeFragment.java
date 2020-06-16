@@ -28,9 +28,12 @@ import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.constant.RefreshState;
 import com.scwang.smart.refresh.layout.simple.SimpleMultiListener;
 import com.youth.banner.Banner;
+import com.youth.banner.listener.OnBannerListener;
+import com.youth.banner.transformer.ZoomOutPageTransformer;
 import com.youth.banner.util.BannerUtils;
 
 import net.lishaoy.ft_home.adapter.HomeBannerAdapter;
+import net.lishaoy.ft_home.adapter.HomeSearchBarPlaceHolderAdapter;
 import net.lishaoy.ft_home.adapter.SubNavViewAdapter;
 import net.lishaoy.ft_home.api.RequestCenter;
 import net.lishaoy.ft_home.events.IsLoadMoreSelectEvent;
@@ -89,6 +92,8 @@ public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTab
     FrameLayout homeSearchBarContainer;
     @BindView(R2.id.home_header_content)
     FrameLayout homeHeaderContent;
+    @BindView(R2.id.home_search_bar_placeholder)
+    Banner homeSearchBarPlaceholder;
 
     private Unbinder unbinder;
     private Home homeData;
@@ -127,20 +132,6 @@ public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTab
         initViews();
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        fragmentManager = getChildFragmentManager();
-        EventBus.getDefault().register(this);
-
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        EventBus.getDefault().unregister(this);
-    }
-
     private void initViews() {
         requestHomeDate();
         mScrollChangedListener = new ViewTreeObserver.OnScrollChangedListener() {
@@ -161,6 +152,18 @@ public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTab
                 .setIndicatorSpace((int) BannerUtils.dp2px(10))
                 .setBannerRound(BannerUtils.dp2px(6))
                 .start();
+        homeSearchBarPlaceholder
+                .setAdapter(new HomeSearchBarPlaceHolderAdapter(homeData.getSearchPlaceHolderList()))
+                .setOrientation(Banner.VERTICAL)
+//                .setPageTransformer(new ZoomOutPageTransformer())
+                .setDelayTime(3600)
+                .setOnBannerListener(new OnBannerListener() {
+                    @Override
+                    public void OnBannerClick(Object data, int position) {
+
+                    }
+                });
+
     }
 
     private void getRecyclerView() {
@@ -222,17 +225,17 @@ public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTab
             @Override
             public void onStateChanged(@NonNull RefreshLayout refreshLayout, @NonNull RefreshState oldState, @NonNull RefreshState newState) {
                 Log.i(TAG, "onStateChanged: " + oldState.name());
-                if(oldState == RefreshState.ReleaseToTwoLevel){
+                if (oldState == RefreshState.ReleaseToTwoLevel) {
                     homeSecondFloorImg.setVisibility(View.GONE);
                     homeCustomScrollView.animate().alpha(0).setDuration(666);
                     homeHeaderContent.animate().alpha(1).setDuration(666);
-                }else if (oldState == RefreshState.TwoLevelReleased) {
+                } else if (oldState == RefreshState.TwoLevelReleased) {
                     homeHeaderContent.animate().alpha(1).setDuration(666);
-                    WebViewImpl.getInstance().gotoWebView("https://m.ctrip.com/webapp/you/tsnap/secondFloorIndex.html?isHideNavBar=YES&s_guid=feb780be-c55a-4f92-a6cd-2d81e04d3241",true);
+                    WebViewImpl.getInstance().gotoWebView("https://m.ctrip.com/webapp/you/tsnap/secondFloorIndex.html?isHideNavBar=YES&s_guid=feb780be-c55a-4f92-a6cd-2d81e04d3241", true);
                     homeHeader.finishTwoLevel();
-                }else if(oldState == RefreshState.TwoLevel) {
+                } else if (oldState == RefreshState.TwoLevel) {
                     homeHeaderContent.animate().alpha(0).setDuration(666);
-                }else if(oldState == RefreshState.TwoLevelFinish){
+                } else if (oldState == RefreshState.TwoLevelFinish) {
                     homeCustomScrollView.animate().alpha(1).setDuration(666);
                 }
             }
@@ -272,9 +275,29 @@ public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTab
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        homeBanner.start();
+        homeSearchBarPlaceholder.start();
+        fragmentManager = getChildFragmentManager();
+        EventBus.getDefault().register(this);
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        homeBanner.stop();
+        homeSearchBarPlaceholder.stop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
+        homeBanner.destroy();
+        homeSearchBarPlaceholder.destroy();
         view.getViewTreeObserver().removeOnScrollChangedListener(mScrollChangedListener);
     }
 

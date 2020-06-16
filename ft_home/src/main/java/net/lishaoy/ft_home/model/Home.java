@@ -8,6 +8,7 @@ public class Home {
 
     /**
      * config : {"searchUrl":"https://m.ctrip.com/restapi/h5api/globalsearch/search?source=mobileweb&action=mobileweb&keyword="}
+     * searchPlaceHolderList : [{"text":"超值星期三"},{"text":"攻略·景点·酒店"},{"text":"缤纷6月，门票低至5折起！"},{"text":"欢乐谷"},{"text":"餐馆·游记"},{"text":"出游福利计划"}]
      * bannerList : [{"icon":"https://dimg04.c-ctrip.com/images/zg041h000001hoqla603F.jpg","sIcon":"https://cdn.lishaoy.net/ctrip/banner1.jpg","url":"https://m.ctrip.com/webapp/you/gspoi/sight/0/5356386.html?seo=0"},{"icon":"https://dimg04.c-ctrip.com/images/zg0l1g000001hg8q2E0D1.jpg","sIcon":"https://cdn.lishaoy.net/ctrip/banner2.jpg","url":"https://m.ctrip.com/tangram/NjQ2MQ==?ctm_ref=vactang_page_6461&isHideNavBar=YES"},{"icon":"https://dimg04.c-ctrip.com/images/zg0i1g000001h9oh9009F.jpg","sIcon":"https://cdn.lishaoy.net/ctrip/banner3.jpg","url":"https://contents.ctrip.com/activitysetupapp/mkt/index/clwyky?ctm_ref=vdc_ctm_3642"},{"icon":"https://dimg04.c-ctrip.com/images/zg0a1h000001hr5gy3D2D.jpg","sIcon":"https://cdn.lishaoy.net/ctrip/banner4.jpg","url":"https://m.ctrip.com/tangram/NjM0Ng==?ctm_ref=vactang_page_6346&isHideNavBar=YES"},{"icon":"https://dimg04.c-ctrip.com/images/zg0p1h000001hlzdt606F.jpg","sIcon":"https://cdn.lishaoy.net/ctrip/banner5.jpg","url":"https://m.ctrip.com/webapp/you/gspoi/sight/0/50102.html?seo=0"},{"icon":"https://dimg04.c-ctrip.com/images/zg0c1h000001hrqn4997E.jpg","sIcon":"https://cdn.lishaoy.net/ctrip/banner6.jpg","url":"https://m.ctrip.com/tangram/NjU3Ng==?ctm_ref=vactang_page_6576&isHideNavBar=YES"}]
      * localNavList : [{"icon":"https://cdn.lishaoy.net/ctrip/lbsguide.png","title":"攻略·景点","url":"https://m.ctrip.com/webapp/you/place/2.html?ishideheader=true&secondwakeup=true&dpclickjump=true&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","statusBarColor":"ffffff","hideAppBar":true},{"icon":"https://cdn.lishaoy.net/ctrip/piao.png","title":"门票·玩乐","url":"https://dp.ctrip.com/webapp/ticket/tickethttps://m.ctrip.com/webapp/ticket/ticket?secondwakeup=true&dpclickjump=true&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","statusBarColor":"ffffff","hideAppBar":true},{"icon":"https://cdn.lishaoy.net/ctrip/food.png","title":"美食林","url":"https://m.ctrip.com/webapp/you/foods/address.html?new=1&ishideheader=true&secondwakeup=true&dpclickjump=true&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","statusBarColor":"ffffff","hideAppBar":true},{"icon":"https://cdn.lishaoy.net/ctrip/around.png","title":"周边游","url":"https://m.ctrip.com/webapp/vacations/tour/around?secondwakeup=true&dpclickjump=true&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","statusBarColor":"ffffff","hideAppBar":true},{"icon":"https://cdn.lishaoy.net/ctrip/onedaytravel.png","title":"一日游","url":"https://m.ctrip.com/webapp/activity/daytour?secondwakeup=true&dpclickjump=true&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","statusBarColor":"ffffff","hideAppBar":true}]
      * gridNav : {"hotel":{"startColor":"fa5956","endColor":"fa9b4d","mainItem":{"title":"酒店","icon":"https://pic.c-ctrip.com/platform/h5/home/grid-nav-items-hotel.png","url":"https://m.ctrip.com/webapp/hotel/","statusBarColor":"4289ff"},"item1":{"title":"酒店","url":"https://m.ctrip.com/webapp/hotel/?secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","statusBarColor":"4289ff"},"item2":{"title":"民宿·客栈","url":"https://m.ctrip.com/webapp/inn-v2/home?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F"},"item3":{"title":"特价·爆款","url":"https://m.ctrip.com/webapp/cw/hotel/instoreflagship/productHome.html?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true},"item4":{"title":"民宿 客栈","url":"https://m.ctrip.com/webapp/inn/index","hideAppBar":true}},"flight":{"startColor":"4b8fed","endColor":"53bced","mainItem":{"title":"机票","icon":"https://pic.c-ctrip.com/platform/h5/home/grid-nav-items-flight.png","url":"https://m.ctrip.com/html5/flight/swift/index"},"item1":{"title":"机票","url":"https://m.ctrip.com/html5/flight/swift/index?secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true},"item2":{"title":"火车票","url":"https://m.ctrip.com/webapp/train/?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F#/index?VNK=35f3baea"},"item3":{"title":"汽车·船票","url":"https://m.ctrip.com/webapp/bus/?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true},"item4":{"title":"专车·租车","url":"https://m.ctrip.com/webapp/car/index?s=ctrip&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true}},"travel":{"startColor":"34c2aa","endColor":"6cd557","mainItem":{"title":"旅游","icon":"https://pic.c-ctrip.com/platform/h5/home/grid-nav-items-travel.png","url":"https://m.ctrip.com/webapp/vacations/tour/vacations","hideAppBar":true,"statusBarColor":"19A0F0"},"item1":{"title":"旅游","url":"https://m.ctrip.com/webapp/vacations/tour/vacations?secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","statusBarColor":"19A0F0","hideAppBar":true},"item2":{"title":"高铁游","url":"https://m.ctrip.com/webapp/train/crh/plan/crhList.html?from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","statusBarColor":"19A0F0","hideAppBar":true},"item3":{"title":"邮轮游","url":"https://m.ctrip.com/webapp/cruise/index?ctm_ref=C_vac_cruise&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true},"item4":{"title":"定制游","url":"https://m.ctrip.com/webapp/dingzhi/index?ctm_ref=C_vac_custom&secondwakeup=true&dpclickjump=true&allianceid=66672&sid=508670&from=https%3A%2F%2Fm.ctrip.com%2Fhtml5%2F","hideAppBar":true}}}
@@ -18,6 +19,7 @@ public class Home {
     private ConfigBean config;
     private GridNavBean gridNav;
     private SalesBoxBean salesBox;
+    private List<SearchPlaceHolderListBean> searchPlaceHolderList;
     private List<BannerListBean> bannerList;
     private List<LocalNavListBean> localNavList;
     private List<SubNavListBean> subNavList;
@@ -49,6 +51,14 @@ public class Home {
 
     public void setSalesBox(SalesBoxBean salesBox) {
         this.salesBox = salesBox;
+    }
+
+    public List<SearchPlaceHolderListBean> getSearchPlaceHolderList() {
+        return searchPlaceHolderList;
+    }
+
+    public void setSearchPlaceHolderList(List<SearchPlaceHolderListBean> searchPlaceHolderList) {
+        this.searchPlaceHolderList = searchPlaceHolderList;
     }
 
     public List<BannerListBean> getBannerList() {
@@ -1359,6 +1369,27 @@ public class Home {
             public void setHideAppBar(boolean hideAppBar) {
                 this.hideAppBar = hideAppBar;
             }
+        }
+    }
+
+    public static class SearchPlaceHolderListBean {
+        /**
+         * text : 超值星期三
+         */
+
+        private String text;
+
+        public static SearchPlaceHolderListBean objectFromData(String str) {
+
+            return new Gson().fromJson(str, SearchPlaceHolderListBean.class);
+        }
+
+        public String getText() {
+            return text;
+        }
+
+        public void setText(String text) {
+            this.text = text;
         }
     }
 

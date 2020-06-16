@@ -37,6 +37,7 @@ dependencies {
     compileOnly rootProject.depsLibs.recyclerview
     compileOnly rootProject.depsLibs.constraintlayout
     compileOnly rootProject.depsLibs.cardview
+    compileOnly rootProject.depsLibs.viewpager2
 
     //tab指示器
     compileOnly rootProject.depsLibs.magicindicator
