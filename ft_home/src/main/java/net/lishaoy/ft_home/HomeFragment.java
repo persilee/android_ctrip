@@ -155,12 +155,14 @@ public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTab
         homeSearchBarPlaceholder
                 .setAdapter(new HomeSearchBarPlaceHolderAdapter(homeData.getSearchPlaceHolderList()))
                 .setOrientation(Banner.VERTICAL)
-//                .setPageTransformer(new ZoomOutPageTransformer())
                 .setDelayTime(3600)
                 .setOnBannerListener(new OnBannerListener() {
                     @Override
                     public void OnBannerClick(Object data, int position) {
-
+                        ARouter.getInstance()
+                                .build("/home/search")
+                                .withString("placeHolder",((Home.SearchPlaceHolderListBean)data).getText())
+                                .navigation();
                     }
                 });
 

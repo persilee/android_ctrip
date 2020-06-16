@@ -28,7 +28,8 @@ public class SearchPageActivity extends AppCompatActivity {
         ImmersionBar.with(this)
                 .statusBarDarkFont(true)
                 .init();
-        FlutterView flutterView = Flutter.createView(this,getLifecycle(),"search");
+        String params = "{\"routeName\":\"search\",\"placeHolder\":\""+ getIntent().getStringExtra("placeHolder") +"\"}";
+        FlutterView flutterView = Flutter.createView(this,getLifecycle(),params);
         LinearLayout.LayoutParams layoutParams =
                 new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,

@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'dart:convert' as convert;
 
 import 'package:flutter/material.dart';
 import 'package:module/pages/destination_page.dart';
@@ -30,6 +31,14 @@ class MyApp extends StatelessWidget {
 }
 
 Widget _widgetRoute(String defaultRouteName) {
+
+  var placeHolder = '';
+  if(defaultRouteName.startsWith('{')){
+    Map<String, dynamic> params = convert.jsonDecode(defaultRouteName);
+    defaultRouteName = params['routeName'];
+    placeHolder = params['placeHolder'];
+  }
+
   switch (defaultRouteName) {
     case 'destination':
       return DestinationPage();
@@ -58,6 +67,7 @@ Widget _widgetRoute(String defaultRouteName) {
       );
     case 'search':
       return SearchPage(
+        hint: placeHolder ?? '',
         hideLeft: false,
       );
     default:
