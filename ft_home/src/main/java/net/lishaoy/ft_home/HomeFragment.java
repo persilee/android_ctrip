@@ -150,8 +150,9 @@ public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTab
                 .setIndicator(new EllipseIndicator(getContext()))
                 .setIndicatorSelectedColorRes(R.color.white)
                 .setIndicatorSpace((int) BannerUtils.dp2px(10))
-                .setBannerRound(BannerUtils.dp2px(6))
-                .start();
+                .setBannerRound(BannerUtils.dp2px(6));
+
+
         homeSearchBarPlaceholder
                 .setAdapter(new HomeSearchBarPlaceHolderAdapter(homeData.getSearchPlaceHolderList()))
                 .setOrientation(Banner.VERTICAL)
@@ -161,7 +162,7 @@ public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTab
                     public void OnBannerClick(Object data, int position) {
                         ARouter.getInstance()
                                 .build("/home/search")
-                                .withString("placeHolder",((Home.SearchPlaceHolderListBean)data).getText())
+                                .withString("placeHolder", ((Home.SearchPlaceHolderListBean) data).getText())
                                 .navigation();
                     }
                 });
@@ -298,9 +299,9 @@ public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTab
     public void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
+        view.getViewTreeObserver().removeOnScrollChangedListener(mScrollChangedListener);
         homeBanner.destroy();
         homeSearchBarPlaceholder.destroy();
-        view.getViewTreeObserver().removeOnScrollChangedListener(mScrollChangedListener);
     }
 
     @Override
