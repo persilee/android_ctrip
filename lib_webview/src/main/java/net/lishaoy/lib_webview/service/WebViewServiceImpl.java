@@ -20,6 +20,14 @@ public class WebViewServiceImpl implements WebViewService {
                 .navigation();
     }
 
+    public void gotoWebView(String url,boolean isHideBar){
+        ARouter.getInstance()
+                .build("/webview/web_activity")
+                .withString("url", url)
+                .withBoolean("isHideBar", isHideBar)
+                .navigation();
+    }
+
     @Override
     public void init(Context context) {
         Log.i(WebViewServiceImpl.class.getSimpleName(),"init");

@@ -58,7 +58,7 @@ public class WebActivity extends AppCompatActivity {
 
     private void initViews() {
         linearLayout = findViewById(R.id.web_container);
-        if(this.getIntent().getStringExtra("actionBar") != null){
+        if(this.getIntent().getBooleanExtra("isHideBar",false)){
             initActionBar();
         }else{
             initHideBar();

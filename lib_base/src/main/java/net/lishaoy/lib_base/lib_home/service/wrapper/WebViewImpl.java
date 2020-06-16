@@ -29,4 +29,8 @@ public class WebViewImpl {
     public void gotoWebView(String url){
         webViewService.gotoWebView(url);
     }
+
+    public void gotoWebView(String url,boolean isHideBar){
+        webViewService.gotoWebView(url,isHideBar);
+    }
 }

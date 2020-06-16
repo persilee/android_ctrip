@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,10 +20,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.scwang.smart.refresh.footer.ClassicsFooter;
+import com.scwang.smart.refresh.header.ClassicsHeader;
+import com.scwang.smart.refresh.header.TwoLevelHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
+import com.scwang.smart.refresh.layout.api.RefreshHeader;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
-import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smart.refresh.layout.constant.RefreshState;
+import com.scwang.smart.refresh.layout.simple.SimpleMultiListener;
 import com.youth.banner.Banner;
 import com.youth.banner.util.BannerUtils;
 
@@ -38,6 +41,8 @@ import net.lishaoy.ft_home.events.LoadMoreSelectEvent;
 import net.lishaoy.ft_home.model.Home;
 import net.lishaoy.ft_home.util.CustomScrollView;
 import net.lishaoy.ft_home.util.EllipseIndicator;
+import net.lishaoy.lib_base.lib_home.service.wrapper.WebViewImpl;
+import net.lishaoy.lib_common_ui.utils.Utils;
 import net.lishaoy.lib_network.listener.DisposeDataListener;
 import net.lucode.hackware.magicindicator.MagicIndicator;
 
@@ -76,6 +81,14 @@ public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTab
     EditText homeSearchBarContent;
     @BindView(R2.id.home_search_bar_speak_img)
     ImageView homeSearchBarSpeakImg;
+    @BindView(R2.id.home_second_floor_img)
+    ImageView homeSecondFloorImg;
+    @BindView(R2.id.home_header)
+    TwoLevelHeader homeHeader;
+    @BindView(R2.id.home_search_bar_container)
+    FrameLayout homeSearchBarContainer;
+    @BindView(R2.id.home_header_content)
+    FrameLayout homeHeaderContent;
 
     private Unbinder unbinder;
     private Home homeData;
@@ -85,6 +98,9 @@ public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTab
     private boolean iSLoadSelect;
     Context context;
     private ViewTreeObserver.OnScrollChangedListener mScrollChangedListener;
+
+    public HomeFragment() {
+    }
 
     public HomeFragment(Context context) {
         this.context = context;
@@ -179,37 +195,75 @@ public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTab
 
 
     private void initRefreshMore() {
-        homeRefreshContainer.setRefreshFooter(new ClassicsFooter(getContext()));
-        homeRefreshContainer.setEnableRefresh(false);
-        homeRefreshContainer.setOnLoadMoreListener(new OnLoadMoreListener() {
+        homeHeader.setRefreshHeader(new ClassicsHeader(getContext()), -1, (int) Utils.dp2px(76));
+        homeHeader.setFloorRate(1.6f);
+        homeRefreshContainer.setOnMultiListener(new SimpleMultiListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                int tabIndex = TabPageView.selectTabIndex;
-                switch (tabIndex) {
-                    case 0:
-                        EventBus.getDefault().post(new LoadMoreSelectEvent());
-                        if (iSLoadSelect) {
-                            refreshLayout.finishLoadMore();
-                        } else {
-                            refreshLayout.finishLoadMore(false);
-                        }
-                        break;
-                    case 1:
-                        EventBus.getDefault().post(new LoadMoreNearEvent());
-                        refreshLayout.finishLoadMore();
-                        break;
-                    case 2:
-                        EventBus.getDefault().post(new LoadMoreScenicEvent());
-                        refreshLayout.finishLoadMore();
-                    case 3:
-                        EventBus.getDefault().post(new LoadMoreFoodEvent());
-                        refreshLayout.finishLoadMore();
-                    default:
-                        refreshLayout.finishLoadMore(false);
+                loadMore(refreshLayout);
+            }
+
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                refreshLayout.finishRefresh(1600);
+            }
+
+            @Override
+            public void onHeaderMoving(RefreshHeader header, boolean isDragging, float percent, int offset, int headerHeight, int maxDragHeight) {
+                homeSecondFloorImg.setVisibility(View.VISIBLE);
+                homeSearchBarContainer.setAlpha(1 - Math.min(percent, 1));
+                homeSecondFloorImg.setTranslationY(Math.min(
+                        offset - homeSecondFloorImg.getHeight() + homeSearchBarContainer.getHeight(),
+                        homeRefreshContainer.getLayout().getHeight() - homeSearchBarContainer.getHeight()
+                ));
+
+            }
+
+            @Override
+            public void onStateChanged(@NonNull RefreshLayout refreshLayout, @NonNull RefreshState oldState, @NonNull RefreshState newState) {
+                Log.i(TAG, "onStateChanged: " + oldState.name());
+                if(oldState == RefreshState.ReleaseToTwoLevel){
+                    homeSecondFloorImg.setVisibility(View.GONE);
+                    homeCustomScrollView.animate().alpha(0).setDuration(666);
+                    homeHeaderContent.animate().alpha(1).setDuration(666);
+                }else if (oldState == RefreshState.TwoLevelReleased) {
+                    homeHeaderContent.animate().alpha(1).setDuration(666);
+                    WebViewImpl.getInstance().gotoWebView("https://m.ctrip.com/webapp/you/tsnap/secondFloorIndex.html?isHideNavBar=YES&s_guid=feb780be-c55a-4f92-a6cd-2d81e04d3241",true);
+                    homeHeader.finishTwoLevel();
+                }else if(oldState == RefreshState.TwoLevel) {
+                    homeHeaderContent.animate().alpha(0).setDuration(666);
+                }else if(oldState == RefreshState.TwoLevelFinish){
+                    homeCustomScrollView.animate().alpha(1).setDuration(666);
                 }
             }
+
         });
 
+    }
+
+    private void loadMore(@NonNull RefreshLayout refreshLayout) {
+        int tabIndex = TabPageView.selectTabIndex;
+        switch (tabIndex) {
+            case 0:
+                EventBus.getDefault().post(new LoadMoreSelectEvent());
+                if (iSLoadSelect)
+                    refreshLayout.finishLoadMore();
+                else
+                    refreshLayout.finishLoadMore(false);
+                break;
+            case 1:
+                EventBus.getDefault().post(new LoadMoreNearEvent());
+                refreshLayout.finishLoadMore();
+                break;
+            case 2:
+                EventBus.getDefault().post(new LoadMoreScenicEvent());
+                refreshLayout.finishLoadMore();
+            case 3:
+                EventBus.getDefault().post(new LoadMoreFoodEvent());
+                refreshLayout.finishLoadMore();
+            default:
+                refreshLayout.finishLoadMore(false);
+        }
     }
 
     @Subscribe
@@ -245,7 +299,7 @@ public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTab
     public void onHomeSearchBarSpeakImgClicked() {
         ARouter.getInstance()
                 .build("/home/speak")
-                .withString("pageType","home")
+                .withString("pageType", "home")
                 .navigation();
     }
 }

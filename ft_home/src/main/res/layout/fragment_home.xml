@@ -1,13 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context="HomeFragment">
 
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/home_refresh_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        app:srlAccentColor="@color/white">
+        <com.scwang.smart.refresh.header.TwoLevelHeader
+            android:id="@+id/home_header"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/home_second_floor_img"
+                android:layout_width="match_parent"
+                android:layout_height="360dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/second_floor"
+                android:visibility="gone"/>
+            <FrameLayout
+                android:id="@+id/home_header_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/second_floor" />
+            </FrameLayout>
+
+        </com.scwang.smart.refresh.header.TwoLevelHeader>
+        <net.lishaoy.ft_home.util.CustomScrollView
+            android:id="@+id/home_custom_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:descendantFocusability="blocksDescendants"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            android:clipChildren="false">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="76dp">
+
+                <net.lishaoy.ft_home.LocalNavView
+                    android:id="@+id/home_local_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"/>
+
+                <net.lishaoy.ft_home.GridNavView
+                    android:id="@+id/home_grid_nav_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/home_sub_nav_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="10dp"
+                    android:paddingTop="10dp"
+                    android:background="@color/white"/>
+
+                <com.youth.banner.Banner
+                    android:id="@+id/home_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="106dp"
+                    android:paddingHorizontal="10dp"
+                    android:background="@color/white"/>
+
+                <net.lishaoy.ft_home.TabPageView
+                    android:id="@+id/home_tab_page_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"/>
+
+            </LinearLayout>
+
+        </net.lishaoy.ft_home.util.CustomScrollView>
+
+        <com.scwang.smart.refresh.footer.ClassicsFooter
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
     <FrameLayout
+        android:id="@+id/home_search_bar_container"
         android:layout_width="match_parent"
         android:layout_height="76dp"
         android:background="@drawable/shape_home_bar_bg">
@@ -42,72 +131,13 @@
             android:alpha="0.86"
             android:src="@mipmap/voice" />
     </FrameLayout>
-
-    <RelativeLayout
+    <net.lucode.hackware.magicindicator.MagicIndicator
+        android:id="@+id/home_tab_top_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="46dp"
+        android:background="@color/white"
+        android:paddingHorizontal="10dp"
+        android:layout_marginTop="76dp"
+        android:visibility="gone" />
 
-        <com.scwang.smart.refresh.layout.SmartRefreshLayout
-            android:id="@+id/home_refresh_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <net.lishaoy.ft_home.util.CustomScrollView
-                android:id="@+id/home_custom_scroll_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:descendantFocusability="blocksDescendants"
-                android:scrollbars="none">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <net.lishaoy.ft_home.LocalNavView
-                        android:id="@+id/home_local_container"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                    <net.lishaoy.ft_home.GridNavView
-                        android:id="@+id/home_grid_nav_container"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/home_sub_nav_container"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="10dp"
-                        android:layout_marginTop="10dp" />
-
-                    <com.youth.banner.Banner
-                        android:id="@+id/home_banner"
-                        android:layout_width="match_parent"
-                        android:layout_height="106dp"
-                        android:layout_marginHorizontal="10dp" />
-
-                    <net.lishaoy.ft_home.TabPageView
-                        android:id="@+id/home_tab_page_container"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
-                </LinearLayout>
-
-            </net.lishaoy.ft_home.util.CustomScrollView>
-            <com.scwang.smart.refresh.footer.ClassicsFooter
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
-
-        <net.lucode.hackware.magicindicator.MagicIndicator
-            android:id="@+id/home_tab_top_view"
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:background="@color/white"
-            android:paddingHorizontal="10dp"
-            android:visibility="gone" />
-
-    </RelativeLayout>
-
-</LinearLayout>
+</FrameLayout>
