@@ -1,6 +1,7 @@
 package net.lishaoy.ft_home;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -203,6 +204,7 @@ public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTab
     private void initRefreshMore() {
         homeHeader.setRefreshHeader(new ClassicsHeader(getContext()), -1, (int) Utils.dp2px(76));
         homeHeader.setFloorRate(1.6f);
+        homeRefreshContainer.setPrimaryColorsId(R.color.colorPrimary, R.color.white);
         homeRefreshContainer.setOnMultiListener(new SimpleMultiListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
@@ -218,27 +220,25 @@ public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTab
             public void onHeaderMoving(RefreshHeader header, boolean isDragging, float percent, int offset, int headerHeight, int maxDragHeight) {
                 homeSecondFloorImg.setVisibility(View.VISIBLE);
                 homeSearchBarContainer.setAlpha(1 - Math.min(percent, 1));
-                homeSecondFloorImg.setTranslationY(Math.min(
-                        offset - homeSecondFloorImg.getHeight() + homeSearchBarContainer.getHeight(),
-                        homeRefreshContainer.getLayout().getHeight() - homeSearchBarContainer.getHeight()
-                ));
-
             }
 
             @Override
             public void onStateChanged(@NonNull RefreshLayout refreshLayout, @NonNull RefreshState oldState, @NonNull RefreshState newState) {
-                Log.i(TAG, "onStateChanged: " + oldState.name());
                 if (oldState == RefreshState.ReleaseToTwoLevel) {
                     homeSecondFloorImg.setVisibility(View.GONE);
-                    homeCustomScrollView.animate().alpha(0).setDuration(666);
                     homeHeaderContent.animate().alpha(1).setDuration(666);
+                } else if (newState == RefreshState.PullDownCanceled) {
+                    homeHeaderContent.animate().alpha(0).setDuration(666);
+                } else if (newState == RefreshState.Refreshing) {
+                    homeHeaderContent.animate().alpha(0).setDuration(666);
                 } else if (oldState == RefreshState.TwoLevelReleased) {
-                    homeHeaderContent.animate().alpha(1).setDuration(666);
                     WebViewImpl.getInstance().gotoWebView("https://m.ctrip.com/webapp/you/tsnap/secondFloorIndex.html?isHideNavBar=YES&s_guid=feb780be-c55a-4f92-a6cd-2d81e04d3241", true);
                     homeHeader.finishTwoLevel();
                 } else if (oldState == RefreshState.TwoLevel) {
+                    homeCustomScrollView.setVisibility(View.GONE);
                     homeHeaderContent.animate().alpha(0).setDuration(666);
                 } else if (oldState == RefreshState.TwoLevelFinish) {
+                    homeCustomScrollView.setVisibility(View.VISIBLE);
                     homeCustomScrollView.animate().alpha(1).setDuration(666);
                 }
             }
