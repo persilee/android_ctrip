@@ -1,7 +1,6 @@
 package net.lishaoy.ft_home;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,7 +29,6 @@ import com.scwang.smart.refresh.layout.constant.RefreshState;
 import com.scwang.smart.refresh.layout.simple.SimpleMultiListener;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
-import com.youth.banner.transformer.ZoomOutPageTransformer;
 import com.youth.banner.util.BannerUtils;
 
 import net.lishaoy.ft_home.adapter.HomeBannerAdapter;
@@ -45,7 +43,7 @@ import net.lishaoy.ft_home.events.LoadMoreSelectEvent;
 import net.lishaoy.ft_home.model.Home;
 import net.lishaoy.ft_home.util.CustomScrollView;
 import net.lishaoy.ft_home.util.EllipseIndicator;
-import net.lishaoy.lib_base.lib_home.service.wrapper.WebViewImpl;
+import net.lishaoy.lib_base.lib_webview.service.wrapper.WebViewImpl;
 import net.lishaoy.lib_common_ui.utils.Utils;
 import net.lishaoy.lib_network.listener.DisposeDataListener;
 import net.lucode.hackware.magicindicator.MagicIndicator;
@@ -139,7 +137,7 @@ public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTab
 
             @Override
             public void onScrollChanged() {
-                tabViewTop = homeTabPageContainer.getTop();
+                tabViewTop = homeTabPageContainer.getTop() + homeSearchBarContainer.getHeight();
             }
         };
         view.getViewTreeObserver().addOnScrollChangedListener(mScrollChangedListener);

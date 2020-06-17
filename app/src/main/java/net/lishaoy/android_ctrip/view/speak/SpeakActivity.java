@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.gyf.immersionbar.ImmersionBar;
 
 import net.lishaoy.android_ctrip.R;
+import net.lishaoy.android_ctrip.channel.MethodChannelPlugin;
 import net.lishaoy.lib_asr.asr.AsrPlugin;
 
 import io.flutter.facade.Flutter;
@@ -32,6 +33,7 @@ public class SpeakActivity extends AppCompatActivity {
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.MATCH_PARENT);
         setContentView(flutterView,layoutParams);
+        MethodChannelPlugin.registerWith(flutterView);
         AsrPlugin.registerWith(flutterView);
     }
 

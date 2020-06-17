@@ -6,7 +6,7 @@ import net.lishaoy.android_ctrip.events.GotoDestinationSearchPageEvent;
 import net.lishaoy.android_ctrip.events.GotoSpeakDestinationPageEvent;
 import net.lishaoy.android_ctrip.events.GotoSpeakTravelPageEvent;
 import net.lishaoy.android_ctrip.events.GotoTravelSearchPageEvent;
-import net.lishaoy.lib_base.lib_home.service.wrapper.WebViewImpl;
+import net.lishaoy.lib_base.lib_webview.service.wrapper.WebViewImpl;
 
 import org.greenrobot.eventbus.EventBus;
 

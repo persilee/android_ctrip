@@ -1,9 +1,9 @@
-package net.lishaoy.lib_base.lib_home.service.wrapper;
+package net.lishaoy.lib_base.lib_webview.service.wrapper;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.launcher.ARouter;
 
-import net.lishaoy.lib_base.lib_home.service.WebViewService;
+import net.lishaoy.lib_base.lib_webview.service.WebViewService;
 
 public class WebViewImpl {
     @Autowired(name = "/webview/webview_service") protected WebViewService webViewService;

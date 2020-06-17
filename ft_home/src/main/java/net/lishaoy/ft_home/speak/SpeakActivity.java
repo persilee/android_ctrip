@@ -11,6 +11,7 @@ import com.gyf.immersionbar.ImmersionBar;
 
 import net.lishaoy.ft_home.R;
 import net.lishaoy.lib_asr.asr.AsrPlugin;
+import net.lishaoy.lib_base.app.service.wrapper.MethodChannelImpl;
 
 import io.flutter.facade.Flutter;
 import io.flutter.view.FlutterView;
@@ -36,6 +37,7 @@ public class SpeakActivity extends AppCompatActivity {
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.MATCH_PARENT);
         setContentView(flutterView,layoutParams);
+        MethodChannelImpl.getInstance().registerWith(flutterView);
         AsrPlugin.registerWith(flutterView);
     }
 

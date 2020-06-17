@@ -93,7 +93,7 @@ dependencies {
     //base库
     implementation project(':lib_base')
     //引入flutter模块
-    implementation project(path: ':flutter')
+    implementation project(':flutter')
     //引入百度AI语音库
     implementation project(':lib_asr')
 

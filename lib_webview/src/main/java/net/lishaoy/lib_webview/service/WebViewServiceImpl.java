@@ -6,8 +6,7 @@ import android.util.Log;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 
-import net.lishaoy.lib_base.lib_home.service.WebViewService;
-import net.lishaoy.lib_webview.WebActivity;
+import net.lishaoy.lib_base.lib_webview.service.WebViewService;
 
 @Route(path = "/webview/webview_service")
 public class WebViewServiceImpl implements WebViewService {

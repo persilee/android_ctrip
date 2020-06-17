@@ -149,7 +149,7 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
   _jumpToSpeak() {
-    NavigatorUtil.push(context, SpeakPage());
+    NavigatorUtil.push(context, SpeakPage(pageType: 'home'));
   }
 
   _onTextChange(String text) {

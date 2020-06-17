@@ -1,7 +1,6 @@
 package net.lishaoy.ft_home;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,9 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import net.lishaoy.ft_home.model.Home;
-import net.lishaoy.lib_base.lib_home.service.wrapper.WebViewImpl;
+import net.lishaoy.lib_base.lib_webview.service.wrapper.WebViewImpl;
 import net.lishaoy.lib_image_loader.app.ImageLoaderManager;
-import net.lishaoy.lib_webview.WebActivity;
 
 import org.jetbrains.annotations.NotNull;
 

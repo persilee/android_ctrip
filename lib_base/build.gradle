@@ -30,10 +30,13 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation rootProject.depsLibs.appcompat
+    compileOnly rootProject.depsLibs.appcompat
     //arouter库
     compileOnly(rootProject.depsLibs.arouterapi) {
         exclude group: 'com.android.support'
     }
     annotationProcessor rootProject.depsLibs.aroutercompiler
+
+    //引入flutter模块
+    compileOnly project(path: ':flutter')
 }

@@ -1,7 +1,6 @@
 package net.lishaoy.ft_home.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +12,11 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.alibaba.android.arouter.launcher.ARouter;
-
 import net.lishaoy.ft_home.R;
 import net.lishaoy.ft_home.R2;
 import net.lishaoy.ft_home.model.TabSelect;
-import net.lishaoy.lib_base.lib_home.service.wrapper.WebViewImpl;
+import net.lishaoy.lib_base.lib_webview.service.wrapper.WebViewImpl;
 import net.lishaoy.lib_image_loader.app.ImageLoaderManager;
-import net.lishaoy.lib_webview.WebActivity;
 
 import java.util.ArrayList;
 import java.util.List;
