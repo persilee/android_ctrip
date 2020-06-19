@@ -12,13 +12,9 @@
 
 ### 项目效果预览图
 
-![second floor](https://cdn.lishaoy.net/ctrip/android/second_floor.gif "second floor" )
-
-![search bar](https://cdn.lishaoy.net/ctrip/android/searchBar.gif "search bar" )
-
-![banner](https://cdn.lishaoy.net/ctrip/android/banner.gif "banner")
-
-![tab page](https://cdn.lishaoy.net/ctrip/android/tab_bar.gif "tab page")
+|![second floor](https://cdn.lishaoy.net/ctrip/android/second_floor.gif "second floor" )|![search bar](https://cdn.lishaoy.net/ctrip/android/searchBar.gif "search bar" )|
+|---|---|
+|![banner](https://cdn.lishaoy.net/ctrip/android/banner.gif "banner")|![tab page](https://cdn.lishaoy.net/ctrip/android/tab_bar.gif "tab page")|
 
 大家也可扫描，安装体验：
 
@@ -45,6 +41,9 @@
 - [banner](https://github.com/youth5201314/banner) 图片轮播控件
 
 更多相关详情，请查阅博客：[https://h.lishaoy.net](https://h.lishaoy.net/androidctrip)
+
+
+
 
 
 
