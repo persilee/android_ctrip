@@ -58,7 +58,7 @@ class _TravelPageState extends State<TravelPage> with TickerProviderStateMixin {
               indicatorPadding: EdgeInsets.all(6),
               indicatorSize: TabBarIndicatorSize.label,
               indicatorWeight: 2.2,
-              labelStyle: TextStyle(fontSize: 18),
+              labelStyle: TextStyle(fontSize: 16),
               unselectedLabelStyle: TextStyle(fontSize: 15),
               tabs: tabs.map<Tab>((Groups tab) {
                 return Tab(

@@ -165,7 +165,6 @@ public class HomeFragment extends Fragment implements CustomScrollView.OnHoldTab
                                 .navigation();
                     }
                 });
-
     }
 
     private void getRecyclerView() {

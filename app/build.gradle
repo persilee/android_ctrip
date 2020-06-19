@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
 
+def keystorePropertiesFile = rootProject.file("key.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
 android {
     compileSdkVersion rootProject.android.compileSdkVersion
     buildToolsVersion rootProject.android.buildToolsVersion
@@ -20,14 +24,24 @@ android {
         }
         //百度AI语音打包配置
         ndk {
-            abiFilters "armeabi-v7a", "arm64-v8a", "x86_64", "x86"
+            //abiFilters "armeabi-v7a", "arm64-v8a", "x86_64", "x86"
             //只打包flutter所支持的架构，flutter没有armeabi架构的so，加x86的原因是为了能够兼容模拟器
-            //abiFilters "armeabi-v7a" //release 时只打"armeabi-v7包
+            abiFilters "armeabi-v7a", "arm64-v8a" //release 时只打"armeabi-v7包
+        }
+    }
+
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
         }
     }
 
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
