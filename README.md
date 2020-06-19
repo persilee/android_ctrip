@@ -22,7 +22,7 @@
 
 大家也可扫描，安装体验：
 
-<div style="width:166px; margin:auto">![no-shadow](https://www.pgyer.com/app/qrcode/AsHK?sign=&amp;auSign=&amp;code= "手机扫描二维码安装")</div>
+![手机扫描二维码安装](https://www.pgyer.com/app/qrcode/AsHK?sign=&amp;auSign=&amp;code= "手机扫描二维码安装")
 
 更多的项目实行效果 [请移步这里点击观看视频](https://www.bilibili.com/video/BV1W54y1B72U/) *(点击齿轮 --> 更多播放设置，可以隐藏黑边)*
 
