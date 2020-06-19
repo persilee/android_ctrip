@@ -6,7 +6,7 @@ ext {
             targetSdkVersion : 29,
             applicationId    : 'net.lishaoy.android_ctrip',
             versionCode      : 1,
-            versionName      : '1.0',
+            versionName      : 'v0.0.05',
             multiDexEnabled  : true,
     ]
 

@@ -16,7 +16,7 @@
 |---|---|
 |![banner](https://cdn.lishaoy.net/ctrip/android/banner.gif "banner")|![tab page](https://cdn.lishaoy.net/ctrip/android/tab_bar.gif "tab page")|
 
-大家也可扫描，安装体验：
+大家也可扫描，安装体验：[[AFCtrip.apk]](https://github.com/persilee/android_ctrip/releases/download/v0.0.05-bate.1/AFCtrip_v0.0.05-bate.1.apk)
 
 ![手机扫描二维码安装](https://www.pgyer.com/app/qrcode/AsHK?sign=&amp;auSign=&amp;code= "手机扫描二维码安装")
 
