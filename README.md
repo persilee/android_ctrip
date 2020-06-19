@@ -2,7 +2,7 @@
 
 ## Android Flutter 混合开发高仿大厂App
 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/persilee/android_ctrip?color=brightgreen)](https://github.com/persilee/android_ctrip/releases) [![author](https://img.shields.io/badge/author-persilee-orange.svg)](https://github.com/persilee) [![blog](https://img.shields.io/badge/blog-lishaoy.net-blue.svg)](https://h.lishaoy.net) ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/persilee/android_ctrip?color=orange&label=commit)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/persilee/android_ctrip?color=brightgreen)](https://github.com/persilee/android_ctrip/releases) [![author](https://img.shields.io/badge/author-persilee-orange.svg)](https://github.com/persilee) [![blog](https://img.shields.io/badge/blog-lishaoy.net-blue.svg)](https://h.lishaoy.net) ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/persilee/android_ctrip?color=blueviolet&label=commit)
 
 此项目使用 **Android组件化的架构搭建** 及 **Flutter** 和 **Android** 混合开发 *(整个App只有首页是用原生Android完成，其他页面都是引入之前的做好的Flutter页面)* ，主宿主程序由 Android 搭建，采用了组件化的架构搭建整个 **App** ，不同业务，对应不同的 module 工程，业务之间采用接口通信 *(ARouter)* ，以 module 的形式混入 Flutter，通过 **MethodChannel** 和 **Flutter** 端进行数据通信等
 
