@@ -12,21 +12,17 @@
 
 ### 项目效果预览图
 
-#### 下拉刷新、携程二楼
-
 ![second floor](https://cdn.lishaoy.net/ctrip/android/second_floor.gif "second floor" )
-
-#### 搜索appBar
 
 ![search bar](https://cdn.lishaoy.net/ctrip/android/searchBar.gif "search bar" )
 
-#### banner组件
-
 ![banner](https://cdn.lishaoy.net/ctrip/android/banner.gif "banner")
 
-#### 多状态的tab指示器
-
 ![tab page](https://cdn.lishaoy.net/ctrip/android/tab_bar.gif "tab page")
+
+大家也可扫描，安装体验：
+
+<div style="width:166px; margin:auto">![no-shadow](https://www.pgyer.com/app/qrcode/AsHK?sign=&amp;auSign=&amp;code= "手机扫描二维码安装")</div>
 
 更多的项目实行效果 [请移步这里点击观看视频](https://www.bilibili.com/video/BV1W54y1B72U/) *(点击齿轮 --> 更多播放设置，可以隐藏黑边)*
 
