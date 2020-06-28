@@ -1,10 +1,10 @@
 .DS_Store
-.dart_tool/
+#.dart_tool/
 
-.packages
+#.packages
 .pub/
 
-.idea/
+#.idea/
 .vagrant/
 .sconsign.dblite
 .svn/
@@ -36,7 +36,7 @@ Icon?
 .tags*
 
 build/
-.android/
+#.android/
 .ios/
-.flutter-plugins
-.flutter-plugins-dependencies
+#.flutter-plugins
+#.flutter-plugins-dependencies
