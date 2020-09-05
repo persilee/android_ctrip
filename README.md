@@ -40,6 +40,11 @@
 - [glide](https://github.com/bumptech/glide) 高性能、可扩展的图片加载插件
 - [banner](https://github.com/youth5201314/banner) 图片轮播控件
 
+### 更新日志
+
+- 2020-09-05 11:56 修复(携程Api改变导致) App 闪退问题
+- 2020-07-20 12:34 发布 releases v0.0.05-bate.1 版本
+
 更多相关详情，请查阅博客：[https://h.lishaoy.net](https://h.lishaoy.net/androidctrip)
 
 
