@@ -46,8 +46,13 @@ public class TabNearAdapter extends RecyclerView.Adapter<TabNearAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        String url = "";
+        float imgWidth = 0.0f;
+        float imgHeight = 0.0f;
         final TabNearItem tabNearItem = new Gson().fromJson(tabNearItems.get(position), TabNearItem.class);
-        String url = tabNearItem.getImg().getImg1().getUrl().substring(0,tabNearItem.getImg().getImg1().getUrl().lastIndexOf("."));
+        if(tabNearItem.getImg().getImg1() != null) {
+            url = tabNearItem.getImg().getImg1().getUrl().substring(0,tabNearItem.getImg().getImg1().getUrl().lastIndexOf("."));
+        }
         ImageLoaderManager.getInstance().displayImageForView(holder.tabSelectImg, url + "_D_500_500_R5_Q80.jpg");
         holder.tabSelectTitle.setText(tabNearItem.getTitle());
         if (tabNearItem.getItag() != null) {
@@ -69,8 +74,10 @@ public class TabNearAdapter extends RecyclerView.Adapter<TabNearAdapter.MyViewHo
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) Utils.dp2px(246));
             holder.tabSelectImg.setLayoutParams(layoutParams);
         }
-        float imgWidth = Float.parseFloat(tabNearItem.getImg().getImg1().getWidth());
-        float imgHeight = Float.parseFloat(tabNearItem.getImg().getImg1().getHeight());
+        if(tabNearItem.getImg().getImg1() != null) {
+            imgWidth = Float.parseFloat(tabNearItem.getImg().getImg1().getWidth());
+            imgHeight = Float.parseFloat(tabNearItem.getImg().getImg1().getHeight());
+        }
         if(imgWidth != imgHeight && !tabNearItem.getExt().getBiztype().equals("mkt.mkt")) {
             int targetHeight = (int) ((imgHeight / imgWidth) * 230);
             if(targetHeight <= 166) targetHeight = 166;
