@@ -84,6 +84,7 @@ public class TabPageView extends LinearLayout {
         initPageView();
         initCustomPagerTitleView();
         initTopPagerTitleView();
+        homePageView.setOffscreenPageLimit(4);
     }
 
 

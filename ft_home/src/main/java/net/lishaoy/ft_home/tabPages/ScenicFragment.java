@@ -53,8 +53,8 @@ public class ScenicFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_scenic, container, false);
         unbinder = ButterKnife.bind(this, view);
-        viewPager.setObjectForPosition(view, 2);
         initViews();
+        viewPager.setObjectForPosition(view, 2);
         return view;
     }
 
@@ -92,8 +92,8 @@ public class ScenicFragment extends Fragment {
             }
         };
         tabScenicRecyclerContainer.setLayoutManager(staggeredGridLayoutManager);
-        TabScenicAdapter tabSelectAdapter = new TabScenicAdapter(getContext(),products);
-        tabScenicRecyclerContainer.setAdapter(tabSelectAdapter);
+        TabScenicAdapter tabScenicAdapter = new TabScenicAdapter(getContext(), products);
+        tabScenicRecyclerContainer.setAdapter(tabScenicAdapter);
     }
 
     @Override
